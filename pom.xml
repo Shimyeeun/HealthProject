@@ -154,7 +154,7 @@
 			<artifactId>OracleDriver</artifactId>
 			<version>12.1.0.2.0</version>
 			<scope>system</scope>
-			<systemPath>C:\Users\User\git\HealthProject\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>   
+			<systemPath>C:\Users\User\Desktop\heal\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>   
 		</dependency>    
 		<!-- 타일즈 관련 라이브러리 -->
 		<dependency>
