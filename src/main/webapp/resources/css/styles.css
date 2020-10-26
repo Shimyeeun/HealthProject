@@ -10,6 +10,28 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ 
+ 
+ /* ################## 임의로 정의한것 #############*/
+ ul {
+    list-style:none;
+
+}
+
+li {
+   margin-left: 20px;
+    float: left;
+}
+table.header-table{
+    border-collapse: collapse;
+    border-color: red;
+    text-align: left;
+    margin: 20px 30px;
+}     
+button.btn{
+	display: inline-block; padding: 5px 10px; color: #fff; font-size: 13px; background: #333; border-radius: 4px; border: 0 none; line-height: 1.4; vertical-align: middle
+}
+ /* ################## 임의로 정의한것 끝 #############*/
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -159,7 +181,7 @@ sup {
 }
 
 a {
-  color: #fed136;
+  color: black;
   text-decoration: none;
   background-color: transparent;
 }
@@ -3940,8 +3962,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  background-color: #007bff;
+  border-color: #dee2e6 #dee2e6 #007bff;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4310,7 +4332,7 @@ input[type=button].btn-block {
   color: #fff;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color:  rgba(0, 0, 0, 0.5);
 }
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 0.75);
@@ -7374,6 +7396,7 @@ button.bg-dark:focus {
   right: 0;
   left: 0;
   z-index: 1030;
+  background: #6c757d;
 }
 
 .fixed-bottom {
@@ -7741,6 +7764,11 @@ button.bg-dark:focus {
 .pt-4,
 .py-4 {
   padding-top: 1.5rem !important;
+  		position: relative;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		color: black;
 }
 
 .pr-4,
@@ -7924,6 +7952,10 @@ button.bg-dark:focus {
 .ml-auto,
 .mx-auto {
   margin-left: auto !important;
+  display: inline;
+  padding: 2;
+  text-align: center;
+  margin-right: 2;
 }
 
 @media (min-width: 576px) {
@@ -10069,7 +10101,7 @@ img::-moz-selection {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #212529;
+  background-color: #400080;
 }
 #mainNav .navbar-toggler {
   padding: 0.75rem;
@@ -10087,13 +10119,14 @@ img::-moz-selection {
   letter-spacing: 0.0625em;
   text-transform: uppercase;
 }
+
 #mainNav .navbar-brand img {
   height: 1.5rem;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.95rem;
-  color: #fff;
+  color:  #007bff;
   letter-spacing: 0.0625em;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
@@ -10135,44 +10168,50 @@ img::-moz-selection {
     margin-right: 0;
   }
 }
-header.masthead {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
+section.masthead {
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
   text-align: center;
   color: #fff;
-  background-image: url("../img/visual1.png");
+  background-image: url("../img/img.jpg");
+  height: 550px;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
-}
-header.masthead .masthead-subheading {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-style: italic;
-  line-height: 1.5rem;
-  margin-bottom: 25px;
+  line-height: 2.5rem;
+  margin-bottom: 1px;
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-header.masthead .masthead-heading {
-  font-size: 3.25rem;
-  font-weight: 700;
+section.masthead .section-subheading {
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 3.5rem;
+  margin-bottom: 1px;
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+section.masthead .section-heading {
+  font-size: 3.5rem;
+  font-weight: 100;
   line-height: 3.25rem;
   margin-bottom: 2rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @media (min-width: 768px) {
-  header.masthead {
+  section.masthead {
     padding-top: 17rem;
     padding-bottom: 12.5rem;
   }
-  header.masthead .masthead-subheading {
+  section.masthead .masthead-subheading {
     font-size: 2.25rem;
     font-style: italic;
     line-height: 2.25rem;
     margin-bottom: 2rem;
   }
-  header.masthead .masthead-heading {
+  section.masthead .masthead-heading {
     font-size: 4.5rem;
     font-weight: 700;
     line-height: 4.5rem;

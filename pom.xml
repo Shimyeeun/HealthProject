@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mySpring</groupId>
 	<artifactId>ex</artifactId>
-	<name>springEx</name>
+	<name>SpringEx</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -113,6 +113,15 @@
 		  <artifactId>standard</artifactId>
 		  <version>1.1.2</version>
 		</dependency>
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>        
+				
+		<!-- Mybatis -->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
@@ -154,12 +163,17 @@
 			<artifactId>OracleDriver</artifactId>
 			<version>12.1.0.2.0</version>
 			<scope>system</scope>
-			<systemPath>C:\Users\User\Desktop\heal\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>   
+			<systemPath>D:\workspaceWeb\SpringEx_re\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>
 		</dependency>    
-		<!-- 타일즈 관련 라이브러리 -->
+		<!-- tiles Library-->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
 			<version>2.2.2</version>
 		</dependency>
 		<dependency>
@@ -172,7 +186,13 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-		<!-- 파일 업로드 -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		
+		<!-- file upload -->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
@@ -183,15 +203,7 @@
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
 		    <version>1.4</version>
-		  </dependency>  
-		<!-- Test -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
-			<scope>test</scope>
-		</dependency>        
-		
+		  </dependency>		
 	</dependencies>
     <build>
         <plugins>

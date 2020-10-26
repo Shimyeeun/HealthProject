@@ -94,8 +94,8 @@
       글번호
    </td>
    <td >
-    <input type="text"  value="${article.articleNO }"  disabled />
-    <input type="hidden" name="articleNO" value="${article.articleNO}"  />
+    <input type="text"  value="${article.board_idx }"  disabled />
+    <input type="hidden" name="articleNO" value="${article.board_idx}"  />
    </td>
   </tr>
   <tr>
@@ -103,7 +103,7 @@
       작성자 아이디
    </td>
    <td >
-    <input type=text value="${article.id }" name="writer"  disabled />
+    <input type=text value="${article.mem_id }" name="writer"  disabled />
    </td>
   </tr>
   <tr>
@@ -184,7 +184,7 @@
 	      등록일자
 	   </td>
 	   <td>
-	    <input type=text value="<fmt:formatDate value="${article.writeDate}" />" disabled />
+	    <input type=text value="<fmt:formatDate value="${article.upload_date}" />" disabled />
 	   </td>   
   </tr>
   <tr   id="tr_btn_modify"  align="center"  >
@@ -196,12 +196,11 @@
     
   <tr  id="tr_btn"    >
    <td colspan="2" align="center">
-       <c:if test="${member.id == article.id }">
+       <c:if test="${member.id == article.mem_id }">
 	      <input type=button value="수정하기" onClick="fn_enable(this.form)">
-	      <input type=button value="삭제하기" onClick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.articleNO})">
+	      <input type=button value="삭제하기" onClick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.board_idx})">
 	    </c:if>
 	    <input type=button value="리스트로 돌아가기"  onClick="backToList(this.form)">
-	     <input type=button value="답글쓰기"  onClick="fn_reply_form('${contextPath}/board/replyForm.do', ${article.articleNO})">
    </td>
   </tr>
  </table>

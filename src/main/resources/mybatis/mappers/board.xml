@@ -5,13 +5,12 @@
 
 <mapper namespace="mapper.board">
 <resultMap id="articlesResult" type="articleVO">
-    <result property="level" column="level" />
-    <result property="articleNO" column="articleNO" />
-    <result property="parentNO" column="parentNO" />
-    <result property="title" column="title" />
-    <result property="content" column="content" />
-    <result property="writeDate" column="writeDate" />
-    <result property="imageFileName" column="imageFileName" />
+    <result property="mem_id" column="MEM_ID" />
+    <result property="board_idx" column="BOARD_IDX" />
+    <result property="upload_date" column="UPLOAD_DATE" />
+    <result property="title" column="TITLE" />
+    <result property="content" column="CONTENT" />
+    <result property="update_date" column="UPDATE_DATE" />
   </resultMap> 
   <!-- 
   <resultMap id="imgResult" type="imageVO">
@@ -24,11 +23,9 @@
 
   <select id="selectAllArticlesList" resultMap="articlesResult"   >
     <![CDATA[
-      SELECT level, articleNO, parentNO, title, content, writeDate, imageFileName, id
-      from t_board
-      START WITH  parentNO=0
-      CONNECT BY PRIOR articleNO=parentNO 
-      ORDER SIBLINGS BY articleNO DESC		
+      SELECT board_idx, mem_id, title, content, upload_date, update_date
+      from board 
+      ORDER BY board_idx desc		
     ]]>
   </select>
   
@@ -49,8 +46,8 @@
 	
   <select id="selectArticle" resultType="articleVO"   parameterType="int">
     <![CDATA[
-      SELECT * from t_board
-      where articleNO = #{articleNO}		
+      SELECT * from board
+      where bord_idx = #{board_idx}		
     ]]>
   </select>
   

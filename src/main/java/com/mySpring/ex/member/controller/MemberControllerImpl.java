@@ -21,16 +21,16 @@ import com.mySpring.ex.member.vo.MemberVO;
 
 
 
-@Controller("memberController")  //BEAN으로 올려줘
+@Controller("memberController")  //BEAN�쑝濡� �삱�젮以�
 //@EnableAspectJAutoProxy
 public class MemberControllerImpl  implements MemberController {
-	@Autowired  //자동으로 의존성 주입 
+	@Autowired  //�옄�룞�쑝濡� �쓽議댁꽦 二쇱엯 
 	private MemberService memberService;
-	@Autowired   //자동으로 의존성 주입 
+	@Autowired   //�옄�룞�쑝濡� �쓽議댁꽦 二쇱엯 
 	MemberVO memberVO ;
 	
 	@RequestMapping(value = { "/","/main.do"}, method = RequestMethod.GET)
-	 //데이터와 주소를 같이 보낼 때
+	 //�뜲�씠�꽣�� 二쇱냼瑜� 媛숈씠 蹂대궪 �븣
 	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView();
@@ -89,14 +89,14 @@ public class MemberControllerImpl  implements MemberController {
 	if(memberVO != null) {
 	    HttpSession session = request.getSession();
 	    session.setAttribute("member", memberVO);
-	    session.setAttribute("isLogOn", true);  //login 완료
+	    session.setAttribute("isLogOn", true);  //login �셿猷�
 	    //mav.setViewName("redirect:/member/listMembers.do");
 	    String action = (String)session.getAttribute("action");
 	    session.removeAttribute("action");
 	    if(action!= null) {
 	       mav.setViewName("redirect:"+action);
 	    }else {
-	       mav.setViewName("redirect:/member/listMembers.do");	
+	       mav.setViewName("redirect:/main.do");	
 	    }
 
 	}else {
@@ -113,7 +113,7 @@ public class MemberControllerImpl  implements MemberController {
 		session.removeAttribute("member");
 		session.removeAttribute("isLogOn");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/member/listMembers.do");
+		mav.setViewName("redirect:/main.do");
 		return mav;
 	}	
 

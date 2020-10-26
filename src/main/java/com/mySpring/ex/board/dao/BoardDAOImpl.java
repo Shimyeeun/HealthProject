@@ -20,7 +20,9 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List selectAllArticlesList() throws DataAccessException {
-		List<ArticleVO> articlesList = articlesList = sqlSession.selectList("mapper.board.selectAllArticlesList");
+		List<ArticleVO> articlesList  = sqlSession.selectList("mapper.board.selectAllArticlesList");
+		System.out.println("id: " + articlesList.get(0).getMem_id());
+		System.out.println("board_idx: " + articlesList.get(0).getBoard_idx());
 		return articlesList;
 	}
 
@@ -50,8 +52,8 @@ public class BoardDAOImpl implements BoardDAO {
    */
 	
 	@Override
-	public ArticleVO selectArticle(int articleNO) throws DataAccessException {
-		return sqlSession.selectOne("mapper.board.selectArticle", articleNO);
+	public ArticleVO selectArticle(int board_idx) throws DataAccessException {
+		return sqlSession.selectOne("mapper.board.selectArticle", board_idx);
 	}
 
 	@Override

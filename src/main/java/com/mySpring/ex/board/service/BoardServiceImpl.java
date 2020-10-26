@@ -58,8 +58,9 @@ public class BoardServiceImpl  implements BoardService{
 	
 	 //���� ���� ���̱�
 	@Override
-	public ArticleVO viewArticle(int articleNO) throws Exception {
-		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
+	public ArticleVO viewArticle(int board_idx) throws Exception {
+		ArticleVO articleVO = boardDAO.selectArticle(board_idx);
+		System.out.println("board_idx: " + articleVO.getBoard_idx());
 		return articleVO;
 	}
 	

@@ -8,94 +8,49 @@ import org.springframework.stereotype.Component;
 
 @Component("articleVO")
 public class ArticleVO {
-	private int  level;
-	private int articleNO;
-	private int parentNO;
+	private String mem_id;
+	private int board_idx;
 	private String title;
 	private String content;
-	private String imageFileName;
-	private String id;
-	private Date  writeDate;
+	private Date upload_date;
+	private Date update_date;
 	
-	
-	public ArticleVO() {
-		System.out.println("ArticleVO 생성자");
+	public String getMem_id() {
+		return mem_id;
 	}
-
-	public int getArticleNO() {
-		return articleNO;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
-
-	public void setArticleNO(int articleNO) {
-		this.articleNO = articleNO;
+	public int getBoard_idx() {
+		return board_idx;
 	}
-
-	public int getParentNO() {
-		return parentNO;
+	public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
 	}
-
-	public void setParentNO(int parentNO) {
-		this.parentNO = parentNO;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public String getContent() {
 		return content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	public String getImageFileName() {
-		return imageFileName;
+	public Date getUpload_date() {
+		return upload_date;
 	}
-
-	public void setImageFileName(String imageFileName) {
-		try {
-			if(imageFileName!= null && imageFileName.length()!=0) {
-				this.imageFileName = URLEncoder.encode(imageFileName,"UTF-8");
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+	public void setUpload_date(Date upload_date) {
+		this.upload_date = upload_date;
 	}
-	
-	
-
-	public String getId() {
-		return id;
+	public Date getUpdate_date() {
+		return update_date;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setUpdate_date(Date update_date) {
+		this.update_date = update_date;
 	}
-
-	public Date getWriteDate() {
-		return writeDate;
-	}
-
-	public void setWriteDate(Date writeDate) {
-		this.writeDate = writeDate;
-	}
-
-
 	
 	
 }
