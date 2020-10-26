@@ -163,7 +163,7 @@
 			<artifactId>OracleDriver</artifactId>
 			<version>12.1.0.2.0</version>
 			<scope>system</scope>
-			<systemPath>D:\workspaceWeb\SpringEx_re\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>
+			<systemPath>/Users/yoonmeenseo/Desktop/repository/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
 		</dependency>    
 		<!-- tiles Library-->
 		<dependency>
