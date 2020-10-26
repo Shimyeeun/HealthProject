@@ -22,6 +22,7 @@ li {
    margin-left: 20px;
     float: left;
 }
+
 table.header-table{
     border-collapse: collapse;
     border-color: red;
@@ -515,7 +516,7 @@ mark,
 
 .figure-img {
   margin-bottom: 0.5rem;
-  line-height: 1;
+  line-height: 1;	
 }
 
 .figure-caption {
