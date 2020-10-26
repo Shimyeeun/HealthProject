@@ -14,6 +14,7 @@ public class ArticleVO {
 	private String content;
 	private Date upload_date;
 	private Date update_date;
+	private int cnt;
 	
 	public String getMem_id() {
 		return mem_id;
@@ -50,6 +51,12 @@ public class ArticleVO {
 	}
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 	
 	
