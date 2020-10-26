@@ -8,12 +8,15 @@
 %>
 <!DOCTYPE html>
 
-<table align="center" border="1" width="80%">
-	<tr height="10" align="center" bgcolor="lightgreen">
+<div class="contaniner" width="80%">
+<h1 align="center">자유 게시판</h1>
+<table class="table table-striped" align="center" border="1" width="80%">
+	<tr height="10" align="center">
 		<td>글번호</td>
 		<td>작성자</td>
 		<td>제목</td>
 		<td>작성일</td>
+		<td>조회수</td>
 	</tr>
 	<c:choose>
 		<c:when test="${articlesList ==null }">
@@ -26,20 +29,21 @@
 			</tr>
 		</c:when>
 		<c:when test="${articlesList !=null }">
-			<c:forEach var="article" items="${articlesList }"
-				varStatus="articleNum">
+			<c:forEach var="article" items="${articlesList }">
 				<tr align="center">
-					<td width="5%">${articleNum.count}</td>
-					<td width="10%">${article.mem_id }</td>
+					<td width="3%">${article.board_idx}</td>
+					<td width="7%">${article.mem_id }</td>
 					<td align='left' width="35%"><span style="padding-right: 30px"></span>
 						<a class='cls1'
-						href="${contextPath}/board/viewArticle.do?articleNO=${article.board_idx}">${article.title}</a></td>
-					<td width="10%">${article.upload_date}</td>
+						href="${contextPath}/board/viewArticle.do?board_idx=${article.board_idx}">${article.title}</a></td>
+					<td width="7%">${article.upload_date}</td>
+					<td width="3%">${article.cnt}</td>
 				</tr>
 			</c:forEach>
 		</c:when>
 	</c:choose>
 </table>
+</div>
 <script>
 	function fn_articleForm(isLogOn,articleForm,loginForm){
 	  if(isLogOn != '' && isLogOn != 'false'){
