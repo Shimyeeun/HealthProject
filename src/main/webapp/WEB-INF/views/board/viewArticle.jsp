@@ -14,6 +14,7 @@
 %> 
 
 <head>
+<!-- 
    <meta charset="UTF-8">
    <title>글보기</title>
    <style>
@@ -120,5 +121,6 @@
     <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled />${article.content }</textarea>
    </td>  
   </tr>
-</table>
+</table>   
  </form>
+  -->
