@@ -26,6 +26,7 @@ section.videogrid {
 	grid-template-columns: repeat(auto-fill, 212px);
 	grid-gap: 10px
 }
+
  /* ################## 임의로 정의한것 #############*/
  ul {
     list-style:none;
