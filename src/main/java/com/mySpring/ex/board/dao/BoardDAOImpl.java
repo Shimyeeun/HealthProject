@@ -35,23 +35,6 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.insert("mapper.board.insertNewArticle",articleMap);
 		return articleNO;
 	}
-    
-	//���� ���� ���ε�
-	/*
-	@Override
-	public void insertNewImage(Map articleMap) throws DataAccessException {
-		List<ImageVO> imageFileList = (ArrayList)articleMap.get("imageFileList");
-		int articleNO = (Integer)articleMap.get("articleNO");
-		int imageFileNO = selectNewImageFileNO();
-		for(ImageVO imageVO : imageFileList){
-			imageVO.setImageFileNO(++imageFileNO);
-			imageVO.setArticleNO(articleNO);
-		}
-		sqlSession.insert("mapper.board.insertNewImage",imageFileList);
-	}
-	
-   */
-	
 	@Override
 	public ArticleVO selectArticle(int board_idx) throws DataAccessException {
 		return sqlSession.selectOne("mapper.board.selectArticle", board_idx);

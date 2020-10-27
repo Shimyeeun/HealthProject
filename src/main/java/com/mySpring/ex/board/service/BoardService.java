@@ -8,24 +8,25 @@ import com.mySpring.ex.board.vo.CommentVO;
 
 public interface BoardService {
 	public List<ArticleVO> listArticles() throws Exception;
-	public int addNewArticle(Map articleMap) throws Exception;
-	public ArticleVO viewArticle(int board_idx) throws Exception;
+	public int addNewArticle(Map movieMap) throws Exception;
+	public ArticleVO viewArticle(int exercise_idx) throws Exception;
 	//public Map viewArticle(int articleNO) throws Exception;
+
 	public void modArticle(Map articleMap) throws Exception;
 	public void removeArticle(int articleNO) throws Exception;
 
-    // ´ñ±Û °³¼ö
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public int commentCount() throws Exception;
  
-    // ´ñ±Û ¸ñ·Ï
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public List<CommentVO> commentList() throws Exception;
  
-    // ´ñ±Û ÀÛ¼º
+    // ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
     public int commentInsert(CommentVO comment) throws Exception;
     
-    // ´ñ±Û ¼öÁ¤
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public int commentUpdate(CommentVO comment) throws Exception;
  
-    // ´ñ±Û »èÁ¦
+    // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public int commentDelete(int cno) throws Exception;
 }

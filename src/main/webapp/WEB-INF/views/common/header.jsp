@@ -32,6 +32,8 @@
 							href="/board/listArticles.do">COMMUNITY</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="#contact">Contact</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger"
+							href="/exercise/exerciseMain.do">운동영상</a></li>
 					</ul>
 				</nav>
 			</td>
