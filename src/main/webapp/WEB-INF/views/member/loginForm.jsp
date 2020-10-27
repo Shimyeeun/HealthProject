@@ -21,21 +21,23 @@
 </c:choose>
 <form name="frmLogin" method="post"
 	action="${contextPath}/member/login.do">
-	<table border="1" width="80%" align="center">
-		<tr align="center">
-			<td>아이디</td>
-			<td>비밀번호</td>
-		</tr>
-		<tr align="center">
-			<td><input type="text" name="id" value="" size="20"></td>
-			<td><input type="password" name="pwd" value="" size="20">
-			</td>
-		</tr>
-		<tr align="center">
-			<td colspan="2"><input type="submit" value="로그인"> <input
-				type="reset" value="다시입력"></td>
-		</tr>
-	</table>
+  <div id ="content">
+	<div id="login_content">
+		<h1 id= "login_title">LOGIN</h1>
+		<div id="input">
+			<input aria-invalid="false" class="id_class" placeholder="아이디" type="id" value="" title="id_title">
+		</div>
+		<div id="input">
+			<input aria-invalid="false" class="pw_class" placeholder="비밀번호" type="password" value="" title="pw_title">
+		</div>
+		<button class="btn" type="button" onclick="location.href='${contextPath}/member/loginForm.do'">로그인</button>
+	</div>
+	<div id ="find_account">
+		<a id="find_id" href="">아이디찾기 | 비밀번호 초기화</a>
+		<br>홈페이지에 가입하지 않으셨나요?
+		<a id="register" href="${contextPath}/member/memberForm.do">회원가입</a>
+	</div>
+   </div>	
 </form>
 </div>
 </body>
