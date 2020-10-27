@@ -13,7 +13,7 @@ public interface ChallengeDAO {
 	//public void insertNewImage(Map articleMap) throws DataAccessException;
 	
 	public ChallengeVO selectChallenge(int challengeNO) throws DataAccessException;
-	//public void updateArticle(Map articleMap) throws DataAccessException;
+	public void updateChallenge(int chal_idx) throws DataAccessException;
 	//public void deleteArticle(int articleNO) throws DataAccessException;
 	//public List selectImageFileList(int articleNO) throws DataAccessException;
 }

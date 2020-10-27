@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mySpring.ex.board.dao.BoardDAO;
 import com.mySpring.ex.board.vo.ArticleVO;
+import com.mySpring.ex.board.vo.CommentVO;
 import com.mySpring.ex.board.vo.ImageVO;
 
 
@@ -74,7 +75,41 @@ public class BoardServiceImpl  implements BoardService{
 	public void removeArticle(int articleNO) throws Exception {
 		boardDAO.deleteArticle(articleNO);
 	}
-	
+
+
+	@Override
+	public int commentCount() throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public List<CommentVO> commentList() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int commentInsert(CommentVO comment) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int commentUpdate(CommentVO comment) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int commentDelete(int cno) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	
 }

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface ChallengeController {
 	public ModelAndView listChallenges(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+	public ModelAndView updateChallenge(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	//public ResponseEntity applyChallenge(MultipartHttpServletRequest multipartRequest,HttpServletResponse response) throws Exception;
 	
 	//public ModelAndView viewArticle(@RequestParam("challengeNO") int challengeNO,

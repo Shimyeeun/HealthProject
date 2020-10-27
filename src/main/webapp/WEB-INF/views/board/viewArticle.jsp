@@ -14,6 +14,7 @@
 %> 
 
 <head>
+
    <meta charset="UTF-8">
    <title>글보기</title>
    <style>
@@ -85,40 +86,36 @@
 	     }
 	 }  
  </script>
-  <form name="frmArticle" method="post"  action="${contextPath}"  enctype="multipart/form-data">
+
+	<div class="content_title" style="text-align:center; padding-top:20px">
+		<h1>${article.title}</h1>
+	</div>
+	<div>
+		<div class="content_header" style=" height:50px; padding-bottom:10px">
+		<div class="content_header_item first" style="float:left">${article.mem_id}<br>
+		${article.upload_date}</div>		
+		</div>
+	</div>
+	
+	<div class="cont_upper area_btn_g" style="border-bottom: 1px solid #efefef; width:1000px; margin:0 auto"></div>
+
+  <form role="form" name="frmArticle" method="post"  action="${contextPath}"  enctype="multipart/form-data" style="padding-top:20px; margin: 0 auto; width:1000px">
   <table  border=0  align="center">
-  <tr>
-   <td width=150 align="center" bgcolor=#FF9933>
-      글번호
-   </td>
-   <td >
-    <input type="text"  value="${article.board_idx }"  disabled />
-    <input type="hidden" name="articleNO" value="${article.board_idx}"  />
-   </td>
-  </tr>
-  <tr>
-    <td width="150" align="center" bgcolor="#FF9933">
-      작성자 아이디
-   </td>
-   <td >
-    <input type=text value="${article.mem_id }" name="writer"  disabled />
-   </td>
-  </tr>
-  <tr>
-    <td width="150" align="center" bgcolor="#FF9933">
-      제목 
+    <td width="150" align="center" bgcolor="#2E2E2E">
+      <p style="color:#FFFFFF">내용</p>
    </td>
    <td>
-    <input type=text value="${article.title }"  name="title"  id="i_title" disabled />
-   </td>   
-  </tr>
-  <tr>
-    <td width="150" align="center" bgcolor="#FF9933">
-      내용
-   </td>
-   <td>
-    <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled />${article.content }</textarea>
+    <textarea class="form-control" rows="20" cols="60"  name="content"  id="i_content"  disabled />${article.content }</textarea>
    </td>  
   </tr>
-</table>
+</table>   
  </form>
+ <div class="cont_upper area_btn_g" style="border-bottom: 1px solid #efefef; width:1000px; margin:0 auto; padding-top:20px"></div>
+ <div clas="main_content" style=" margin: 0 auto; width:1300px; align:center; padding-top:20px">
+	<div class="content_header" style=" height:40px; padding-bottom:20px">
+		<div class="content_header_item first" style="float:left"><a class="btn_g" href="/board/listArticles.do" style="font-size:13px">목록</a></div>		
+		<div class="content_header_item two" style="float:right"><a class="btn_g" href="#" style="font-size:13px">답글</a></div>		
+	</div>
+		
+</div>
+
