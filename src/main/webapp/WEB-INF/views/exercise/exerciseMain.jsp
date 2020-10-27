@@ -2,14 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <body>
-	<!-- main poster -->
-	<section class="masthead">
-	 <div class="container">
-	     <div class="section-subheading">Welcome To Our Studio!</div>
-	     <div class="section-heading text-uppercase">It's Nice To Meet You</div>
-	     <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
-     </div>
-	</section>
 	<!-- Portfolio Grid-->
 	<section class="page-section bg-light" id="portfolio">
 		<div class="container">
@@ -27,7 +19,7 @@
 									<i class="fas fa-plus fa-3x"></i>
 								</div>
 							</div> <img class="img-fluid"
-							src="/resources/img/portfolio/01-thumbnail.jpg" alt="" />
+							src="/resources/img/exr/chest.jpeg" alt="" />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">가슴운동</div>
@@ -44,7 +36,7 @@
 									<i class="fas fa-plus fa-3x"></i>
 								</div>
 							</div> <img class="img-fluid"
-							src="/resources/img/portfolio/02-thumbnail.jpg" alt="" />
+							src="/resources/img/exr/back.jpg" alt="" />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">등운동</div>
@@ -62,7 +54,7 @@
 									<i class="fas fa-plus fa-3x"></i>
 								</div>
 							</div> <img class="img-fluid"
-							src="/resources/img/portfolio/03-thumbnail.jpg" alt="" />
+							src="/resources/img/exr/arm.jpeg" alt="" />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">팔운동</div>
@@ -79,7 +71,7 @@
 									<i class="fas fa-plus fa-3x"></i>
 								</div>
 							</div> <img class="img-fluid"
-							src="/resources/img/portfolio/04-thumbnail.jpg" alt="" />
+							src="/resources/img/exr/shoulder.jpeg" alt="" />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">어께운동</div>
@@ -96,7 +88,7 @@
 									<i class="fas fa-plus fa-3x"></i>
 								</div>
 							</div> <img class="img-fluid"
-							src="/resources/img/portfolio/05-thumbnail.jpg" alt="" />
+							src="/resources/img/exr/leg.jpeg" alt="" />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">하체운동</div>
@@ -113,7 +105,7 @@
 									<i class="fas fa-plus fa-3x"></i>
 								</div>
 							</div> <img class="img-fluid"
-							src="/resources/img/portfolio/06-thumbnail.jpg" alt="" />
+							src="/resources/img/exr/running.jpeg" alt="" />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading">유산소운동</div>
