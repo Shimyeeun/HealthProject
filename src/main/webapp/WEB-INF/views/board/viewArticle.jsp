@@ -121,6 +121,6 @@
     <textarea rows="20" cols="60"  name="content"  id="i_content"  disabled />${article.content }</textarea>
    </td>  
   </tr>
-</table>
+</table>   
  </form>
   -->
