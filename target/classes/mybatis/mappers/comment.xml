@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.comment">
+<resultMap id="commentResult" type="CommentVO">
+    <result property="comment_idx" column="comment_idX" />
+    <result property="board_idx" column="board_idx" />
+    <result property="content" column="content" />
+    <result property="mem_id" column="mem_id" />
+    <result property="reg_date" column="reg_date" />
+  </resultMap> 
+	
+  <select id="selectCommentCount" resultType="int"   >
+        SELECT COUNT(*)
+        FROM BOARD_COMMENT
+  </select>	
+  
+  <select id="selectCommentList" resultType="CommentVO"   >
+        SELECT *
+        FROM BOARD_COMMENT
+  </select>	
+  
+  <insert id="commentInsert" parameterType="CommentVO"   >
+        INSERT INTO
+        BOARD_COMMENT (CNO, BNO, CONTENT, WRITER, REG_DATE)
+        VALUES(#{comment_idx},#{board_idx},#{content},#{mem_id},now()) 
+  </insert>	
+  
+  <update id="commentUpdate" parameterType="CommentVO"   >
+        UPDATE COMMENT
+            SET
+            BOARD_CONTENT = #{content}
+        WHERE CNO = #{comment_idx}
+  </update>	
+  
+  <delete id="commentDelete" parameterType="int">
+	DELETE FROM COMMENT WHERE CNO = #{comment_idx}
+  </delete>	
+</mapper>
