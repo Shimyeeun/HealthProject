@@ -10,6 +10,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.mySpring.ex.board.vo.ArticleVO;
+import com.mySpring.ex.board.vo.CommentVO;
 import com.mySpring.ex.board.vo.ImageVO;
 
 
@@ -80,6 +81,40 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	private int selectNewImageFileNO() throws DataAccessException {
 		return sqlSession.selectOne("mapper.board.selectNewImageFileNO");
+	}
+
+
+	@Override
+	public int commentCount() throws DataAccessException {
+		return sqlSession.selectOne("mapper.comment.selectCommentCount");
+	}
+
+
+	@Override
+	public List<CommentVO> commentList() throws DataAccessException {
+		List<CommentVO> commentList = sqlSession.selectList("mapper.comment.selectCommentList");
+		return commentList;
+	}
+
+
+	@Override
+	public int commentInsert(CommentVO comment) throws DataAccessException {
+		
+		return 0;
+	}
+
+
+	@Override
+	public int commentUpdate(CommentVO comment) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int commentDelete(int cno) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
