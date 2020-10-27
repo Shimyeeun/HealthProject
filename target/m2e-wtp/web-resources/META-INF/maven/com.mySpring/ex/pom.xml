@@ -163,7 +163,11 @@
 			<artifactId>OracleDriver</artifactId>
 			<version>12.1.0.2.0</version>
 			<scope>system</scope>
+<<<<<<< HEAD
 			<systemPath>C:\Users\User\Desktop\GitHealth\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>
+=======
+			<systemPath>/Users/yoonmeenseo/Desktop/repository/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
+>>>>>>> exercise
 		</dependency>    
 		<!-- tiles Library-->
 		<dependency>

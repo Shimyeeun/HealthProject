@@ -11,11 +11,29 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
  
+<<<<<<< HEAD
  
  /* ################## header start #############*/
+=======
+ /* 운동영상 반응형 구현 */
+ .video {
+  position: relative; padding-bottom: 100%; height: 0; overflow: hidden;
+}
+.video iframe, .video object, .video embed {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+section.videogrid {
+	margin: 30px;
+	padding: 20px;
+	max-width:1440px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 212px);
+	grid-gap: 10px
+}
+ /* ################## 임의로 정의한것 #############*/
+>>>>>>> exercise
  ul {
     list-style:none;
-
 }
 
 li {
