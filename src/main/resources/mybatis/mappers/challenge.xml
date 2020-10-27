@@ -26,7 +26,7 @@
     <![CDATA[
       SELECT chal_idx, title, challenger, total_point, target_point, start_date, end_date
       from challenge
-      ORDER BY chal_idx 	
+      ORDER BY target_point	
     ]]>
   </select>
   
@@ -51,6 +51,13 @@
       where chal_idx = #{chal_idx}		
     ]]>
   </select>
+  
+  <update id="updateChallenge"  parameterType="int">
+			update challenge
+			set challenger=#{challenger}+1,	 
+			total_point=#{total_point}+#{target_point}			 
+			where chal_idx=#{chal_idx}
+	</update>
   
   <!--  <update id="updateArticle"  parameterType="java.util.Map">
 			update t_board
