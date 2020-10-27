@@ -11,6 +11,7 @@
     <result property="title" column="TITLE" />
     <result property="content" column="CONTENT" />
     <result property="update_date" column="UPDATE_DATE" />
+    <result property="cnt" column="cnt" />
   </resultMap> 
   <!-- 
   <resultMap id="imgResult" type="imageVO">
@@ -23,7 +24,7 @@
 
   <select id="selectAllArticlesList" resultMap="articlesResult"   >
     <![CDATA[
-      SELECT board_idx, mem_id, title, content, upload_date, update_date
+      SELECT board_idx, mem_id, title, content, upload_date, update_date, cnt
       from board 
       ORDER BY board_idx desc		
     ]]>
@@ -47,7 +48,7 @@
   <select id="selectArticle" resultType="articleVO"   parameterType="int">
     <![CDATA[
       SELECT * from board
-      where bord_idx = #{board_idx}		
+      where board_idx = #{board_idx}		
     ]]>
   </select>
   

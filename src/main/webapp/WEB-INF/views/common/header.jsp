@@ -16,9 +16,9 @@
 					src="${contextPath}/resources/img/logo.png" width="100"
 					height="100" />
 			</a></td>
-			<td width="25%"><a href="${contextPath}/main.do"
+			<td width="35%"><a href="${contextPath}/main.do"
 				style="text-decoration: none;"><h4>방구석 헬스왕</h4></a></td>
-			<td width="40%"">
+			<td width="35%"">
 				<!-- Navigation-->
 				<nav>
 					<ul class="navbar-nav text-uppercase ml-auto">
