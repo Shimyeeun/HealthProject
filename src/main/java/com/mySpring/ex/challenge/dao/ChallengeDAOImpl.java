@@ -1,6 +1,7 @@
 package com.mySpring.ex.challenge.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,10 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 	@Override
 	public ChallengeVO selectChallenge(int chal_idx) throws DataAccessException {
 		return sqlSession.selectOne("mapper.challenge.selectChallenge",chal_idx);
+	}
+	
+	@Override
+	public void updateChallenge(int chal_idx) throws DataAccessException {
+		sqlSession.update("mapper.challenge.updateChallenge", chal_idx);
 	}
 }
