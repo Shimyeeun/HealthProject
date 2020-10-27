@@ -2,14 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <body>
-	<!-- main poster -->
-	<section class="masthead">
-	 <div class="container">
-	     <div class="section-subheading">Welcome To Our Studio!</div>
-	     <div class="section-heading text-uppercase">It's Nice To Meet You</div>
-	     <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
-     </div>
-	</section>
 	<!-- Portfolio Grid-->
 	<section class="page-section bg-light" id="portfolio">
 		<div class="container">
