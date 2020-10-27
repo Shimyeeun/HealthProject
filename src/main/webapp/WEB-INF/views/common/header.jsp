@@ -23,7 +23,7 @@
 				<nav>
 					<ul class="navbar-nav text-uppercase ml-auto">
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="#services">Services</a></li>
+							href="/challenge/listChallenges.do">CHALLENGE</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="#portfolio">Portfolio</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
