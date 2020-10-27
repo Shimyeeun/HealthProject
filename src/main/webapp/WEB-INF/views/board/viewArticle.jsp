@@ -14,6 +14,7 @@
 %> 
 
 <head>
+<!-- 
    <meta charset="UTF-8">
    <title>글보기</title>
    <style>
@@ -122,3 +123,4 @@
   </tr>
 </table>
  </form>
+  -->
