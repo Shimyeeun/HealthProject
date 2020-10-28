@@ -3,12 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>
-		<typeAlias type="com.mySpring.ex.member.vo.MemberVO"  alias="memberVO" />
-		<typeAlias type="com.mySpring.ex.board.vo.ArticleVO"  alias="articleVO" />
-		<typeAlias type="com.mySpring.ex.challenge.vo.ChallengeVO" alias="challengeVO"/>
-		<typeAlias type="com.mySpring.ex.board.vo.CommentVO"  alias="CommentVO" />
-		<!--  <typeAlias type="com.mySpring.ex.main.vo.TrainerVO" alias="trainerVO"/>-->
-		<!-- <typeAlias type="com.mySpring.board.vo.ImageVO"  alias="imageVO" />  -->
-	</typeAliases>
+   <typeAliases>
+      <typeAlias type="com.mySpring.ex.member.vo.MemberVO"  alias="memberVO" />
+      <typeAlias type="com.mySpring.ex.board.vo.ArticleVO"  alias="articleVO" />
+      <typeAlias type="com.mySpring.ex.challenge.vo.ChallengeVO" alias="challengeVO"/>
+      <typeAlias type="com.mySpring.ex.board.domain.CommentVO"  alias="CommentVO" />
+      <typeAlias type="com.mySpring.ex.exercise.vo.MovieVO"  alias="movieVO" />
+      <!--  <typeAlias type="com.mySpring.ex.main.vo.TrainerVO" alias="trainerVO"/>-->
+      <!-- <typeAlias type="com.mySpring.board.vo.ImageVO"  alias="imageVO" />  -->
+   </typeAliases>
 </configuration>
