@@ -29,7 +29,7 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 	}
 	
 	@Override
-	public void updateChallenge(int chal_idx) throws DataAccessException {
-		sqlSession.update("mapper.challenge.updateChallenge", chal_idx);
+	public int updateChallenge(int chal_idx) throws DataAccessException {		
+		return sqlSession.update("mapper.challenge.updateChallenge", chal_idx);
 	}
 }

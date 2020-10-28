@@ -25,9 +25,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 	}
 	
 	@Override
-	public ChallengeVO updateChallenges() throws Exception{
-		ChallengeVO challengeVO = boardDAO.selectArticle(board_idx);
-		System.out.println("board_idx: " + articleVO.getBoard_idx());
-		return articleVO;
+	public void updateChallenges(int chal_idx) throws Exception{
+		challengeDAO.updateChallenge(chal_idx);;
 	}
 }

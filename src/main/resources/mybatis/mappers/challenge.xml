@@ -54,9 +54,9 @@
   
   <update id="updateChallenge"  parameterType="int">
 			update challenge
-			set challenger=#{challenger}+1,	 
-			total_point=#{total_point}+#{target_point}			 
-			where chal_idx=#{chal_idx}
+			set challenger=challenger+1,	 
+			total_point=total_point+target_point		 
+			where chal_idx= #{chal_idx}
 	</update>
   
   <!--  <update id="updateArticle"  parameterType="java.util.Map">

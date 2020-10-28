@@ -23,10 +23,10 @@
 					
 					<h4> ${challenge.target_point }원 챌린지 > ${challenge.title } </h4>	
 					
-					<p class="text-muted"> 누적금액 : ${challenge.total_point } 신청자수 : ${challenge.challenger } 시작일 : ${challenge.start_date } 마감일 : ${challenge.end_date } 
+					<p class="text-muted"> 누적금액 :  ${challenge.total_point }원 &nbsp; 신청자수 :  ${challenge.challenger }명  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
 					</p>	
 				
-				<button class="btn" type="button" onclick="javascript:showConfirm()" >도전하기!</button>
+				<button class="btn" type="button" onclick="javascript:showConfirm(${challenge.chal_idx})" >도전하기!</button>
 				</div>
 				
 				
@@ -36,52 +36,13 @@
 </div>
 
 <script>
-function showConfirm(){
+function showConfirm(chal_idx){
 	if(confirm("챌린지에 도전하시겠습니까?"))
-	{
-		$.ajax({
-
-	           type: "POST",
-
-	           url: "api/notes/{{$note->_id}}",
-
-	           data: data, 
-
-	           contentType: false,
-
-	           success: function(data)
-
-	           {
-
-	                window.location.replace('url');
-
-	           },
-
-	           fail: function(data)
-
-	           {
-
-	                alert('failed');
-
-	           },
-
-	           error: function(data)
-
-	           {
-
-	            if (data.status == 401) {
-
-	                alert('failed.');
-
-	                return;
-
-	            }
-
-	           }
-
-	        });
+	{	
+		location.href="updateChallenge.do?chal_idx="+chal_idx;
 		alert("챌린지 신청이 완료되었습니다.");
 		return true;
+		
 	} 
 	else
 		return false;
