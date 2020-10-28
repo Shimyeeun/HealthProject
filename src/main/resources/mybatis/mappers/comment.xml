@@ -17,15 +17,17 @@
         FROM BOARD_COMMENT
   </select>	
   
-  <select id="selectCommentList" resultType="CommentVO"   >
+  <select id="selectCommentList" resultType="CommentVO"  parameterType="int">
         SELECT *
         FROM BOARD_COMMENT
+        WHERE BOARD_IDX = #{board_idx}
+        ORDER BY REG_DATE
   </select>	
   
   <insert id="commentInsert" parameterType="CommentVO"   >
         INSERT INTO
-        BOARD_COMMENT (CNO, BNO, CONTENT, WRITER, REG_DATE)
-        VALUES(#{comment_idx},#{board_idx},#{content},#{mem_id},now()) 
+        BOARD_COMMENT (comment_idx, board_idx, CONTENT, mem_id)
+        VALUES(#{comment_idx},#{board_idx},#{content},#{mem_id}) 
   </insert>	
   
   <update id="commentUpdate" parameterType="CommentVO"   >
@@ -36,6 +38,6 @@
   </update>	
   
   <delete id="commentDelete" parameterType="int">
-	DELETE FROM COMMENT WHERE CNO = #{comment_idx}
+	DELETE FROM COMMENT WHERE COMMENT_IDX = #{comment_idx}
   </delete>	
 </mapper>

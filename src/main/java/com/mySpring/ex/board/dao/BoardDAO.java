@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.mySpring.ex.board.vo.ArticleVO;
-import com.mySpring.ex.board.vo.CommentVO;
+import com.mySpring.ex.board.domain.CommentVO;
 
 
 public interface BoardDAO {
@@ -14,7 +14,7 @@ public interface BoardDAO {
 	public int insertNewArticle(Map articleMap) throws DataAccessException;
 	//public void insertNewImage(Map articleMap) throws DataAccessException;
 	
-	public ArticleVO selectArticle(int articleNO) throws DataAccessException;
+	public ArticleVO selectArticle(int board_idx) throws DataAccessException;
 	public void updateArticle(Map articleMap) throws DataAccessException;
 	public void deleteArticle(int articleNO) throws DataAccessException;
 	public List selectImageFileList(int articleNO) throws DataAccessException;
@@ -23,7 +23,7 @@ public interface BoardDAO {
     public int commentCount() throws DataAccessException;
  
     // ´ñ±Û ¸ñ·Ï
-    public List<CommentVO> commentList() throws DataAccessException;
+    public List<CommentVO> commentList(int board_idx) throws DataAccessException;
  
     // ´ñ±Û ÀÛ¼º
     public int commentInsert(CommentVO comment) throws DataAccessException;
@@ -32,6 +32,6 @@ public interface BoardDAO {
     public int commentUpdate(CommentVO comment) throws DataAccessException;
  
     // ´ñ±Û »èÁ¦
-    public int commentDelete(int cno) throws DataAccessException;
+    public int commentDelete(int comment_idx) throws DataAccessException;
 	
 }

@@ -4,10 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.mySpring.ex.board.domain.CommentVO;
+import com.mySpring.ex.board.vo.ArticleVO;
 
 
 public interface BoardController {
@@ -20,5 +24,12 @@ public interface BoardController {
 	//public ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest,  HttpServletResponse response) throws Exception;
 	public ResponseEntity  removeArticle(@RequestParam("articleNO") int articleNO,
                               HttpServletRequest request, HttpServletResponse response) throws Exception;
+	
+	
+	/*comment*/
+	public ResponseEntity ajax_commentList(@RequestParam("board_idx") int board_idx, HttpServletRequest request) throws Exception;
+	public String ajax_addComment(@RequestParam(value="mem_id")String mem_id, @RequestParam(value="board_idx")int board_idx,@RequestParam(value="comment")String comment, @RequestParam(value="comment_idx")int comment_idx, HttpServletRequest request) throws Exception;
+	
+	public ModelAndView mCommentServiceList(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }

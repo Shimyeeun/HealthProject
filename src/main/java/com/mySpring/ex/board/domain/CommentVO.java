@@ -1,4 +1,4 @@
-package com.mySpring.ex.board.vo;
+package com.mySpring.ex.board.domain;
 
 import java.util.*;
 
@@ -8,6 +8,7 @@ public class CommentVO {
     private String content;
     private String mem_id;
     private Date reg_date;
+    
 	public int getComment_idx() {
 		return comment_idx;
 	}
