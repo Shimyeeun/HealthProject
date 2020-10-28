@@ -5,10 +5,12 @@
 
 <mapper namespace="mapper.member">
 	<resultMap id="memResult" type="memberVO">
-		<result property="id" column="id" />
-        <result property="pwd" column="pwd" />
-        <result property="name" column="name" />
-        <result property="email" column="email" />
+		<result property="mem_id" column="mem_id" />
+        <result property="mem_pwd" column="mem_pwd" />
+        <result property="mem_name" column="mem_name" />
+        <result property="mem_address" column="mem_address" />
+        <result property="mem_gender" column="mem_gender" />
+        <result property="mem_birthDate" column="mem_birthDate" />
         <result property="joinDate" column="joinDate" />
 	</resultMap> 
 	<!-- 
@@ -29,10 +31,10 @@
     
   <insert id="insertMember"  parameterType="memberVO">
 		<![CDATA[
-		 insert into t_member(id,pwd, name, email)
-		 values(#{id}, #{pwd}, #{name}, #{email})
+		 insert into member(mem_id, mem_pw, name, address, gender, birth_date)
+		 values(#{mem_id}, #{mem_pwd}, #{mem_name}, #{mem_address}, #{mem_gender}, #{'yyyy-mm-dd'})
 		]]>      
-	</insert>
+ </insert>
 	
    
    <update id="updateMember"  parameterType="memberVO">

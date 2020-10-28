@@ -11,30 +11,43 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 </head>
 <body>
-	<table  align="center">
+<form name="frmLogin" method="post"
+	action="${contextPath}/member/addMember.do">
+	<table align="center">
 	   <tr>
 	      <td width="200"><p align="right">아이디</td>
-	      <td width="400"><input type="text" name="id"></td>
+	      <td width="400"><input type="text" name="mem_id"></td>
 	   </tr>
 	   <tr>
 	      <td width="200"><p align="right">비밀번호</td>
-	      <td width="400"><input type="password" name="pwd"></td>
+	      <td width="400"><input type="password" name="mem_pwd"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이름</td>
-	       <td width="400"><p><input type="text" name="name"></td>
+	       <td width="400"><p><input type="text" name="mem_name"></td>
 	    </tr>
 	    <tr>
-	       <td width="200"><p align="right">이메일</td>
-	       <td width="400"><p><input type="text" name="email"></td>
+	       <td width="200"><p align="right">주소</td>
+	       <td width="400"><p><input type="text" name="mem_address"></td>
+	    </tr>
+	    <tr>
+	       <td width="200"><p align="right">성별</td>
+	       <td width="400"><p><input type="text" name="mem_gender"></td>
+	    </tr>
+	    <tr>
+	       <td width="200"><p align="right">생년월일</td>
+	       <td width="400"><p><input type="text" name="mem_birthDate"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p>&nbsp;</p></td>
 	       <td width="400"><input type="submit" value="가입하기"><input type="reset" value="다시입력"></td>
 	    </tr>
 	</table>
+	
+	
+</form>
 </body>
 </html>

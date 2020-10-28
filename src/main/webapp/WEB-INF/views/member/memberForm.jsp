@@ -46,13 +46,20 @@
 	<h1 class="text_center">회원 가입</h1>
 	<div class="join_wrap">
 		<ul class="joinList">
-			::before
+			
 			<li class="member_register">
 				<dl>
 					<dt>멤버 회원가입</dt>
 				</dl>
-				<a href="${contextPath}/member/Mem_memberForm.do">멤버 회원가입</a>
+				<button class="btn" type="button" onclick="location.href='${contextPath}/member/Mem_memberForm.do'">멤버회원가입</button>
 			</li>
+			<li class="trainner_register">
+				<dl>
+					<dt>트레이너 회원가입</dt>
+				</dl>
+				<button class="btn" type="button" onclick="location.href='${contextPath}/member/Train_memberForm.do'">트레이너회원가입</button>
+			</li>
+			
 		</ul>
 	</div>
 	
