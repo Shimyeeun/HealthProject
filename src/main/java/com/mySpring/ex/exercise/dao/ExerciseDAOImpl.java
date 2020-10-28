@@ -20,10 +20,56 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 	@Override
 	public List selectAllMoviesList() throws DataAccessException {
 		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectAllMoviesList");
-		System.out.println("exercise_idx: " + moviesList.get(0).getMovie_idx());
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
 		return moviesList;
 	}
 
+	@Override
+	public List selectMoviesListChest() throws DataAccessException {
+		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectMoviesListChest");
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
+		return moviesList;
+	}
+
+
+	@Override
+	public List selectMoviesListArm() throws DataAccessException {
+		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectMoviesListArm");
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
+		return moviesList;
+	}
+
+
+	@Override
+	public List selectMoviesListBack() throws DataAccessException {
+		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectMoviesListBack");
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
+		return moviesList;
+	}
+
+
+	@Override
+	public List selectMoviesListShoulder() throws DataAccessException {
+		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectMoviesListShoulder");
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
+		return moviesList;
+	}
+
+
+	@Override
+	public List selectMoviesListLeg() throws DataAccessException {
+		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectMoviesListLeg");
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
+		return moviesList;
+	}
+
+
+	@Override
+	public List selectMoviesListRun() throws DataAccessException {
+		List<MovieVO> moviesList  = sqlSession.selectList("mapper.exercise.selectMoviesListRun");
+		System.out.println("movie_idx: " + moviesList.get(0).getMovie_idx());
+		return moviesList;
+	}
 	
 	@Override
 	public int insertNewMovie(Map movieMap) throws DataAccessException {
@@ -35,8 +81,8 @@ public class ExerciseDAOImpl implements ExerciseDAO {
     
 	
 	@Override
-	public MovieVO selectMovie(int exercise_idx) throws DataAccessException {
-		return sqlSession.selectOne("mapper.exercise.selectMovie", exercise_idx);
+	public MovieVO selectMovie(int movie_idx) throws DataAccessException {
+		return sqlSession.selectOne("mapper.exercise.selectMovie", movie_idx);
 	}
 
 

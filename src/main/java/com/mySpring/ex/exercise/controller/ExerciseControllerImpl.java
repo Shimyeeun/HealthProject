@@ -35,9 +35,9 @@ public class ExerciseControllerImpl implements ExerciseController{
 	private ExerciseService exerciseService;
 	@Autowired
 	private MovieVO movieVO;
-	
+
 	@Override
-	@RequestMapping(value= "/exercise/listMovies.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value= "/exercise/exerciseMain.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listMovies(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
 		List moviesList = exerciseService.listMovies();
@@ -46,9 +46,78 @@ public class ExerciseControllerImpl implements ExerciseController{
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("moviesList", moviesList);
 		return mav;
+	}
+	@Override
+	@RequestMapping(value= "/exercise/exerciseMain.do#portfolioModal1", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listMoviesChest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List moviesList = exerciseService.listMoviesChest();
+		System.out.println("moviesList(0): " + moviesList.get(0));
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("moviesList", moviesList);
+		return mav;
 		
 	}
-	
+	@Override
+	@RequestMapping(value= "/exercise/arm.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listMoviesArm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List moviesList = exerciseService.listMoviesArm();
+		System.out.println("moviesList(0): " + moviesList.get(0));
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("moviesList", moviesList);
+		return mav;
+	}
+	@Override
+	@RequestMapping(value= "/exercise/back.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listMoviesBack(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List moviesList = exerciseService.listMoviesBack();
+		System.out.println("moviesList(0): " + moviesList.get(0));
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("moviesList", moviesList);
+		return mav;
+		
+	}
+	@Override
+	@RequestMapping(value= "/exercise/leg.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listMoviesLeg(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List moviesList = exerciseService.listMoviesLeg();
+		System.out.println("moviesList(0): " + moviesList.get(0));
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("moviesList", moviesList);
+		return mav;
+		
+	}
+	@Override
+	@RequestMapping(value= "/exercise/run.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listMoviesRun(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List moviesList = exerciseService.listMoviesRun();
+		System.out.println("moviesList(0): " + moviesList.get(0));
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("moviesList", moviesList);
+		return mav;
+		
+	}
+	@Override
+	@RequestMapping(value= "/exercise/shoulder.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listMoviesShoulder(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List moviesList = exerciseService.listMoviesShoulder();
+		System.out.println("moviesList(0): " + moviesList.get(0));
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("moviesList", moviesList);
+		return mav;
+		
+	}
 	@Override
 	@RequestMapping(value="/exercise/addNewMovie.do" ,method = RequestMethod.POST)
 	@ResponseBody
@@ -87,22 +156,7 @@ public class ExerciseControllerImpl implements ExerciseController{
 		}
 		return resEnt;
 	}
-	
-	@RequestMapping(value = "/exercise/exerciseMain.do")
-	public String exercise (HttpServletRequest request, HttpServletResponse response) {
-		return "/exercise/exerciseMain";
-	}
-	
-	@RequestMapping(value="/exercise/viewMovie.do" ,method = RequestMethod.GET)
-	public ModelAndView viewMovie(@RequestParam("board_idx") int board_idx,
-                                    HttpServletRequest request, HttpServletResponse response) throws Exception{
-		String viewName = (String)request.getAttribute("viewName");
-		movieVO=exerciseService.viewMovie(board_idx);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName(viewName);
-		mav.addObject("movie", movieVO);
-		return mav;
-	}
+
   
   @Override
   @RequestMapping(value="/exercise/removeMovie.do" ,method = RequestMethod.POST)
