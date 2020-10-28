@@ -4,40 +4,93 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.exercise">
-<resultMap id="moviesResult" type="movieVO">
-	<result property="movie_idx" column="MOVIE_IDX" />
+  <resultMap id="moviesResult" type="movieVO">
+    <result property="movie_idx" column="MOVIE_IDX" />
     <result property="title" column="TITLE" />
-    <result property="url" column="URL" />
-    <result property="category" column="CATEGORY" />
+    <result property="youtube" column="YOUTUBE" />
+    <result property="category_exr" column="CATEGORY_EXR" />
   </resultMap> 
 
-  <select id="selectAllMoviesList" resultMap="moviesResult"   >
+  <select id="selectAllMoviesList" resultMap="moviesResult">
     <![CDATA[
-      SELECT movie_idx, title, category, url
-      from exercise 
-      ORDER BY movie_idx desc		
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      ORDER BY movie_idx desc
     ]]>
   </select>
   
+  <select id="selectMoviesListChest" resultMap="moviesResult">
+    <![CDATA[
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      where category_exr = 'chest'
+      ORDER BY movie_idx desc
+    ]]>
+  </select>
+  
+  <select id="selectMoviesListBack" resultMap="moviesResult">
+    <![CDATA[
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      where category_exr = 'back'
+      ORDER BY movie_idx desc
+    ]]>
+  </select>
+  
+  <select id="selectMoviesListArm" resultMap="moviesResult">
+    <![CDATA[
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      where category_exr = 'arm'
+      ORDER BY movie_idx desc
+    ]]>
+  </select>
+  
+  <select id="selectMoviesListShoulder" resultMap="moviesResult">
+    <![CDATA[
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      where category_exr = 'shoulder'
+      ORDER BY movie_idx desc
+    ]]>
+  </select>
+  
+  <select id="selectMoviesListLeg" resultMap="moviesResult">
+    <![CDATA[
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      where category_exr = 'leg'
+      ORDER BY movie_idx desc
+    ]]>
+  </select>
+   
+  <select id="selectMoviesListRun" resultMap="moviesResult">
+  	<![CDATA[
+      SELECT movie_idx, title, category_exr, youtube
+      from exercise
+      where category_exr = 'running'
+      ORDER BY movie_idx desc
+    ]]>
+  </select>
+   
 	<!--단일이미지 추가  -->
-	 
   <insert id="insertNewMovie"  parameterType="java.util.Map">
 		<![CDATA[
-			INSERT into exercise(movieNO, title, category, url)
-			VALUES(#{movieNO},#{title},	#{category}, #{url})
+			INSERT into exercise(movieNO, title, category_exr, youtube)
+			VALUES(#{movieNO}, #{title}, #{category_exr}, #{youtube})
 		]]>      
 	</insert>
 	
   <select id="selectNewMovieNO" resultType="int"  >
 		<![CDATA[
-			SELECT  max(movieNO)+1 from exercise		
+			SELECT  max(movieNO)+1 from exercise
 		]]>
 	</select>
 	
   <select id="selectMovie" resultType="movieVO"   parameterType="int">
     <![CDATA[
       SELECT * from exercise
-      where movie_idx = #{movie_idx}		
+      where movie_idx = #{movie_idx}
     ]]>
   </select>
 	

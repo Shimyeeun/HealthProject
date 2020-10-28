@@ -10,6 +10,12 @@ import com.mySpring.ex.exercise.vo.MovieVO;
 
 public interface ExerciseDAO {
 	public List selectAllMoviesList() throws DataAccessException;
+	public List selectMoviesListChest() throws DataAccessException;
+	public List selectMoviesListArm() throws DataAccessException;
+	public List selectMoviesListBack() throws DataAccessException;
+	public List selectMoviesListShoulder() throws DataAccessException;
+	public List selectMoviesListLeg() throws DataAccessException;
+	public List selectMoviesListRun() throws DataAccessException;
 	public int insertNewMovie(Map movieMap) throws DataAccessException;	
 	public MovieVO selectMovie(int movieNO) throws DataAccessException;
 	public void deleteMovie(int movieNO) throws DataAccessException;
