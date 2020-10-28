@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%
+  request.setCharacterEncoding("UTF-8");
+%>-->
 <!DOCTYPE html>
 <body>
 	<!-- main poster -->
@@ -52,119 +58,43 @@
 			</div>
 		</div>
 	</section>
-	<!-- Portfolio Grid-->
+ 	<!-- portfolio -->
 	<section class="page-section bg-light" id="portfolio">
 		<div class="container">
 			<div class="text-center">
-				<h2 class="section-heading text-uppercase">Portfolio</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
+				<h2 class="section-heading text-uppercase">트레이너 소개</h2>
+				<h3 class="section-subheading text-muted">트레이너를 직접 선택하세요</h3>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal1">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
+				<c:choose>
+					<c:when test="($trainersList==null}">
+						<p align="center">
+							<b><span style="font-size: 9pt;">등록된 트레이너가 없습니다.</span></b>
+						</p>
+					</c:when>
+					<c:when test="${trainersList !=null }">
+						<c:forEach var="trainer" items="${trianersList }"
+						varStatus="trainerNum">	
+							<div class="col-lg-4 col-sm-6 mb-4">
+								<div class="portfolio-item">
+									<a class="portfolio-link" data-toggle="modal"
+									href="#portfolioModal1">
+									<div class="portfolio-hover">
+										<div class="portfolio-hover-content">
+											<i class="fas fa-plus fa-3x"></i>
+										</div>
+									</div> <img class="img-fluid"
+										src="resources/img/portfolio/01-thumbnail.jpg" alt="" />
+									</a>
+								<div class="portfolio-caption">
+									<div class="portfolio-caption-heading"> ${trainer.name} </div>
+									<div class="portfolio-caption-subheading text-muted"> ${trainer.gender }</div>
 								</div>
-							</div> <img class="img-fluid"
-							src="resources/img/portfolio/01-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Threads</div>
-							<div class="portfolio-caption-subheading text-muted">Illustration</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal2">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
 								</div>
-							</div> <img class="img-fluid"
-							src="resources/img/portfolio/02-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Explore</div>
-							<div class="portfolio-caption-subheading text-muted">Graphic
-								Design</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal3">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="resources/img/portfolio/03-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Finish</div>
-							<div class="portfolio-caption-subheading text-muted">Identity</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal4">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="resources/img/portfolio/04-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Lines</div>
-							<div class="portfolio-caption-subheading text-muted">Branding</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal5">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="resources/img/portfolio/05-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Southwest</div>
-							<div class="portfolio-caption-subheading text-muted">Website
-								Design</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal6">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="resources/img/portfolio/06-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">Window</div>
-							<div class="portfolio-caption-subheading text-muted">Photography</div>
-						</div>
-					</div>
-				</div>
+							</div>
+						</c:forEach>
+					</c:when>	
+				</c:choose>
 			</div>
 		</div>
 	</section>

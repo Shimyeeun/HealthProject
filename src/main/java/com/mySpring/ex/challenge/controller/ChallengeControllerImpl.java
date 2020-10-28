@@ -46,11 +46,13 @@ public class ChallengeControllerImpl implements ChallengeController {
 		return mav;	
 	}
 	
-	@RequestMapping(value= "/challenge/updateChallenge.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView updateChallenge(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView("redirect:/challenge/listChallenges.do");
-		return mav;
-	}
+	@RequestMapping(value= "/challenge/updateChallenge.do", method = {RequestMethod.GET})
+	public ModelAndView updateChallenge (@RequestParam("chal_idx") int chal_idx,
+            HttpServletRequest request, HttpServletResponse response) throws Exception{
+			challengeService.updateChallenges(chal_idx);
+			ModelAndView mav = new ModelAndView("redirect:/challenge/listChallenges.do");
+			return mav;
+}
 	
 	
 }

@@ -8,6 +8,7 @@
 		<typeAlias type="com.mySpring.ex.board.vo.ArticleVO"  alias="articleVO" />
 		<typeAlias type="com.mySpring.ex.challenge.vo.ChallengeVO" alias="challengeVO"/>
 		<typeAlias type="com.mySpring.ex.board.vo.CommentVO"  alias="CommentVO" />
+		<!--  <typeAlias type="com.mySpring.ex.main.vo.TrainerVO" alias="trainerVO"/>-->
 		<!-- <typeAlias type="com.mySpring.board.vo.ImageVO"  alias="imageVO" />  -->
 	</typeAliases>
 </configuration>
