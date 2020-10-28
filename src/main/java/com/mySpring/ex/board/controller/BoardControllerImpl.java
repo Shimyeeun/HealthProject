@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mySpring.ex.board.domain.CommentVO;
 import com.mySpring.ex.board.service.BoardService;
 import com.mySpring.ex.board.vo.ArticleVO;
 import com.mySpring.ex.board.vo.ImageVO;
@@ -40,6 +43,7 @@ public class BoardControllerImpl  implements BoardController{
 	private BoardService boardService;
 	@Autowired
 	private ArticleVO articleVO;
+	private CommentVO commentVO;
 	
 	@Override
 	@RequestMapping(value= "/board/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -116,9 +120,12 @@ public class BoardControllerImpl  implements BoardController{
                                     HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String)request.getAttribute("viewName");
 		articleVO=boardService.viewArticle(board_idx);
+		List commentList = boardService.commentList(board_idx);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("article", articleVO);
+		mav.addObject("commentList",commentList);
+		
 		return mav;
 	}
 	
@@ -332,7 +339,15 @@ public class BoardControllerImpl  implements BoardController{
 		}
 		return imageFileName;
 	}
+
+	@Override
+	public ModelAndView mCommentServiceList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
+	/*댓글 리스트*/
 	/*
 	//�떎以� �씠誘몄� �뾽濡쒕뱶�븯湲�
 	private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception{
@@ -356,4 +371,63 @@ public class BoardControllerImpl  implements BoardController{
 		return fileList;
 	}
 	*/
+	
+    /**
+     * 게시물 댓글 불러오기(Ajax)
+     * @param boardVO
+     * @param request
+     * @return
+     * @throws Exception
+     */
+   
+	
+    /**
+     * 댓글 등록(Ajax)
+     * @param boardVO
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value="/board/addComment.do")
+    @ResponseBody
+    public String ajax_addComment(@RequestParam(value="mem_id")String mem_id, @RequestParam(value="board_idx")int board_idx, @RequestParam(value="comment")String comment, @RequestParam(value="comment_idx")int comment_idx, HttpServletRequest request) throws Exception{
+    	
+    	commentVO = new CommentVO();
+    	commentVO.setBoard_idx(board_idx);
+    	commentVO.setContent(comment);
+    	commentVO.setMem_id(mem_id);
+    	commentVO.setComment_idx(comment_idx);
+    	
+    	boardService.commentInsert(commentVO);
+        
+        return "success";
+    }
+
+	@Override
+	@RequestMapping(value="/board/commentList.do", produces="application/json; charset=utf8")
+    @ResponseBody
+	    public ResponseEntity ajax_commentList(@RequestParam("board_idx") int board_idx, HttpServletRequest request) throws Exception{
+	        
+	        HttpHeaders responseHeaders = new HttpHeaders();
+	        ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
+	        
+	        // 해당 게시물 댓글
+	        List<CommentVO> commentVO = boardService.commentList(board_idx);
+	        
+	        if(commentVO.size() > 0){
+	            for(int i=0; i<commentVO.size(); i++){
+	                HashMap hm = new HashMap();
+	                hm.put("c_code", commentVO.get(i).getComment_idx());
+	                hm.put("comment", commentVO.get(i).getContent());
+	                hm.put("writer", commentVO.get(i).getMem_id());
+	                
+	                hmlist.add(hm);
+	            }
+	            
+	        }
+	        
+	        JSONArray json = new JSONArray(hmlist);        
+	        return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
+	        
+	    }
 }

@@ -10,7 +10,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.mySpring.ex.board.vo.ArticleVO;
-import com.mySpring.ex.board.vo.CommentVO;
+import com.mySpring.ex.board.domain.CommentVO;
 import com.mySpring.ex.board.vo.ImageVO;
 
 
@@ -74,30 +74,30 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<CommentVO> commentList() throws DataAccessException {
-		List<CommentVO> commentList = sqlSession.selectList("mapper.comment.selectCommentList");
+	public List<CommentVO> commentList(int board_idx) throws DataAccessException {
+		List<CommentVO> commentList = sqlSession.selectList("mapper.comment.selectCommentList", board_idx);
 		return commentList;
 	}
 
 
 	@Override
 	public int commentInsert(CommentVO comment) throws DataAccessException {
-		
-		return 0;
+		System.out.println(comment.getBoard_idx());
+		System.out.println(comment.getComment_idx());
+		System.out.println(comment.getContent());
+		return sqlSession.insert("mapper.comment.commentInsert",comment);
 	}
 
 
 	@Override
 	public int commentUpdate(CommentVO comment) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("mapper.comment.commentUpdate",comment);
 	}
 
 
 	@Override
-	public int commentDelete(int cno) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int commentDelete(int comment_idx) throws DataAccessException {
+		return sqlSession.update("mapper.comment.commentDelete",comment_idx);
 	}
 
 }

@@ -13,8 +13,6 @@
   request.setCharacterEncoding("UTF-8");
 %> 
 
-<head>
-
    <meta charset="UTF-8">
    <title>글보기</title>
    <style>
@@ -118,4 +116,6 @@
 	</div>
 		
 </div>
+
+<%@ include file="commentS.jsp" %>
 
