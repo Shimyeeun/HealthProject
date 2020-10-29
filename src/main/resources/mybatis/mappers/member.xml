@@ -5,13 +5,13 @@
 
 <mapper namespace="mapper.member">
 	<resultMap id="memResult" type="memberVO">
-		<result property="mem_id" column="mem_id" />
-        <result property="mem_pwd" column="mem_pwd" />
-        <result property="mem_name" column="mem_name" />
-        <result property="mem_address" column="mem_address" />
-        <result property="mem_gender" column="mem_gender" />
-        <result property="mem_birthDate" column="mem_birthDate" />
-        <result property="joinDate" column="joinDate" />
+		<result property="mem_id" column="MEM_ID" />
+        <result property="mem_pwd" column="MEM_PW" />
+        <result property="mem_name" column="NAME" />
+        <result property="mem_address" column="ADDRESS" />
+        <result property="mem_gender" column="GENDER" />
+        <result property="mem_birthDate" column="BIRTH_DATE" />
+        <result property="joinDate" column="JOIN_DATE" />
 	</resultMap> 
 	<!-- 
 	<resultMap id="memResult" type="java.util.HashMap">
@@ -25,14 +25,14 @@
 
 	<select id="selectAllMemberList" resultMap="memResult">
       <![CDATA[
-         select * from t_member	order by joinDate desc	 	
+         select * from MEMBER order by JOIN_DATE desc	 	
       ]]>
 	</select>
     
   <insert id="insertMember"  parameterType="memberVO">
 		<![CDATA[
-		 insert into member(mem_id, mem_pw, name, address, gender, birth_date)
-		 values(#{mem_id}, #{mem_pwd}, #{mem_name}, #{mem_address}, #{mem_gender}, #{'yyyy-mm-dd'})
+		 insert into MEMBER(MEM_ID, MEM_PW, NAME, ADDRESS, GENDER, BIRTH_DATE)
+		 values(#{mem_id}, #{mem_pwd}, #{mem_name}, #{mem_address}, #{mem_gender}, #{mem_birthDate})
 		]]>      
  </insert>
 	
@@ -55,8 +55,8 @@
   </delete>
   <select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
 	<![CDATA[
-		select * from t_member	
-		where id=#{id} and pwd=#{pwd}		
+		select * from MEMBER	
+		where MEM_ID=#{mem_id} and MEM_PW=#{mem_pwd}		
 	]]>
   </select>
 </mapper>

@@ -24,11 +24,10 @@ import com.mySpring.ex.member.vo.MemberVO;
 @Controller("memberController")  //BEAN�쑝濡� �삱�젮以�
 //@EnableAspectJAutoProxy
 public class MemberControllerImpl  implements MemberController {
-	@Autowired  //�옄�룞�쑝濡� �쓽議댁꽦 二쇱엯 
+	@Autowired  //MemberService자동주입
 	private MemberService memberService;
-	@Autowired   //�옄�룞�쑝濡� �쓽議댁꽦 二쇱엯 
+	@Autowired   //MemberService 자동주입 
 	MemberVO memberVO ;
-	
 	
 	
 	
@@ -49,7 +48,7 @@ public class MemberControllerImpl  implements MemberController {
 		request.setCharacterEncoding("utf-8");
 		int result = 0;
 		result = memberService.addMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/loginForm.do");
 		return mav;
 	}
 	
@@ -80,12 +79,17 @@ public class MemberControllerImpl  implements MemberController {
 		                       HttpServletRequest request, HttpServletResponse response) throws Exception {
 	ModelAndView mav = new ModelAndView();
 	memberVO = memberService.login(member);
-	if(memberVO != null) {
+	if(memberVO != null) {  //memberVO 정보를 db와 비교해서 있으면
 	    HttpSession session = request.getSession();
+	    //session 객체의 setAtrribute메서드를 사용해 member에 속성값으로 MemberVO를 할당
 	    session.setAttribute("member", memberVO);
+	    //session 객체의 setAttribute메서드를 사용해 isLogOn은 true를 할당
 	    session.setAttribute("isLogOn", true);  //login �셿猷�
 	    //mav.setViewName("redirect:/member/listMembers.do");
+	    //session 객체의 getAttribute메서드를 사용해 속성명이 action인 속성의 값을 String 타입으로 변환 
+	    //String 타입으로 변환한것을 action 변수에 담아 
 	    String action = (String)session.getAttribute("action");
+	    //sesion 객체의 removeAttribute메서드를 사용해 action의 속성을 삭제 
 	    session.removeAttribute("action");
 	    if(action!= null) {
 	       mav.setViewName("redirect:"+action);
@@ -93,7 +97,7 @@ public class MemberControllerImpl  implements MemberController {
 	       mav.setViewName("redirect:/main.do");	
 	    }
 
-	}else {
+	}else {  //memberVO 정보를 db와 비교해서 없으면
 	   rAttr.addAttribute("result","loginFailed");
 	   mav.setViewName("redirect:/member/loginForm.do");
 	}
