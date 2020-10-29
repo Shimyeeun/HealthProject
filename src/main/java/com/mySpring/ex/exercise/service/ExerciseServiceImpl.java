@@ -22,36 +22,6 @@ public class ExerciseServiceImpl  implements ExerciseService{
 		List<MovieVO> moviesList =  exerciseDAO.selectAllMoviesList();
         return moviesList;
 	}
-	
-	public List<MovieVO> listMoviesChest() throws Exception{
-		List<MovieVO> moviesList =  exerciseDAO.selectMoviesListChest();
-        return moviesList;
-	}
-	
-	public List<MovieVO> listMoviesArm() throws Exception{
-		List<MovieVO> moviesList =  exerciseDAO.selectMoviesListArm();
-        return moviesList;
-	}
-	
-	public List<MovieVO> listMoviesBack() throws Exception{
-		List<MovieVO> moviesList =  exerciseDAO.selectMoviesListBack();
-        return moviesList;
-	}
-	
-	public List<MovieVO> listMoviesShoulder() throws Exception{
-		List<MovieVO> moviesList =  exerciseDAO.selectMoviesListShoulder();
-        return moviesList;
-	}
-	
-	public List<MovieVO> listMoviesLeg() throws Exception{
-		List<MovieVO> moviesList =  exerciseDAO.selectMoviesListLeg();
-        return moviesList;
-	}
-	
-	public List<MovieVO> listMoviesRun() throws Exception{
-		List<MovieVO> moviesList =  exerciseDAO.selectMoviesListRun();
-        return moviesList;
-	}
 
 	@Override
 	public int addNewMovie(Map movieMap) throws Exception{
@@ -63,6 +33,6 @@ public class ExerciseServiceImpl  implements ExerciseService{
 	public void removeMovie(int movieNO) throws Exception {
 		exerciseDAO.deleteMovie(movieNO);
 	}
-	
+
 	
 }
