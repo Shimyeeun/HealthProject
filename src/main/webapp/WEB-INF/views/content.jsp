@@ -66,39 +66,64 @@
 				<h3 class="section-subheading text-muted">트레이너를 직접 선택하세요</h3>
 			</div>
 			<div class="row">
-				<c:choose>
-					<c:when test="($trainersList==null}">
-						<p align="center">
-							<b><span style="font-size: 9pt;">등록된 트레이너가 없습니다.</span></b>
-						</p>
-					</c:when>
-					<c:when test="${trainersList !=null }">
-						<c:forEach var="trainer" items="${trianersList }"
-						varStatus="trainerNum">	
-							<div class="col-lg-4 col-sm-6 mb-4">
-								<div class="portfolio-item">
-									<a class="portfolio-link" data-toggle="modal"
-									href="#portfolioModal1">
-									<div class="portfolio-hover">
-										<div class="portfolio-hover-content">
-											<i class="fas fa-plus fa-3x"></i>
-										</div>
-									</div> <img class="img-fluid"
-										src="resources/img/portfolio/01-thumbnail.jpg" alt="" />
-									</a>
-								<div class="portfolio-caption">
-									<div class="portfolio-caption-heading"> ${trainer.name} </div>
-									<div class="portfolio-caption-subheading text-muted"> ${trainer.gender }</div>
+				 <div class="col-lg-4 col-sm-6 mb-4">
+					<div class="portfolio-item">
+						<a class="portfolio-link" data-toggle="modal"
+							href="#portfolioModal1">
+							<div class="portfolio-hover">
+								<div class="portfolio-hover-content">
+									<i class="fas fa-plus fa-3x"></i>
 								</div>
+							</div> <img class="img-fluid"
+							src="/resources/img/trainer/윤민서.png" alt="" />
+						</a>
+						<div class="portfolio-caption">
+							<div class="portfolio-caption-heading">윤민서</div>
+							<div class="portfolio-caption-subheading text-muted">남</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<div class="portfolio-item">
+						<a class="portfolio-link" data-toggle="modal"
+							href="#portfolioModal2">
+							<div class="portfolio-hover">
+								<div class="portfolio-hover-content">
+									<i class="fas fa-plus fa-3x"></i>
 								</div>
-							</div>
-						</c:forEach>
-					</c:when>	
-				</c:choose>
+							</div> <img class="img-fluid"
+							src="/resources/img/trainer/김건강.png" alt="" />
+						</a>
+						<div class="portfolio-caption">
+							<div class="portfolio-caption-heading">김건강</div>
+							<div class="portfolio-caption-subheading text-muted">남</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<div class="portfolio-item">
+						<a class="portfolio-link" data-toggle="modal"
+							href="#portfolioModal3">
+							<div class="portfolio-hover">
+								<div class="portfolio-hover-content">
+									<i class="fas fa-plus fa-3x"></i>
+								</div>
+							</div> <img class="img-fluid"
+							src="/resources/img/trainer/이요가.png" alt="" />
+						</a>
+						<div class="portfolio-caption">
+							<div class="portfolio-caption-heading">이요가</div>
+							<div class="portfolio-caption-subheading text-muted">여</div>
+						</div>
+					</div>
+				</div>
+				<div style="text-align:right; width:100%; padding:0;">
+    				<button class="btn" type="button"  onclick="location.href='/trainer/listTrainers.do'">더보기</button>
+				</div>
 			</div>
 		</div>
 	</section>
-	<!-- About-->
+	<!-- About
 	<section class="page-section" id="about">
 		<div class="container">
 			<div class="text-center">
@@ -188,7 +213,7 @@
 				</li>
 			</ul>
 		</div>
-	</section>
+	</section>-->
 	<!-- Clients-->
 	<div class="py-5">
 		<div class="container">
@@ -274,24 +299,14 @@
 						<div class="col-lg-8">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
+								<h2 class="text-uppercase">윤민서</h2>
+								<p class="item-intro text-muted">남</p>
 								<img class="img-fluid d-block mx-auto"
-									src="resources/img/portfolio/01-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Threads</li>
-									<li>Category: Illustration</li>
-								</ul>
+									src="resources/img/trainer/윤민서.png" alt="" />
+								<p>안녕하세요. 제 2회 전국 보디딜더 대회에서 금상을 수상한 윤민서입니다. 저한테 오세요!!!</p>
 								<button class="btn btn-primary" data-dismiss="modal"
 									type="button">
-									<i class="fas fa-times mr-1"></i> Close Project
+									 트레이너 신청하기
 								</button>
 							</div>
 						</div>
@@ -313,24 +328,15 @@
 						<div class="col-lg-8">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
+								<h2 class="text-uppercase">김건강</h2>
+								<p class="item-intro text-muted">남</p>
 								<img class="img-fluid d-block mx-auto"
-									src="resources/img/portfolio/02-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Explore</li>
-									<li>Category: Graphic Design</li>
-								</ul>
+									src="resources/img/trainer/김건강.png" alt="" />
+								<p>안녕하세요. 건강을 위해 저 김건강과 함께해요:)</p>
+								
 								<button class="btn btn-primary" data-dismiss="modal"
 									type="button">
-									<i class="fas fa-times mr-1"></i> Close Project
+									 트레이너 신청하기
 								</button>
 							</div>
 						</div>
@@ -352,24 +358,15 @@
 						<div class="col-lg-8">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
+								<h2 class="text-uppercase">이요가</h2>
+								<p class="item-intro text-muted">여</p>
 								<img class="img-fluid d-block mx-auto"
-									src="resources/img/portfolio/03-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Finish</li>
-									<li>Category: Identity</li>
-								</ul>
+									src="resources/img/trainer/이요가.png" alt="" />
+								<p>안녕하세요. 매일매일 같이 요가해요!</p>
+								
 								<button class="btn btn-primary" data-dismiss="modal"
 									type="button">
-									<i class="fas fa-times mr-1"></i> Close Project
+									트레이너 신청하기
 								</button>
 							</div>
 						</div>

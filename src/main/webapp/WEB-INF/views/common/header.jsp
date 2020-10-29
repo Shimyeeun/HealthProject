@@ -25,7 +25,7 @@
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/challenge/listChallenges.do">CHALLENGE</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="#portfolio">Portfolio</a></li>
+							href="/trainer/listTrainers.do">TRAINER</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="#about">About</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -38,8 +38,10 @@
 				</nav>
 			</td>
 			<td width="5%">
-				<!-- <a href="#"><h3>로그인</h3></a> --> <c:choose>
+				<!-- <a href="#"><h3>로그인</h3></a> --> 
+				  <c:choose>
 					<c:when test="${isLogOn == true  && member!= null}">
+						<h3>환영합니다. ${member.mem_id }님!</h3>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/logout.do'">로그아웃</button>
 					</c:when>
 					<c:otherwise>
