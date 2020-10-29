@@ -1,81 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <body>
 
-	<span><strong>Comments</strong></span>
-	<span id="cCnt"></span>
-	<form id="commentForm" name="commentForm" method="post">
-		<div style="width:1000px; margin: 0 auto">
-			<table class="table" style="align: center">
-				<tr>
-					<td><textarea style="width:100%; height: 100px"
-							id="comment" name="comment" placeholder="댓글을 입력하세요."></textarea>
-						<br>
-						<div align="right">
-							<a href='#' onClick="fn_comment('#')"
-								class="btn pull-right btn-success">등록</a>
-						</div></td>
-				</tr>
-			</table>
-		</div>
-		<input type="hidden" id="b_code" name="b_code"
-			value="#" />
-	</form>
-	<c:choose>
-		<c:when test="${commentList != null}">
-		<div style="width: 800px; margin: 0 auto">
-			<c:forEach var="comment" items="${commentList}">
-				<table>
-				<tr align="center">
-					<td width="3%">${comment.comment_idx}</td>
-					<td width="7%">${comment.mem_id }</td>
-					<td width="7%">${comment.content}</td>
-					<td width="3%">${comment.reg_date}</td>
-				</tr>
-				</table>
-			</c:forEach>
-			</div>
-		</c:when>
+   <span><strong>Comments</strong></span>
+   <span id="cCnt"></span>
+   <form id="commentForm" name="commentForm" method="post">
+      <div style="width:850px; margin: 0 auto">
+         <table class="table" style="align: center">
+            <tr>
+               <td><textarea style="width:100%; height: 80px"
+                     id="comment" name="comment" placeholder="댓글을 입력하세요."></textarea>
+                  <br>
+                  <div align="right">
+                     <a href='#' onClick="fn_comment('#')"
+                        class="btn pull-right btn-success">등록</a>
+                  </div></td>
+            </tr>
+         </table>
+      </div>
+      <input type="hidden" id="b_code" name="b_code"
+         value="#" />
+   </form>
 
-		<c:when test="${commentList ==null }">
-			<tr height="10">
-				<td colspan="4">
-					<p align="center">
-						<b><span style="font-size: 9pt;">등록된 코멘트가 없습니다.</span></b>
-					</p>
-				</td>
-			</tr>
-		</c:when>
-	</c:choose>
+    <div class="container">
+        <div class="commentList" style="width: 800px; margin: 0 auto"></div>
+    </div>
 
+<script>
 
-
-	<script>
-/*
- * 댓글 등록하기(Ajax)
- */
+/* 댓글 등록하기(Ajax) */
 function fn_comment(code){
     
-	//comment 가져오기
-	var mem_id = 'MK0227';
-	var comment_idx = 7;
-	console.log(comment_idx);
-	var board_idx = '${article.board_idx}';
-	var comment = $("#comment").val();
-	console.log(comment);
-	var allData = { "mem_id": mem_id, "comment_idx": comment_idx, "board_idx" : board_idx, "comment" : comment };
+   var mem_id = 'YOUNGHO';
+   var board_idx = '${article.board_idx}';
+   var comment = $("#comment").val();
+   console.log(comment);
+   var allData = { "mem_id": mem_id, "board_idx" : board_idx, "comment" : comment };
     
-	$.ajax({
+   $.ajax({
         type:'POST',
         url : "/board/addComment.do",
         data: allData,
         success : function(data){
             if(data=="success")
             {
-               getCommentList();
-               $("#comment").val("");
+            	alert("댓글이 입력되었습니다.");
+               	getCommentList();
+              	$("#comment").val("");
             }
         },
         error:function(request,status,error){
@@ -85,52 +58,57 @@ function fn_comment(code){
     });
 }
  
-/**
- * 초기 페이지 로딩시 댓글 불러오기
- */
+/* 초기 페이지 로딩시 댓글 불러오기 */
 $(function(){
     
     getCommentList();
     
 });
  
-/**
- * 댓글 불러오기(Ajax)
- */
+/* 댓글 불러오기 */
 function getCommentList(){
-    
+   
+   var board_idx = '${article.board_idx}';
+   var allData = {"board_idx" : board_idx};
+   
     $.ajax({
         type:'GET',
-        url : "<c:url value='/board/commentList.do'/>",
+        url : "/board/commentList.do",
         dataType : "json",
-        data:$("#commentForm").serialize(),
+        data: allData,
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
         success : function(data){
             
             var html = "";
-            var cCnt = data.length;
-            
-            if(data.length > 0){
-                
+         
+            if(data.length > 0 && data[0].data != false){
+                   
                 for(i=0; i<data.length; i++){
-                    html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].writer+"</strong></h6>";
+               /*
+                   html += '<div class="commentArea" style="width:100%; margin: 0 auto"';
+                    html += "<div><table class='table'><h6><strong>"+data[i].mem_id+"</strong></h6>";
                     html += data[i].comment + "<tr><td></td></tr>";
                     html += "</table></div>";
                     html += "</div>";
+                    */
+                    
+                    html += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px; width:800px; margin: 0 auto">';
+                    html += '<div class="commentInfo'+data[i].comment_idx+'">'+ '<h6><strong>'+data[i].mem_id + '</strong></h6>';
+                    html += '<a onclick="commentUpdate('+data[i].comment_idx+',\''+data[i].comment+'\');"> 수정 </a>';
+                    html += '<a onclick="commentDelete('+data[i].comment_idx+');"> 삭제 </a> </div>';
+                    html += '<div class="commentContent'+data[i].comment_idx+'"> <p> 내용 : '+data[i].comment +'</p>';
+                    html += '</div></div>';
                 }
                 
             } else {
                 
-                html += "<div>";
+               html += '<div class="commentArea" style="width:800px; margin: 0 auto"';
                 html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
                 html += "</table></div>";
                 html += "</div>";
                 
             }
-            
-            $("#cCnt").html(cCnt);
-            $("#commentList").html(html);
+            $(".commentList").html(html);
             
         },
         error:function(request,status,error){
@@ -139,7 +117,68 @@ function getCommentList(){
         
     });
 }
+
+
+//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+function commentUpdate(comment_idx, content){
+    var html ='';
+    //console.log("수정할 코멘트 idx: " + comment_idx);
+    //console.log("수정할 내용" + content);
+    html += '<div class="input-group">';
+    html += '<input type="text" class="form-control" name="content_'+comment_idx+'" value="'+content+'"/>';
+    html += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_idx+');">수정</button> </span>';
+    html += '</div>';
+    
+    $('.commentContent'+comment_idx).html(html);
+    
+}
+
+
+//댓글 수정
+function commentUpdateProc(comment_idx){
+	
+    var updateComment = $('[name=content_'+comment_idx+']').val();
+	console.log("수정할 comment_idx: " + comment_idx);
+	console.log("수정할 content: " + updateComment);
+	
+
+	$.ajax({
+        type : 'POST',
+        url : "/board/updateComment.do",
+      //  dataType : "json",
+        //contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        data : {'comment' : updateComment, 'comment_idx': comment_idx},
+        success : function(data){
+        	
+        	alert("댓글이 수정되었습니다.");
+        	
+            if(data == "success") {
+            	console.log("data" + data);
+            	//$(".commentList").html(html);
+            	getCommentList(); //댓글 수정후 목록 출력
+            }	
+             
+        }
+    });
+}
  
+//댓글 삭제 
+function commentDelete(comment_idx){
+	
+	
+    $.ajax({
+        type : 'POST',
+        url : "/board/deleteComment.do",
+        data : {'comment_idx' : comment_idx},
+        success : function(data){
+            if(data == "success"){
+            	alert("댓글이 삭제되었습니다.");
+            	getCommentList(); //댓글 삭제후 목록 출력 
+            }
+        }
+    });
+}
+
 </script>
 
 </body>

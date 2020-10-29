@@ -18,95 +18,103 @@ import com.mySpring.ex.board.vo.ImageVO;
 @Service("boardService")
 @Transactional(propagation = Propagation.REQUIRED)
 public class BoardServiceImpl  implements BoardService{
-	@Autowired
-	BoardDAO boardDAO;
-	
-	public List<ArticleVO> listArticles() throws Exception{
-		List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList();
+   @Autowired
+   BoardDAO boardDAO;
+   
+   public List<ArticleVO> listArticles() throws Exception{
+      List<ArticleVO> articlesList =  boardDAO.selectAllArticlesList();
         return articlesList;
-	}
+   }
 
-	
-	//���� �̹��� �߰��ϱ�
-	@Override
-	public int addNewArticle(Map articleMap) throws Exception{
-		return boardDAO.insertNewArticle(articleMap);
-	}
-	
-	 //���� �̹��� �߰��ϱ�
-	/*
-	@Override
-	public int addNewArticle(Map articleMap) throws Exception{
-		int articleNO = boardDAO.insertNewArticle(articleMap);
-		articleMap.put("articleNO", articleNO);
-		boardDAO.insertNewImage(articleMap);
-		return articleNO;
-	}
-	*/
-	/*
-	//���� ���� ���̱�
-	@Override
-	public Map viewArticle(int articleNO) throws Exception {
-		Map articleMap = new HashMap();
-		ArticleVO articleVO = boardDAO.selectArticle(articleNO);
-		List<ImageVO> imageFileList = boardDAO.selectImageFileList(articleNO);
-		articleMap.put("article", articleVO);
-		articleMap.put("imageFileList", imageFileList);
-		return articleMap;
-	}
+   
+   //���� �̹��� �߰��ϱ�
+   @Override
+   public int addNewArticle(Map articleMap) throws Exception{
+      return boardDAO.insertNewArticle(articleMap);
+   }
+   
+    //���� �̹��� �߰��ϱ�
+   /*
+   @Override
+   public int addNewArticle(Map articleMap) throws Exception{
+      int articleNO = boardDAO.insertNewArticle(articleMap);
+      articleMap.put("articleNO", articleNO);
+      boardDAO.insertNewImage(articleMap);
+      return articleNO;
+   }
    */
-	
-	
-	 //���� ���� ���̱�
-	@Override
-	public ArticleVO viewArticle(int board_idx) throws Exception {
-		ArticleVO articleVO = boardDAO.selectArticle(board_idx);
-		System.out.println("board_idx: " + articleVO.getBoard_idx());
-		return articleVO;
-	}
-	
-	
-	@Override
-	public void modArticle(Map articleMap) throws Exception {
-		boardDAO.updateArticle(articleMap);
-	}
-	
-	@Override
-	public void removeArticle(int articleNO) throws Exception {
-		boardDAO.deleteArticle(articleNO);
-	}
+   /*
+   //���� ���� ���̱�
+   @Override
+   public Map viewArticle(int articleNO) throws Exception {
+      Map articleMap = new HashMap();
+      ArticleVO articleVO = boardDAO.selectArticle(articleNO);
+      List<ImageVO> imageFileList = boardDAO.selectImageFileList(articleNO);
+      articleMap.put("article", articleVO);
+      articleMap.put("imageFileList", imageFileList);
+      return articleMap;
+   }
+   */
+   
+   
+    //���� ���� ���̱�
+   @Override
+   public ArticleVO viewArticle(int board_idx) throws Exception {
+      ArticleVO articleVO = boardDAO.selectArticle(board_idx);
+      System.out.println("board_idx: " + articleVO.getBoard_idx());
+      return articleVO;
+   }
+   
+   
+   @Override
+   public void modArticle(Map articleMap) throws Exception {
+      boardDAO.updateArticle(articleMap);
+   }
+   
+   @Override
+   public void removeArticle(int articleNO) throws Exception {
+      boardDAO.deleteArticle(articleNO);
+   }
 
 
-	@Override
-	public int commentCount() throws Exception {
-		return boardDAO.commentCount();
-	}
+   @Override
+   public int commentCount() throws Exception {
+      return boardDAO.commentCount();
+   }
 
 
-	@Override
-	public List<CommentVO> commentList(int board_idx) throws Exception {
-		List<CommentVO> commentList = boardDAO.commentList(board_idx);
-		return commentList;
-	}
+   @Override
+   public List<CommentVO> commentList(int board_idx) throws Exception {
+      List<CommentVO> commentList = boardDAO.commentList(board_idx);
+      return commentList;
+   }
 
 
-	@Override
-	public int commentInsert(CommentVO comment) throws Exception {
-		
-		return boardDAO.commentInsert(comment);
-	}
+   @Override
+   public int commentInsert(CommentVO comment) throws Exception {
+      
+      return boardDAO.commentInsert(comment);
+   }
 
 
-	@Override
-	public int commentUpdate(CommentVO comment) throws Exception {
-		return boardDAO.commentUpdate(comment);
-	}
+   @Override
+   public int commentUpdate(CommentVO comment) throws Exception {
+	return boardDAO.commentUpdate(comment);
+
+   }
 
 
-	@Override
-	public int commentDelete(int comment_idx) throws Exception {
-		return boardDAO.commentDelete(comment_idx);
-	}
+   @Override
+   public int commentDelete(int comment_idx) throws Exception {
+      return boardDAO.commentDelete(comment_idx);
+   }
 
-	
+
+   //article cnt increase
+   @Override
+   public void articleCntIncrease(int board_idx) throws Exception {
+      boardDAO.articleCntIncrease(board_idx);
+   }
+
+   
 }

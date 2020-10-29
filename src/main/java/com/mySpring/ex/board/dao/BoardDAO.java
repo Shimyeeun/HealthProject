@@ -10,15 +10,15 @@ import com.mySpring.ex.board.domain.CommentVO;
 
 
 public interface BoardDAO {
-	public List selectAllArticlesList() throws DataAccessException;
-	public int insertNewArticle(Map articleMap) throws DataAccessException;
-	//public void insertNewImage(Map articleMap) throws DataAccessException;
-	
-	public ArticleVO selectArticle(int board_idx) throws DataAccessException;
-	public void updateArticle(Map articleMap) throws DataAccessException;
-	public void deleteArticle(int articleNO) throws DataAccessException;
-	public List selectImageFileList(int articleNO) throws DataAccessException;
-	
+   public List selectAllArticlesList() throws DataAccessException;
+   public int insertNewArticle(Map articleMap) throws DataAccessException;
+   //public void insertNewImage(Map articleMap) throws DataAccessException;
+   
+   public ArticleVO selectArticle(int board_idx) throws DataAccessException;
+   public void updateArticle(Map articleMap) throws DataAccessException;
+   public void deleteArticle(int articleNO) throws DataAccessException;
+   public List selectImageFileList(int articleNO) throws DataAccessException;
+   
     // ´ñ±Û °³¼ö
     public int commentCount() throws DataAccessException;
  
@@ -33,5 +33,8 @@ public interface BoardDAO {
  
     // ´ñ±Û »èÁ¦
     public int commentDelete(int comment_idx) throws DataAccessException;
-	
+    
+    //article cnt increase
+    public void articleCntIncrease(int board_idx) throws DataAccessException;
+   
 }
