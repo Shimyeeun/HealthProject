@@ -11,33 +11,33 @@
     <result property="mem_id" column="mem_id" />
     <result property="reg_date" column="reg_date" />
   </resultMap> 
-	
+   
   <select id="selectCommentCount" resultType="int"   >
         SELECT COUNT(*)
         FROM BOARD_COMMENT
-  </select>	
+  </select>   
   
   <select id="selectCommentList" resultType="CommentVO"  parameterType="int">
         SELECT *
         FROM BOARD_COMMENT
         WHERE BOARD_IDX = #{board_idx}
-        ORDER BY REG_DATE
-  </select>	
+        ORDER BY REG_DATE DESC
+  </select>   
   
   <insert id="commentInsert" parameterType="CommentVO"   >
         INSERT INTO
         BOARD_COMMENT (comment_idx, board_idx, CONTENT, mem_id)
-        VALUES(#{comment_idx},#{board_idx},#{content},#{mem_id}) 
-  </insert>	
+        VALUES(comment_seq.nextval, #{board_idx}, #{content}, #{mem_id}) 
+  </insert>   
   
   <update id="commentUpdate" parameterType="CommentVO"   >
-        UPDATE COMMENT
+        UPDATE BOARD_COMMENT
             SET
-            BOARD_CONTENT = #{content}
-        WHERE CNO = #{comment_idx}
-  </update>	
+            CONTENT = #{content}
+        WHERE COMMENT_IDX = #{comment_idx}
+  </update>   
   
   <delete id="commentDelete" parameterType="int">
-	DELETE FROM COMMENT WHERE COMMENT_IDX = #{comment_idx}
-  </delete>	
+   DELETE FROM BOARD_COMMENT WHERE COMMENT_IDX = #{comment_idx}
+  </delete>   
 </mapper>

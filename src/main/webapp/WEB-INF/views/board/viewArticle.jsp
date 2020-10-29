@@ -27,79 +27,85 @@
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
    <script type="text/javascript" >
      function backToList(obj){
-	    obj.action="${contextPath}/board/listArticles.do";
-	    obj.submit();
+       obj.action="${contextPath}/board/listArticles.do";
+       obj.submit();
      }
  
-	 function fn_enable(obj){
-		 document.getElementById("i_title").disabled=false;
-		 document.getElementById("i_content").disabled=false;
-		 document.getElementById("i_imageFileName").disabled=false;
-		 document.getElementById("tr_btn_modify").style.display="block";
-		 document.getElementById("tr_file_upload").style.display="block";
-		 document.getElementById("tr_btn").style.display="none";
-	 }
-	 
-	 function fn_modify_article(obj){
-		 obj.action="${contextPath}/board/modArticle.do";
-		 obj.submit();
-	 }
-	 
-	 function fn_remove_article(url,articleNO){
-		 var form = document.createElement("form");
-		 form.setAttribute("method", "post");
-		 form.setAttribute("action", url);
-	     var articleNOInput = document.createElement("input");
-	     articleNOInput.setAttribute("type","hidden");
-	     articleNOInput.setAttribute("name","articleNO");
-	     articleNOInput.setAttribute("value", articleNO);
-		 
-	     form.appendChild(articleNOInput);
-	     document.body.appendChild(form);
-	     form.submit();
-	 
-	 }
-	 
-	 function fn_reply_form(url, parentNO){
-		 var form = document.createElement("form");
-		 form.setAttribute("method", "post");
-		 form.setAttribute("action", url);
-	     var parentNOInput = document.createElement("input");
-	     parentNOInput.setAttribute("type","hidden");
-	     parentNOInput.setAttribute("name","parentNO");
-	     parentNOInput.setAttribute("value", parentNO);
-		 
-	     form.appendChild(parentNOInput);
-	     document.body.appendChild(form);
-		 form.submit();
-	 }
-	 
-	 function readURL(input) {
-	     if (input.files && input.files[0]) {
-	         var reader = new FileReader();
-	         reader.onload = function (e) {
-	             $('#preview').attr('src', e.target.result);
-	         }
-	         reader.readAsDataURL(input.files[0]);
-	     }
-	 }  
+    function fn_enable(obj){
+       document.getElementById("i_title").disabled=false;
+       document.getElementById("i_content").disabled=false;
+       document.getElementById("i_imageFileName").disabled=false;
+       document.getElementById("tr_btn_modify").style.display="block";
+       document.getElementById("tr_file_upload").style.display="block";
+       document.getElementById("tr_btn").style.display="none";
+    }
+    
+    function fn_modify_article(obj){
+       obj.action="${contextPath}/board/modArticle.do";
+       obj.submit();
+    }
+    
+    function fn_remove_article(url,articleNO){
+       var form = document.createElement("form");
+       form.setAttribute("method", "post");
+       form.setAttribute("action", url);
+        var articleNOInput = document.createElement("input");
+        articleNOInput.setAttribute("type","hidden");
+        articleNOInput.setAttribute("name","articleNO");
+        articleNOInput.setAttribute("value", articleNO);
+       
+        form.appendChild(articleNOInput);
+        document.body.appendChild(form);
+        form.submit();
+    
+    }
+    
+    function fn_reply_form(url, parentNO){
+       var form = document.createElement("form");
+       form.setAttribute("method", "post");
+       form.setAttribute("action", url);
+        var parentNOInput = document.createElement("input");
+        parentNOInput.setAttribute("type","hidden");
+        parentNOInput.setAttribute("name","parentNO");
+        parentNOInput.setAttribute("value", parentNO);
+       
+        form.appendChild(parentNOInput);
+        document.body.appendChild(form);
+       form.submit();
+    }
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }  
  </script>
 
-	<div class="content_title" style="text-align:center; padding-top:20px">
-		<h1>${article.title}</h1>
-	</div>
-	<div>
-		<div class="content_header" style=" height:50px; padding-bottom:10px">
-		<div class="content_header_item first" style="float:left">${article.mem_id}<br>
-		${article.upload_date}</div>		
-		</div>
-	</div>
-	
-	<div class="cont_upper area_btn_g" style="border-bottom: 1px solid #efefef; width:1000px; margin:0 auto"></div>
+   <div class="content_title" style="text-align:left; padding-top:30px; padding-bottom:10px;">
+      <h2>${article.title}</h2>
+   </div>
+   <div style="width: 1000px; margin: 0 auto">
+      <div class="writer_info" style=" height:60px; padding-bottom:10px; text-align:left; float:left; width:80%">
+      	<div class="profile_area">
+      		<div class="profile_info">작성자:${article.mem_id}<br></div>
+      		<div class="article_info"><div class="article_date" style="margin: 5px">${article.upload_date}</div></div>
+      	</div>
+      </div>
+      <div class="writer_info" style="float:right; width:20%; height:60px">
+      <br>
+      	<a class="btn_g" href="/board/modArticle.do" style="font-size:13px;font-weight: 800">수정</a>　<a class="btn_g" href="/board/listArticles.do" style="font-size:13px; font-weight: 800">삭제</a>
+      </div>
+  </div>   
+  
+   <div class="cont_upper area_btn_g" style="border-bottom: 1px solid #efefef; width:1000px; margin:0 auto; padding-top: 60px"></div>
 
-  <form role="form" name="frmArticle" method="post"  action="${contextPath}"  enctype="multipart/form-data" style="padding-top:20px; margin: 0 auto; width:1000px">
+  <form role="form" name="frmArticle" method="post"  action="${contextPath}"  enctype="multipart/form-data" style="padding-top:20px; margin: 0 auto; width:820px">
   <table  border=0  align="center">
-    <td width="150" align="center" bgcolor="#2E2E2E">
+    <td width="80px" align="center" bgcolor="#2E2E2E">
       <p style="color:#FFFFFF">내용</p>
    </td>
    <td>
@@ -110,12 +116,11 @@
  </form>
  <div class="cont_upper area_btn_g" style="border-bottom: 1px solid #efefef; width:1000px; margin:0 auto; padding-top:20px"></div>
  <div clas="main_content" style=" margin: 0 auto; width:1300px; align:center; padding-top:20px">
-	<div class="content_header" style=" height:40px; padding-bottom:20px">
-		<div class="content_header_item first" style="float:left"><a class="btn_g" href="/board/listArticles.do" style="font-size:13px">목록</a></div>		
-		<div class="content_header_item two" style="float:right"><a class="btn_g" href="#" style="font-size:13px">답글</a></div>		
-	</div>
-		
+   <div class="writer_info" style=" height:40px; padding-bottom:15px">
+      <div class="content_header_item first" style="float:left"><a class="btn_g" href="/board/listArticles.do" style="font-size:13px; font-weight: 800">목록</a></div>      
+      <div class="content_header_item two" style="float:right"><a class="btn_g" href="#" style="font-size:13px; font-weight: 800">답글</a></div>      
+   </div>
+      
 </div>
 
 <%@ include file="commentS.jsp" %>
-

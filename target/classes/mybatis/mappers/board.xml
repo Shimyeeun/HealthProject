@@ -11,58 +11,58 @@
     <result property="title" column="TITLE" />
     <result property="content" column="CONTENT" />
     <result property="update_date" column="UPDATE_DATE" />
-    <result property="cnt" column="cnt" />
+    <result property="cnt" column="CNT" />
   </resultMap> 
   <!-- 
   <resultMap id="imgResult" type="imageVO">
-	  <result property="imageFileNO" column="imageFileNO" />
-	  <result property="articleNO" column="articleNO" />
-	  <result property="imageFileName" column="imageFileName" />
+     <result property="imageFileNO" column="imageFileNO" />
+     <result property="articleNO" column="articleNO" />
+     <result property="imageFileName" column="imageFileName" />
  </resultMap>
  
   -->
 
   <select id="selectAllArticlesList" resultMap="articlesResult"   >
     <![CDATA[
-      SELECT board_idx, mem_id, title, content, upload_date, update_date, cnt
+      SELECT *
       from board 
-      ORDER BY board_idx desc		
+      ORDER BY board_idx desc      
     ]]>
   </select>
   
-	<!--단일이미지 추가  -->
-	 
+   <!--단일이미지 추가  -->
+    
   <insert id="insertNewArticle"  parameterType="java.util.Map">
-		<![CDATA[
-			INSERT into t_board(articleNO,  title, content, imageFileName, id)
-			VALUES(#{articleNO},#{title},	#{content}, #{imageFileName},	#{id})
-		]]>      
-	</insert>
-	
+      <![CDATA[
+         INSERT into t_board(articleNO,  title, content, imageFileName, id)
+         VALUES(#{articleNO},#{title},   #{content}, #{imageFileName},   #{id})
+      ]]>      
+   </insert>
+   
   <select id="selectNewArticleNO" resultType="int"  >
-		<![CDATA[
-			SELECT  max(articleNO)+1 from t_board		
-		]]>
-	</select>
-	
+      <![CDATA[
+         SELECT  max(articleNO)+1 from t_board      
+      ]]>
+   </select>
+   
   <select id="selectArticle" resultType="articleVO"   parameterType="int">
     <![CDATA[
       SELECT * from board
-      where board_idx = #{board_idx}		
+      where board_idx = #{board_idx}      
     ]]>
   </select>
   
   <update id="updateArticle"  parameterType="java.util.Map">
-			update t_board
-			set title=#{title},	 
-			content=#{content}
-			 <if test="imageFileName!='' and imageFileName!=null">
-			  , imageFileName=#{imageFileName}
-			</if>
-			where articleNO=#{articleNO}
-	</update>
-	
-	<delete id="deleteArticle"  parameterType="int">
+         update t_board
+         set title=#{title},    
+         content=#{content}
+          <if test="imageFileName!='' and imageFileName!=null">
+           , imageFileName=#{imageFileName}
+         </if>
+         where articleNO=#{articleNO}
+   </update>
+   
+   <delete id="deleteArticle"  parameterType="int">
     <![CDATA[
       delete from t_board
       where articleNO in (
@@ -93,15 +93,24 @@
  
   <select id="selectNewImageFileNO" resultType="int"  >
     <![CDATA[
-      SELECT  nvl(max(imageFileNO),0) from t_imageFile		
+      SELECT  nvl(max(imageFileNO),0) from t_imageFile      
     ]]>
+    
   </select>
-	
+  <update id="articleCntIncrease" parameterType="int">
+    <![CDATA[
+      UPDATE BOARD
+      SET CNT = CNT+1
+      WHERE BOARD_IDX = #{board_idx}      
+    ]]>
+  </update>
+  
+   
 <!-- 
   <select  id="selectImageFileList" resultMap="imgResult" parameterType="int">
     <![CDATA[
       SELECT * from t_imageFile
-      where articleNO=#{articleNO}	
+      where articleNO=#{articleNO}   
     ]]>
   </select> 
   --> 
