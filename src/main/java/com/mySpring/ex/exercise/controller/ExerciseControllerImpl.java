@@ -17,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +48,7 @@ public class ExerciseControllerImpl implements ExerciseController{
 		mav.addObject("moviesList", moviesList);
 		return mav;
 	}
+	/*
 	@Override
 	@RequestMapping(value= "/exercise/exerciseMain.do#portfolioModal1", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listMoviesChest(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -118,6 +120,7 @@ public class ExerciseControllerImpl implements ExerciseController{
 		return mav;
 		
 	}
+	*/
 	@Override
 	@RequestMapping(value="/exercise/addNewMovie.do" ,method = RequestMethod.POST)
 	@ResponseBody
@@ -195,5 +198,4 @@ public class ExerciseControllerImpl implements ExerciseController{
 		mav.setViewName(viewName);
 		return mav;
 	}
-
 }

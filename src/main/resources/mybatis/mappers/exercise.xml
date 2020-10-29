@@ -19,60 +19,6 @@
     ]]>
   </select>
   
-  <select id="selectMoviesListChest" resultMap="moviesResult">
-    <![CDATA[
-      SELECT movie_idx, title, category_exr, youtube
-      from exercise
-      where category_exr = 'chest'
-      ORDER BY movie_idx desc
-    ]]>
-  </select>
-  
-  <select id="selectMoviesListBack" resultMap="moviesResult">
-    <![CDATA[
-      SELECT movie_idx, title, category_exr, youtube
-      from exercise
-      where category_exr = 'back'
-      ORDER BY movie_idx desc
-    ]]>
-  </select>
-  
-  <select id="selectMoviesListArm" resultMap="moviesResult">
-    <![CDATA[
-      SELECT movie_idx, title, category_exr, youtube
-      from exercise
-      where category_exr = 'arm'
-      ORDER BY movie_idx desc
-    ]]>
-  </select>
-  
-  <select id="selectMoviesListShoulder" resultMap="moviesResult">
-    <![CDATA[
-      SELECT movie_idx, title, category_exr, youtube
-      from exercise
-      where category_exr = 'shoulder'
-      ORDER BY movie_idx desc
-    ]]>
-  </select>
-  
-  <select id="selectMoviesListLeg" resultMap="moviesResult">
-    <![CDATA[
-      SELECT movie_idx, title, category_exr, youtube
-      from exercise
-      where category_exr = 'leg'
-      ORDER BY movie_idx desc
-    ]]>
-  </select>
-   
-  <select id="selectMoviesListRun" resultMap="moviesResult">
-  	<![CDATA[
-      SELECT movie_idx, title, category_exr, youtube
-      from exercise
-      where category_exr = 'running'
-      ORDER BY movie_idx desc
-    ]]>
-  </select>
-   
 	<!--단일이미지 추가  -->
   <insert id="insertNewMovie"  parameterType="java.util.Map">
 		<![CDATA[
