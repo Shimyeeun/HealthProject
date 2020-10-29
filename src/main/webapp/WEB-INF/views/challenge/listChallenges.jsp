@@ -24,9 +24,12 @@
 					<h4> ${challenge.target_point }원 챌린지 > ${challenge.title } </h4>	
 					
 					<p class="text-muted"> 누적금액 :  ${challenge.total_point }원 &nbsp; 신청자수 :  ${challenge.challenger }명  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
+					
 					</p>	
+				<div style="text-align:right; width:100%; padding:0;">
+    				<button class="btn" type="button" onclick="javascript:showConfirm(${challenge.chal_idx})" >도전하기!</button>
+				</div>
 				
-				<button class="btn" type="button" onclick="javascript:showConfirm(${challenge.chal_idx})" >도전하기!</button>
 				</div>
 				
 				
