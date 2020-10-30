@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.mySpring.ex.member.vo.MemberVO;
 import com.mySpring.ex.trainer.vo.TrainerVO;
 
 @Repository("trainerDAO")
@@ -22,5 +23,14 @@ public class TrainerDAOImpl implements TrainerDAO {
 		System.out.println("DAO");
 		return trainersList;
 	}
-
+	@Override
+	public int insertTrainer(TrainerVO trainerVO) throws DataAccessException {
+		int result = sqlSession.insert("mapper.trainer.insertTrainer", trainerVO);
+		return result;
+	}
+	@Override
+	public TrainerVO loginById(TrainerVO trainerVO) throws DataAccessException{
+		  TrainerVO vo = sqlSession.selectOne("mapper.member.loginById",trainerVO);
+		return vo;
+	}
 }
