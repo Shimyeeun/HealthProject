@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public interface ExerciseController {
 	
 	public ModelAndView listMovies(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	/*
+	/* 
 	public ModelAndView listMoviesChest(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView listMoviesLeg(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView listMoviesShoulder(HttpServletRequest request, HttpServletResponse response) throws Exception;
