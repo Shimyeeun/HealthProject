@@ -8,6 +8,7 @@ import com.mySpring.ex.challenge.vo.ChallengeVO;
 public interface ChallengeService {
 	public List<ChallengeVO> listChallenges() throws Exception;
 	public void updateChallenges(int chal_idx) throws Exception;
+	public void updateChalState(int chal_idx) throws Exception;
 	//public int addNewArticle(Map articleMap) throws Exception;
 	//public ChallengeVO viewChallenge(int chal_idx) throws Exception;
 	//public Map viewArticle(int articleNO) throws Exception;

@@ -6,6 +6,7 @@
 <%
   request.setCharacterEncoding("UTF-8");
 %>
+
 <div class="contaniner" style="margin-top:50px">
  	<c:choose>
 		<c:when test="${challengesList == null }">
@@ -27,7 +28,15 @@
 					
 					</p>	
 				<div style="text-align:right; width:100%; padding:0;">
-    				<button class="btn" type="button" onclick="javascript:showConfirm(${challenge.chal_idx})" >도전하기!</button>
+				<c:choose>
+					<c:when test="${isLogOn == true && state != null}">
+						<span class="label">이미 도전중인 챌린지 입니다.</span>
+											
+					</c:when>
+					<c:otherwise>
+    					<button class="btn" type="button" onclick="javascript:showConfirm(${challenge.chal_idx})" >도전하기!</button>
+    				</c:otherwise>
+    			</c:choose>
 				</div>
 				
 				</div>
