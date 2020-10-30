@@ -29,8 +29,8 @@ public class BoardServiceImpl  implements BoardService{
    
    //���� �̹��� �߰��ϱ�
    @Override
-   public int addNewArticle(Map articleMap) throws Exception{
-      return boardDAO.insertNewArticle(articleMap);
+   public int addNewArticle(ArticleVO articleVO) throws Exception{
+      return boardDAO.insertNewArticle(articleVO);
    }
    
     //���� �̹��� �߰��ϱ�
@@ -61,15 +61,16 @@ public class BoardServiceImpl  implements BoardService{
    @Override
    public ArticleVO viewArticle(int board_idx) throws Exception {
       ArticleVO articleVO = boardDAO.selectArticle(board_idx);
-      System.out.println("board_idx: " + articleVO.getBoard_idx());
       return articleVO;
    }
    
-   
+   /*
    @Override
+   
    public void modArticle(Map articleMap) throws Exception {
       boardDAO.updateArticle(articleMap);
    }
+   */
    
    @Override
    public void removeArticle(int articleNO) throws Exception {
@@ -115,6 +116,28 @@ public class BoardServiceImpl  implements BoardService{
    public void articleCntIncrease(int board_idx) throws Exception {
       boardDAO.articleCntIncrease(board_idx);
    }
+
+
+@Override
+public String getBoardContent(int board_idx) {
+	
+	return boardDAO.getBoardContent(board_idx);
+}
+
+
+@Override
+public void modArticle(Map articleMap) throws Exception {
+	// TODO Auto-generated method stub
+	
+}
+
+
+@Override
+public void updateBoard(ArticleVO articleVO) throws Exception {
+	boardDAO.updateBoard(articleVO);
+}
+
+
 
    
 }

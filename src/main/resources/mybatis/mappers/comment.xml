@@ -18,10 +18,12 @@
   </select>   
   
   <select id="selectCommentList" resultType="CommentVO"  parameterType="int">
-        SELECT *
+  	<![CDATA[
+        SELECT COMMENT_IDX, BOARD_IDX, CONTENT, MEM_ID, TO_CHAR(REG_DATE, 'yyyy-mm-dd hh24:mi') AS REG_DATE
         FROM BOARD_COMMENT
         WHERE BOARD_IDX = #{board_idx}
         ORDER BY REG_DATE DESC
+        ]]>
   </select>   
   
   <insert id="commentInsert" parameterType="CommentVO"   >

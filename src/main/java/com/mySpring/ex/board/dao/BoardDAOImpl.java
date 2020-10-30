@@ -29,22 +29,20 @@ public class BoardDAOImpl implements BoardDAO {
 
    
    @Override
-   public int insertNewArticle(Map articleMap) throws DataAccessException {
-      int articleNO = selectNewArticleNO();
-      articleMap.put("articleNO", articleNO);
-      sqlSession.insert("mapper.board.insertNewArticle",articleMap);
-      return articleNO;
+   public int insertNewArticle(ArticleVO articleVO) throws DataAccessException {
+      return sqlSession.insert("mapper.board.insertNewArticle",articleVO);
    }
    @Override
    public ArticleVO selectArticle(int board_idx) throws DataAccessException {
       return sqlSession.selectOne("mapper.board.selectArticle", board_idx);
    }
-
+   
+   /*
    @Override
    public void updateArticle(Map articleMap) throws DataAccessException {
       sqlSession.update("mapper.board.updateArticle", articleMap);
    }
-
+*/
    @Override
    public void deleteArticle(int articleNO) throws DataAccessException {
       sqlSession.delete("mapper.board.deleteArticle", articleNO);
@@ -109,5 +107,19 @@ public class BoardDAOImpl implements BoardDAO {
    public void articleCntIncrease(int board_idx) throws DataAccessException {
       sqlSession.update("mapper.board.articleCntIncrease", board_idx);
    }
+
+
+@Override
+public String getBoardContent(int board_idx) throws DataAccessException {
+	return sqlSession.selectOne("mapper.board.selectBoardContent", board_idx);
+}
+
+
+@Override
+public void updateBoard(ArticleVO articleVO) throws DataAccessException {
+	sqlSession.update("mapper.board.updateBoard", articleVO);
+}
+
+
 
 }

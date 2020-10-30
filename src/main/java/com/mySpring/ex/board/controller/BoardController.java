@@ -4,11 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mySpring.ex.board.domain.CommentVO;
 import com.mySpring.ex.board.vo.ArticleVO;
@@ -17,6 +19,10 @@ import com.mySpring.ex.board.vo.ArticleVO;
 public interface BoardController {
    
    public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception;
+   public ModelAndView boardForm(@ModelAttribute("articleVO") ArticleVO articleVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
+   public String saveBoard(@ModelAttribute("BoardVO")ArticleVO articleVO, @RequestParam("mode") String mode, RedirectAttributes rttr) throws Exception;
+   public String editForm(HttpServletRequest request, @RequestParam("board_idx") int board_idx, @RequestParam("mode") String mode, Model model) throws Exception;
+   
    public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest,HttpServletResponse response) throws Exception;
    
    public ModelAndView viewArticle(@RequestParam("articleNO") int articleNO,
