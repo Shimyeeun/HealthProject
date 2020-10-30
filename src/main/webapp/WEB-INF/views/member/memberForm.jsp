@@ -57,7 +57,7 @@
 				<dl>
 					<dt>트레이너 회원가입</dt>
 				</dl>
-				<button class="btn" type="button" onclick="location.href='${contextPath}/member/Train_memberForm.do'">트레이너회원가입</button>
+				<button class="btn" type="button" onclick="location.href='${contextPath}/trainer/Train_memberForm.do'">트레이너회원가입</button>
 			</li>
 			
 		</ul>

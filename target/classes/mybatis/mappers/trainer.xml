@@ -8,6 +8,7 @@
     <result property="mgr_id" column="MGR_ID" />
     <result property="mgr_pw" column="MGR_PW" />
     <result property="name" column="NAME" />
+    <result property="address" column="ADDRESS" />
     <result property="image_name" column="IMAGE_NAME" />
     <result property="gender" column="GENDER" />
     <result property="intro" column="INTRO" />
@@ -21,7 +22,6 @@
  </resultMap>
  
   -->
-
    <select id="selectAllTrainersList" resultMap="trainersResult"   >
     <![CDATA[
       SELECT mgr_id,name,image_name,gender,intro
@@ -29,6 +29,19 @@
     ]]>
   </select>
   
+  <insert id="insertTrainer"  parameterType="trainerVO">
+		<![CDATA[
+		 insert into TRAINER(MGR_ID, MGR_PW, NAME, ADDRESS, IMAGE_NAME, GENDER, INTRO)
+		 values(#{mgr_id}, #{mgr_pw}, #{name}, #{address}, #{image_name}, #{gender}, #{intro})
+		]]>      
+ </insert>
+ 
+ <select id="loginById"  resultType="trainerVO"   parameterType="trainerVO" >
+	<![CDATA[
+		select * from TRAINER	
+		where MGR_ID=#{mgr_id} and MGR_PW=#{mgr_pw}		
+	]]>
+  </select>
 	<!--단일이미지 추가  -->
 	 
  <!--   <insert id="insertNewArticle"  parameterType="java.util.Map">

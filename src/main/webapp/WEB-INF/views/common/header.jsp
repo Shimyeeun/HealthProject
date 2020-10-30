@@ -34,6 +34,8 @@
 							href="#contact">Contact</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/exercise/exerciseMain.do">운동영상</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger"
+							href="/member/mypage.do">My Page</a></li>
 					</ul>
 				</nav>
 			</td>
@@ -41,6 +43,7 @@
 				<!-- <a href="#"><h3>로그인</h3></a> --> 
 				  <c:choose>
 					<c:when test="${isLogOn == true  && member!= null}">
+						
 						<h3>환영합니다. ${member.mem_id }님!</h3>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/logout.do'">로그아웃</button>
 					</c:when>
