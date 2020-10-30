@@ -1,7 +1,7 @@
 package com.mySpring.ex.exercise.vo;
 
 import org.springframework.stereotype.Component;
-
+ 
 @Component("movieVO")
 public class MovieVO {
 	private int movie_idx;
