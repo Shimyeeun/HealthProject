@@ -11,11 +11,12 @@ import com.mySpring.ex.board.domain.CommentVO;
 
 public interface BoardDAO {
    public List selectAllArticlesList() throws DataAccessException;
-   public int insertNewArticle(Map articleMap) throws DataAccessException;
+   public int insertNewArticle(ArticleVO articleVO) throws DataAccessException;
    //public void insertNewImage(Map articleMap) throws DataAccessException;
-   
+   public void updateBoard(ArticleVO articleVO) throws DataAccessException;
    public ArticleVO selectArticle(int board_idx) throws DataAccessException;
-   public void updateArticle(Map articleMap) throws DataAccessException;
+   public String getBoardContent(int board_idx) throws DataAccessException;
+   //public void updateArticle(Map articleMap) throws DataAccessException;
    public void deleteArticle(int articleNO) throws DataAccessException;
    public List selectImageFileList(int articleNO) throws DataAccessException;
    

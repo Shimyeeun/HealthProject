@@ -84,6 +84,48 @@
         }
     }  
  </script>
+<script>
+
+	//목록으로 이동 이벤트
+
+	$(document).on('click', '#btnList', function(){
+
+		location.href = "${pageContext.request.contextPath}/board/getBoardList";
+
+	});
+
+	
+
+	//수정 버튼 클릭 이벤트
+
+	$(document).on('click', '#btnUpdate', function(){
+
+		var url = "/board/editForm.do";
+
+		url = url + "?board_idx="+${article.board_idx};
+
+		url = url + "&mode=edit";
+
+
+
+		location.href = url;
+
+	});
+	
+	//삭제 버튼 클릭 이벤트
+
+	$(document).on('click', '#btnDelete', function(){
+
+    var url = "${pageContext.request.contextPath}/board/deleteBoard";
+
+    url = url + "?bid=" + ${article.board_idx};
+
+		location.href = url;
+
+	});
+
+
+</script>
 
    <div class="content_title" style="text-align:left; padding-top:30px; padding-bottom:10px;">
       <h2>${article.title}</h2>
@@ -97,7 +139,7 @@
       </div>
       <div class="writer_info" style="float:right; width:20%; height:60px">
       <br>
-      	<a class="btn_g" href="/board/modArticle.do" style="font-size:13px;font-weight: 800">수정</a>　<a class="btn_g" href="/board/listArticles.do" style="font-size:13px; font-weight: 800">삭제</a>
+      	<button type="button" class="btn_g" style="font-size:13px;font-weight: 800" id="btnUpdate">수정</button><button type="button" class="btn_g" style="font-size:13px; font-weight: 800; margin: 0 0 0 20px" id="btnDelete">삭제</button>
       </div>
   </div>   
   

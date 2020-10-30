@@ -8,10 +8,11 @@ import com.mySpring.ex.board.domain.CommentVO;
 
 public interface BoardService {
    public List<ArticleVO> listArticles() throws Exception;
-   public int addNewArticle(Map movieMap) throws Exception;
-   public ArticleVO viewArticle(int exercise_idx) throws Exception;
+   public int addNewArticle(ArticleVO articleVO) throws Exception;
+   public ArticleVO viewArticle(int board_idx) throws Exception;
    //public Map viewArticle(int articleNO) throws Exception;
-
+   public String getBoardContent(int board_idx);
+   public void updateBoard(ArticleVO articleVO) throws Exception;
    public void modArticle(Map articleMap) throws Exception;
    public void removeArticle(int articleNO) throws Exception;
    

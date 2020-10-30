@@ -14,8 +14,7 @@
                      id="comment" name="comment" placeholder="댓글을 입력하세요."></textarea>
                   <br>
                   <div align="right">
-                     <a href='#' onClick="fn_comment('#')"
-                        class="btn pull-right btn-success">등록</a>
+                     <button class="btn" type="button" onClick="fn_comment('#')">등록</a>
                   </div></td>
             </tr>
          </table>
@@ -92,12 +91,14 @@ function getCommentList(){
                     html += "</div>";
                     */
                     
-                    html += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px; width:800px; margin: 0 auto">';
-                    html += '<div class="commentInfo'+data[i].comment_idx+'">'+ '<h6><strong>'+data[i].mem_id + '</strong></h6>';
-                    html += '<a onclick="commentUpdate('+data[i].comment_idx+',\''+data[i].comment+'\');"> 수정 </a>';
-                    html += '<a onclick="commentDelete('+data[i].comment_idx+');"> 삭제 </a> </div>';
-                    html += '<div class="commentContent'+data[i].comment_idx+'"> <p> 내용 : '+data[i].comment +'</p>';
-                    html += '</div></div>';
+                    html += '<div class="commentArea" style="margin-bottom: 15px; width:800px; margin: 0 auto">';
+                    html += '<div class="commentInfo'+data[i].comment_idx+'">'+ '<h6><strong>'+data[i].mem_id  + ' (' + data[i].reg_date + ')</strong></h6></div>';
+                    html += '<div class="comment_area"><div id="comment_text" class="commentContent'+data[i].comment_idx+'"><p>'+data[i].comment+ '</p></div>';
+                    html += '<div id="comment_update"><a class="update" onclick="commentUpdate('+data[i].comment_idx+',\''+data[i].comment+'\');">수정</a>';
+                    html += '<a class="delete" onclick="commentDelete('+data[i].comment_idx+');"> 삭제 </a></div>';
+                    html += '</div>';
+                    
+                    
                 }
                 
             } else {
@@ -124,7 +125,7 @@ function commentUpdate(comment_idx, content){
     var html ='';
     //console.log("수정할 코멘트 idx: " + comment_idx);
     //console.log("수정할 내용" + content);
-    html += '<div class="input-group">';
+    html += '<div class="input-group" style="width: 750px">';
     html += '<input type="text" class="form-control" name="content_'+comment_idx+'" value="'+content+'"/>';
     html += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+comment_idx+');">수정</button> </span>';
     html += '</div>';

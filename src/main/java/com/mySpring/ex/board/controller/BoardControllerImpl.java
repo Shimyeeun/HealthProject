@@ -20,6 +20,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mySpring.ex.board.domain.CommentVO;
 import com.mySpring.ex.board.service.BoardService;
@@ -56,7 +58,20 @@ public class BoardControllerImpl  implements BoardController{
       
    }
    
-    // 븳 媛   씠誘몄  湲  벐湲 
+   @RequestMapping(value = "/saveBoard", method = RequestMethod.POST)
+
+ 	public String saveBoard(@ModelAttribute("articleVO") ArticleVO articleVO 
+
+ , RedirectAttributes rttr) throws Exception {
+
+ 		boardService.addNewArticle(articleVO);
+
+ 		return "redirect:/board/listArticles.do";
+
+ 	}
+   
+   /* 
+    //artcle 추가
    @Override
    @RequestMapping(value="/board/addNewArticle.do" ,method = RequestMethod.POST)
    @ResponseBody
@@ -110,7 +125,7 @@ public class BoardControllerImpl  implements BoardController{
       }
       return resEnt;
    }
-   
+   */
    
    // 븳媛쒖쓽  씠誘몄  蹂댁뿬二쇨린
    @RequestMapping(value="/board/viewArticle.do" ,method = RequestMethod.GET)
@@ -360,13 +375,7 @@ public class BoardControllerImpl  implements BoardController{
      */
    
    
-    /**
-     * 댓글 등록(Ajax)
-     * @param boardVO
-     * @param request
-     * @return
-     * @throws Exception
-     */
+    /* 댓글 등록 */
     @RequestMapping(value="/board/addComment.do")
     @ResponseBody
     public String ajax_addComment(@RequestParam(value="mem_id")String mem_id, @RequestParam(value="board_idx")int board_idx, @RequestParam(value="comment")String comment, HttpServletRequest request) throws Exception{
@@ -433,6 +442,84 @@ public String ajax_commentDelete(@RequestParam(value="comment_idx")int comment_i
 	System.out.println("삭제할 comment_idx:" + comment_idx);
 	boardService.commentDelete(comment_idx);
 	return "success";
+}
+
+@Override
+public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
+		throws Exception {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+/*
+@Override
+@RequestMapping(value= "/board/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
+public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
+   String viewName = (String)request.getAttribute("viewName");
+   List articlesList = boardService.listArticles();
+   
+   ModelAndView mav = new ModelAndView(viewName);
+   mav.addObject("articlesList", articlesList);
+   return mav;
+   
+}
+*/
+
+@Override
+@RequestMapping(value= "/board/boardForm.do", method = {RequestMethod.GET, RequestMethod.POST})
+public ModelAndView boardForm(@ModelAttribute("articleVO") ArticleVO articleVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	 String viewName = (String)request.getAttribute("viewName");
+	 ModelAndView mav = new ModelAndView();
+	 mav.addObject(articleVO);
+	 mav.setViewName(viewName);
+	return mav;
+}
+
+@Override
+@RequestMapping(value= "/board/saveBoard.do", method = {RequestMethod.GET, RequestMethod.POST})
+public String saveBoard(@ModelAttribute("ArticleVO")ArticleVO articleVO,@RequestParam("mode") String mode, RedirectAttributes rttr) throws Exception {
+	
+
+	
+	if (mode.equals("edit")) {
+		System.out.println("hello modify!!!");
+		StringBuilder sb = new StringBuilder(articleVO.getContent());
+		sb.delete(0, 3);
+		int sbLen = sb.length();
+		sb.delete(sbLen-4, sbLen);
+		articleVO.setContent(sb.toString());
+		boardService.updateBoard(articleVO);
+
+	} else {
+		System.out.println("hello newInsert!!!");
+		StringBuilder sb = new StringBuilder(articleVO.getContent());
+		sb.delete(0, 3);
+		int sbLen = sb.length();
+		sb.delete(sbLen-4, sbLen);
+		articleVO.setContent(sb.toString());
+		System.out.println("mem_id: " + articleVO.getMem_id());
+		System.out.println("article title: " + articleVO.getTitle());
+		boardService.addNewArticle(articleVO);
+	}
+
+	return "redirect:/board/listArticles.do";
+
+}
+
+@Override
+@RequestMapping(value= "/board/editForm.do", method = {RequestMethod.GET, RequestMethod.POST})
+public String editForm(HttpServletRequest request,@RequestParam("board_idx") int board_idx, @RequestParam("mode") String mode, Model model) throws Exception {
+	
+	ArticleVO avo = new ArticleVO();
+	avo = boardService.viewArticle(board_idx);
+	System.out.println("avo.get(content): " + avo.getContent());
+
+	model.addAttribute("boardContent", avo);
+	model.addAttribute("mode", mode);
+	model.addAttribute("articleVO", new ArticleVO());
+
+	return "redirect:/board/boardForm.do"; 
 }
 
 

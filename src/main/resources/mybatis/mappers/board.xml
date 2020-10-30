@@ -32,10 +32,10 @@
   
    <!--단일이미지 추가  -->
     
-  <insert id="insertNewArticle"  parameterType="java.util.Map">
+  <insert id="insertNewArticle"  parameterType="articleVO">
       <![CDATA[
-         INSERT into t_board(articleNO,  title, content, imageFileName, id)
-         VALUES(#{articleNO},#{title},   #{content}, #{imageFileName},   #{id})
+         INSERT into board(board_idx, title, content, mem_id)
+         VALUES(board_seq.nextval, #{title}, #{content}, #{mem_id})
       ]]>      
    </insert>
    
@@ -114,4 +114,22 @@
     ]]>
   </select> 
   --> 
+  
+    <select id="selectBoardContent" parameterType="int"  resultType="String">
+    <![CDATA[
+      SELECT CONTENT
+      from BOARD
+      WHERE BOARD_IDX = #{board_idx}      
+    ]]>
+  </select>
+  
+   <select id="updateBoard" parameterType="articleVO">
+    <![CDATA[
+      UPDATE BOARD
+      SET CONTENT = #{content}
+      WHERE BOARD_IDX = #{board_idx}      
+    ]]>
+  </select>
+  
+  
 </mapper>
