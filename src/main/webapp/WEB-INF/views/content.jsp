@@ -11,7 +11,7 @@
 	<!-- main poster -->
 	<section class="masthead">
 	 <div class="container">
-	     <div class="section-subheading">Welcome To Our Studio!</div>
+	     <div class="section-subheading">Welcome To Our Gym!</div>
 	     <div class="section-heading text-uppercase">It's Nice To Meet You</div>
 	     <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
      </div>
@@ -21,39 +21,32 @@
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">Services</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
+				<h3 class="section-subheading text-muted">모두 방구석 헬스왕이 되어봅시다!</h3>
 			</div>
 			<div class="row text-center">
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
-						class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+						class="fas fa-dumbbell fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="my-3">E-Commerce</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<h4 class="my-3">방구석 트레이닝</h4>
+					<p class="text-muted">헬스장에 가지 않고도 집에서 간편하게 운동할 수 있도록 도와드려요. 다양한 운동방법 영상과 커뮤니티를 통해 유익한 정보를 얻어가세요.</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
-						class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+						class="fas fa-comments fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="my-3">Responsive Design</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<h4 class="my-3">맞춤 트레이닝</h4>
+					<p class="text-muted">트레이너를 직접 골라 신청할 수 있어요. 1대1 맞춤 관리를 통해 체계적으로 집에서도 PT받는 효과를 얻을 수 있어요.</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
-						class="fas fa-lock fa-stack-1x fa-inverse"></i>
+						class="fas fa-won-sign fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="my-3">Web Security</h4>
-					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-						adipisicing elit. Minima maxime quam architecto quo inventore
-						harum ex magni, dicta impedit.</p>
+					<h4 class="my-3">리워드</h4>
+					<p class="text-muted">포인트를 충전하고 챌린지에 도전하세요. 챌린지에 성공하면 리워드를 받아갈 수 있어요. 실패한 챌린저의 포인트를 성공한 챌린저들끼리 나눠가져요.  </p>
 				</div>
 			</div>
 		</div>
@@ -62,14 +55,14 @@
 	<section class="page-section bg-light" id="portfolio">
 		<div class="container">
 			<div class="text-center">
-				<h2 class="section-heading text-uppercase">트레이너 소개</h2>
+				<h2 class="section-heading text-uppercase">TRAINERS</h2>
 				<h3 class="section-subheading text-muted">트레이너를 직접 선택하세요</h3>
 			</div>
 			<div class="row">
 				 <div class="col-lg-4 col-sm-6 mb-4">
 					<div class="portfolio-item">
 						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal1">
+							href="#trainerModal1">
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content">
 									<i class="fas fa-plus fa-3x"></i>
@@ -214,7 +207,9 @@
 			</ul>
 		</div>
 	</section>-->
+	
 	<!-- Clients-->
+	<!--  
 	<div class="py-5">
 		<div class="container">
 			<div class="row">
@@ -236,7 +231,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<!-- Contact-->
 	<section class="page-section" id="contact">
 		<div class="container">
@@ -287,7 +282,7 @@
 
 	<!-- Portfolio Modals-->
 	<!-- Modal 1-->
-	<div class="portfolio-modal modal fade" id="portfolioModal1"
+	<div class="portfolio-modal modal fade" id="trainerModal1"
 		tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">

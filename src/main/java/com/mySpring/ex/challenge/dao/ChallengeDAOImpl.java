@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.mySpring.ex.challenge.vo.ChallengeVO;
+import com.mySpring.ex.challenge.vo.StateVO;
 
 @Repository("challengeDAO")
 public class ChallengeDAOImpl implements ChallengeDAO {
@@ -31,5 +32,10 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 	@Override
 	public int updateChallenge(int chal_idx) throws DataAccessException {		
 		return sqlSession.update("mapper.challenge.updateChallenge", chal_idx);
+	}
+	
+	@Override
+	public StateVO updateChalState(int chal_idx) {
+		return sqlSession.selectOne("mapper.challenge.updateChalState",chal_idx);
 	}
 }

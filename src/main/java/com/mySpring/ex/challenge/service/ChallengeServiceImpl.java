@@ -26,6 +26,11 @@ public class ChallengeServiceImpl implements ChallengeService {
 	
 	@Override
 	public void updateChallenges(int chal_idx) throws Exception{
-		challengeDAO.updateChallenge(chal_idx);;
+		challengeDAO.updateChallenge(chal_idx);
+	}
+	
+	@Override
+	public void updateChalState(int chal_idx) throws Exception{
+		challengeDAO.updateChalState(chal_idx);
 	}
 }
