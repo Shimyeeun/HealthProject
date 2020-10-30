@@ -10,4 +10,5 @@ public interface ExerciseService {
 	public List<MovieVO> listMovies() throws Exception;
 	public int addNewMovie(Map movieMap) throws Exception;
 	public void removeMovie(int movieNO) throws Exception;
+	public void create(MovieVO vo) throws Exception;
 }
