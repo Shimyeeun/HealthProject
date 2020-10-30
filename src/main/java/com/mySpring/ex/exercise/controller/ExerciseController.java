@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public interface ExerciseController {
 	
 	public ModelAndView listMovies(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	/*
+	/* 
 	public ModelAndView listMoviesChest(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView listMoviesLeg(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView listMoviesShoulder(HttpServletRequest request, HttpServletResponse response) throws Exception;
@@ -24,5 +24,6 @@ public interface ExerciseController {
 	public ResponseEntity addNewMovie(MultipartHttpServletRequest multipartRequest,HttpServletResponse response) throws Exception;
 	public ResponseEntity removeMovie(@RequestParam("movieNO") int movieNO,
                               HttpServletRequest request, HttpServletResponse response) throws Exception;
-
+	public String addMovie(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public String insert(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

@@ -34,5 +34,15 @@ public class ExerciseServiceImpl  implements ExerciseService{
 		exerciseDAO.deleteMovie(movieNO);
 	}
 
+	@Override
+	public void create(MovieVO vo) throws Exception {
+		String title = vo.getTitle();
+		String category_exr = vo.getCategory_exr();
+		String youtube = vo.getYoutube();
+		vo.setTitle(title);
+		vo.setCategory_exr(category_exr);
+		vo.setYoutube(youtube);
+	}
+
 	
 }

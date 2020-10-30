@@ -120,6 +120,9 @@
 					</div>
 				</div>
 			</div>
+			<br />
+		<button class="btn" type="button" style="float: right;" onclick="location.href='${contextPath}/member/logout.do'">삭제</button>
+		<button class="btn" type="button" style="float: right;" onclick="location.href='${contextPath}/exercise/addMovieForm.do'">추가</button>
 		</div>
 	</section>
 
@@ -134,13 +137,14 @@
 				</div>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
 								<section class="page-section bg-light" id="portfolio">
 									<div class="container">
 										<div class="text-center">
 											<h2 class="section-heading text-uppercase">가슴운동</h2>
+											<p><br /></p>
 										</div>
 										<div class="row">
 											<c:choose>
@@ -158,7 +162,7 @@
 														<c:if test="${movie.category_exr == 'chest'}">
 															<div class="responsive">
 							  								<div class="gallery">
- 							    								<div class="frame"><iframe src=${movie.youtube} frameborder="0" allowfullscreen=""></iframe></div>
+ 							    								<iframe src=${movie.youtube} frameborder="0" allowfullscreen=""></iframe>
  							   									<div class="desc">${movie.title}</div>
  							 								</div>
 															</div>
@@ -167,6 +171,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										<p><br /></p>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
@@ -190,7 +195,7 @@
 				</div>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
 								<section class="page-section bg-light" id="portfolio">
@@ -245,7 +250,7 @@
 				</div>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
 								<section class="page-section bg-light" id="portfolio">
@@ -300,7 +305,7 @@
 				</div>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
 								<section class="page-section bg-light" id="portfolio">
@@ -355,7 +360,7 @@
 				</div>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
 								<section class="page-section bg-light" id="portfolio">
@@ -410,43 +415,11 @@
 				</div>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="modal-body">
 								<!-- Project Details Go Here-->
 								<section class="page-section bg-light" id="portfolio">
-									<div class="container">
-										<div class="text-center">
-											<h2 class="section-heading text-uppercase">가슴운동</h2>
-										</div>
-										<div class="row">
-											<c:choose>
-												<c:when test="${ moviesList == null }">
-													<tr height="10">
-														<td colspan="4">
-															<p align="center">
-																<b><span style="font-size: 9pt;">등록된 영상이 없습니다.</span></b>
-															</p>
-														</td>
-													</tr>
-												</c:when>
-												<c:when test="${ moviesList != null }">
-													<c:forEach var="movie" items="${moviesList}">
-														<c:if test="${movie.category_exr == 'chest'}">
-															<div class="responsive">
-							  								<div class="gallery">
- 							    								<div class="frame"><iframe src=${movie.youtube} frameborder="0" allowfullscreen=""></iframe></div>
- 							   									<div class="desc">${movie.title}</div>
- 							 								</div>
-															</div>
-														</c:if>		
-													</c:forEach>		
-												</c:when>
-											</c:choose>
-										</div>
-									<button class="btn btn-primary" data-dismiss="modal" type="button">
-											<i class="fas fa-times mr-1"></i> Close Project
-									</button>
-									</div>
+									
 								</section>
 							</div>
 						</div>
