@@ -25,10 +25,10 @@
 	<div id="login_content">
 		<h1 id= "login_title">LOGIN</h1>
 		<div id="input">
-			<input aria-invalid="false" class="id_class" placeholder="아이디" type="text" name="mem_id" value="" title="id_title">
+			<input aria-invalid="false" class="id_class" placeholder="아이디" type="text" name="mem_id"  title="id_title">
 		</div>
 		<div id="input">
-			<input aria-invalid="false" class="pw_class" placeholder="비밀번호" type="password" name="mem_pwd" value="" title="pw_title">
+			<input aria-invalid="false" class="pw_class" placeholder="비밀번호" type="password" name="mem_pwd" title="pw_title">
 		</div>
 		<input type="submit" value="로그인">
 	</div>
