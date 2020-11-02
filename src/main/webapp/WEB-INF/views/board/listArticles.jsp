@@ -49,7 +49,7 @@
 				</c:when>
 			</c:choose>
 		</table>
-		<div style="width:90%"><button class="btn" type="button" onclick="location.href='/board/boardForm.do'"  style="float:right; width:90px; height:40px; text-size:15px">글쓰기</button></div>
+		<div style="width:90%"><button class="btn" type="button" class="btn btn-sm btn-primary" id="boardWrite" style="float:right; width:90px; height:40px; text-size:15px">글쓰기</button></div>
 		
 	</div>
 </div>
@@ -59,8 +59,24 @@
 		if (isLogOn != '' && isLogOn != 'false') {
 			location.href = articleForm;
 		} else {
-			alert("로그인 후 글쓰기가 가능합니다.")
+			
 			location.href = loginForm + '?action=/board/articleForm.do';
 		}
 	}
+</script>
+<script>
+$(document).on('click', '#boardWrite', function(e) {
+
+	var isLogOn = '${isLogOn}';
+	
+	console.log(isLogOn);
+
+	if (isLogOn != '' && isLogOn != 'false'){
+		location.href = "/board/boardForm.do";
+		
+	} else{
+		alert("로그인 후 작성 가능합니다.");
+	}
+
+});
 </script>

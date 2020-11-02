@@ -43,6 +43,10 @@
 		</style>
 		-->
 		
+			<!-- CKEDITOR  -->
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/ckeditor/config.js"></script>
+		
         <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body>
@@ -50,10 +54,10 @@
 		<div id="header">
 			<tiles:insertAttribute name="header" />
 		</div>
-		<div id="body">
+		<div id="body" style="position:relative; min-height:800px">
 			<tiles:insertAttribute name="body" />
 		</div>
-		<div id="footer">
+		<div id="footer" style=" height:50px; text-align: center">
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</div>
