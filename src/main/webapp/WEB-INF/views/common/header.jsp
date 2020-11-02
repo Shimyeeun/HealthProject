@@ -44,7 +44,7 @@
 				  <c:choose>
 					<c:when test="${isLogOn == true  && member!= null}">
 						
-						<h3>환영합니다. ${member.mem_id }님!</h3>
+						<h3>환영합니다. ${member.name }님!</h3>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/logout.do'">로그아웃</button>
 					</c:when>
 					<c:otherwise>
