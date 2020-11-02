@@ -31,6 +31,10 @@
 			<input aria-invalid="false" class="pw_class" placeholder="비밀번호" type="password" name="mem_pwd" value="" title="pw_title">
 		</div>
 		<input type="submit" value="로그인">
+		<label class="checkbox checkbox-inline">
+            <input type="checkbox" name="myBtn" data-toggle="checkbox" value="aa">멤버
+        </label>
+
 	</div>
 	<div id ="find_account">
 		<a id="find_id" href="">아이디찾기 | 비밀번호 초기화</a>
