@@ -32,7 +32,7 @@ public class MemberControllerImpl  implements MemberController {
 	
 	
 	@Override
-	@RequestMapping(value="/member/listMembers.do" ,method = RequestMethod.GET)
+	@RequestMapping(value="/member/mypage.do" ,method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
 		List membersList = memberService.listMembers();
@@ -58,7 +58,7 @@ public class MemberControllerImpl  implements MemberController {
 			           HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		memberService.removeMember(id);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/mypage.do");
 		return mav;
 	}
 	/*
@@ -72,37 +72,48 @@ public class MemberControllerImpl  implements MemberController {
 	}
 	*/
 	
-	@Override
-	@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("member") MemberVO member,
-				              RedirectAttributes rAttr,
-		                       HttpServletRequest request, HttpServletResponse response) throws Exception {
-	ModelAndView mav = new ModelAndView();
-	memberVO = memberService.login(member);
-	if(memberVO != null) {  //memberVO 정보를 db와 비교해서 있으면
-	    HttpSession session = request.getSession();
-	    //session 객체의 setAtrribute메서드를 사용해 member에 속성값으로 MemberVO를 할당
-	    session.setAttribute("member", memberVO);
-	    //session 객체의 setAttribute메서드를 사용해 isLogOn은 true를 할당
-	    session.setAttribute("isLogOn", true);  //login �셿猷�
-	    //mav.setViewName("redirect:/member/listMembers.do");
-	    //session 객체의 getAttribute메서드를 사용해 속성명이 action인 속성의 값을 String 타입으로 변환 
-	    //String 타입으로 변환한것을 action 변수에 담아 
-	    String action = (String)session.getAttribute("action");
-	    //sesion 객체의 removeAttribute메서드를 사용해 action의 속성을 삭제 
-	    session.removeAttribute("action");
-	    if(action!= null) {
-	       mav.setViewName("redirect:"+action);
-	    }else {
-	       mav.setViewName("redirect:/main.do");	
-	    }
+	
+	   @Override
+	   @RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
+	   public ModelAndView login(@ModelAttribute("member") MemberVO member,
+	                          RedirectAttributes rAttr,
+	                             HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	}else {  //memberVO 정보를 db와 비교해서 없으면
-	   rAttr.addAttribute("result","loginFailed");
-	   mav.setViewName("redirect:/member/loginForm.do");
-	}
-	return mav;
-	}
+	      System.out.println("mem_id: " + request.getParameter("mem_id"));
+	      System.out.println("mem_pwd: " + request.getParameter("mem_pwd"));
+	      
+	      MemberVO memverVO2 = new MemberVO();
+	      
+	      memverVO2.setMem_id(request.getParameter("mem_id"));
+	      memverVO2.setMem_pw(request.getParameter("mem_pwd"));
+	      
+	      ModelAndView mav = new ModelAndView();
+	   memberVO = memberService.login(memverVO2);
+	   if(memberVO != null) {  //memberVO 정보를 db와 비교해서 있으면
+	       HttpSession session = request.getSession();
+	       //session 객체의 setAtrribute메서드를 사용해 member에 속성값으로 MemberVO를 할당
+	       session.setAttribute("member", memberVO);
+	       //session 객체의 setAttribute메서드를 사용해 isLogOn은 true를 할당
+	       session.setAttribute("isLogOn", true);  //login  셿猷 
+	       //mav.setViewName("redirect:/member/listMembers.do");
+	       //session 객체의 getAttribute메서드를 사용해 속성명이 action인 속성의 값을 String 타입으로 변환 
+	       //String 타입으로 변환한것을 action 변수에 담아 
+	       String action = (String)session.getAttribute("action");
+	       //sesion 객체의 removeAttribute메서드를 사용해 action의 속성을 삭제 
+	       session.removeAttribute("action");
+	       if(action!= null) {
+	          mav.setViewName("redirect:"+action);
+	       }else {
+	          mav.setViewName("redirect:/main.do");   
+	       }
+
+	   }else {  //memberVO 정보를 db와 비교해서 없으면
+	      rAttr.addAttribute("result","loginFailed");
+	      mav.setViewName("redirect:/member/loginForm.do");
+	   }
+	   return mav;
+	   }
+
 
 	@Override
 	@RequestMapping(value = "/member/logout.do", method =  RequestMethod.GET)
