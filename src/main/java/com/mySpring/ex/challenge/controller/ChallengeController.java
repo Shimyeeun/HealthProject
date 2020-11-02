@@ -16,4 +16,5 @@ public interface ChallengeController {
 	public ModelAndView updateChallenge(@RequestParam("chal_idx") int chal_idx,
 		                        HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
+
 }

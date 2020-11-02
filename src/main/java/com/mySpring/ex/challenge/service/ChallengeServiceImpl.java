@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mySpring.ex.board.vo.ArticleVO;
 import com.mySpring.ex.challenge.dao.ChallengeDAO;
 import com.mySpring.ex.challenge.vo.ChallengeVO;
+import com.mySpring.ex.challenge.vo.StateVO;
 
 
 @Service("challengeService")
@@ -18,6 +19,7 @@ public class ChallengeServiceImpl implements ChallengeService {
 	
 	@Autowired
 	ChallengeDAO challengeDAO;
+	
 		
 	public List<ChallengeVO> listChallenges() throws Exception{
 		List<ChallengeVO> challengesList =  challengeDAO.selectAllChallengesList();
@@ -30,7 +32,18 @@ public class ChallengeServiceImpl implements ChallengeService {
 	}
 	
 	@Override
-	public void updateChalState(int chal_idx) throws Exception{
-		challengeDAO.updateChalState(chal_idx);
+	public List<StateVO> listStates() throws Exception{
+		List<StateVO> statesList=challengeDAO.selectAllStatesList();
+		return statesList;
 	}
+	
+	@Override
+	public StateVO selectState(String mem_id) throws Exception{
+		return challengeDAO.selectState(mem_id);
+	}
+	
+//	@Override
+//	public int insertChalState(StateVO state) throws Exception{
+//		return challengeDAO.insertChalState(state);
+//	}
 }

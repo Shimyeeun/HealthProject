@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.mySpring.ex.board.domain.CommentVO;
 import com.mySpring.ex.challenge.vo.ChallengeVO;
 import com.mySpring.ex.challenge.vo.StateVO;
 
@@ -35,7 +36,23 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 	}
 	
 	@Override
-	public StateVO updateChalState(int chal_idx) {
-		return sqlSession.selectOne("mapper.challenge.updateChalState",chal_idx);
+	public StateVO selectState(String mem_id) throws DataAccessException{
+		return sqlSession.selectOne("mapper.challenge.selectState",mem_id);
 	}
+	
+	
+	@Override
+	public List selectAllStatesList() throws DataAccessException{
+		List<StateVO> statesList = sqlSession.selectList("mapper.challenge.selectAllStatesList");
+		System.out.println("satechal_idx"+statesList.get(0).getChal_idx());
+		return statesList;
+	}
+	
+//	@Override
+//	public int insertChalState(StateVO state) throws DataAccessException {
+////	   System.out.println(comment.getBoard_idx());
+////	   System.out.println(comment.getComment_idx());
+////	   System.out.println(comment.getContent());
+//	   return sqlSession.insert("mapper.challenge.insertChalState",state);
+//	}
 }

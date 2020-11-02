@@ -25,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mySpring.ex.challenge.service.ChallengeService;
 import com.mySpring.ex.challenge.vo.ChallengeVO;
+import com.mySpring.ex.challenge.vo.StateVO;
+import com.mySpring.ex.member.vo.MemberVO;
 
 @Controller ("challengeController")
 public class ChallengeControllerImpl implements ChallengeController {
@@ -37,25 +39,41 @@ public class ChallengeControllerImpl implements ChallengeController {
 	@Override
 	@RequestMapping(value= "/challenge/listChallenges.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listChallenges(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session=request.getSession();
+		Boolean logincheck=(Boolean)session.getAttribute("isLogOn");
+		session.getAttribute("member");
+		System.out.println();
+		if(logincheck==null) {
+			session.setAttribute("isLogOn",false);
+		}
+				
+		
 		String viewName = (String)request.getAttribute("viewName");
 		List challengesList = challengeService.listChallenges();
+		List statesList=challengeService.listStates();
+		
 		System.out.println("challengesList(0): " + challengesList.get(0));
 		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("challengesList", challengesList);
+		mav.addObject("statesList",statesList);		
 		return mav;	
 	}
 	
 	@RequestMapping(value= "/challenge/updateChallenge.do", method = {RequestMethod.GET})
 	public ModelAndView updateChallenge (@RequestParam("chal_idx") int chal_idx,
             HttpServletRequest request, HttpServletResponse response) throws Exception{
+		//	StateVO state=new StateVO();
 			challengeService.updateChallenges(chal_idx);
-			challengeService.updateChalState(chal_idx);
+		//	challengeService.insertChalState(state);
 			String viewName=(String)request.getAttribute("viewName");
-	
 			ModelAndView mav = new ModelAndView("redirect:/challenge/listChallenges.do");
 			return mav;
-}
+	}
+	
+
+	
 	
 	
 }
