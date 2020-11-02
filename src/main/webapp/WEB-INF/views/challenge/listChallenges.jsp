@@ -5,6 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%
   request.setCharacterEncoding("UTF-8");
+  
 %>
 
 <div class="contaniner" style="margin-top:50px">
@@ -24,17 +25,28 @@
 					
 					<h4> ${challenge.target_point }원 챌린지 > ${challenge.title } </h4>	
 					
-					<p class="text-muted"> 누적금액 :  ${challenge.total_point }원 &nbsp; 신청자수 :  ${challenge.challenger }명  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
+					<p class="text-muted"> 누적금액 : ${challenge.total_point }원 &nbsp; 신청자수 :  ${challenge.challenger }명  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
 					
 					</p>	
 				<div style="text-align:right; width:100%; padding:0;">
 				<c:choose>
-					<c:when test="${isLogOn == true && state != null}">
-						<span class="label">이미 도전중인 챌린지 입니다.</span>
+					<c:when test="${statesList!=null }">
+						<c:forEach var="state" items="${statesList }"
+						varStatus="stateNum">
+							<c:choose>
+								<c:when test="${state.mem_id==member.mem_id}">
+							  		<span class="label">${state.mem_id }이미 도전중인 챌린지 입니다.</span>
+								</c:when>
+							</c:choose>		
+						</c:forEach>
+						<button class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
 											
 					</c:when>
-					<c:otherwise>
-    					<button class="btn" type="button" onclick="javascript:showConfirm(${challenge.chal_idx})" >도전하기!</button>
+					<c:when test="${statesList==null }">
+						<p>챌린지현황없음</p>
+					</c:when>	
+					<c:otherwise>						
+						<button class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
     				</c:otherwise>
     			</c:choose>
 				</div>
@@ -48,7 +60,22 @@
 </div>
 
 <script>
+function loginCheck(isLogOn,chal_idx){
+	
+	console.log(isLogOn);
+	console.log(chal_idx);
+	if(isLogOn==true){
+		showConfirm(chal_idx);
+	}
+	else{
+		alert("로그인 후 이용가능합니다.");
+	}
+	
+}
+
 function showConfirm(chal_idx){
+
+	console.log(chal_idx);
 	if(confirm("챌린지에 도전하시겠습니까?"))
 	{	
 		location.href="updateChallenge.do?chal_idx="+chal_idx;
@@ -59,4 +86,5 @@ function showConfirm(chal_idx){
 	else
 		return false;
 }
+
 </script>
