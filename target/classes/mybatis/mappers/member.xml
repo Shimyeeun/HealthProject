@@ -6,12 +6,14 @@
 <mapper namespace="mapper.member">
 	<resultMap id="memResult" type="memberVO">
 		<result property="mem_id" column="MEM_ID" />
-        <result property="mem_pwd" column="MEM_PW" />
-        <result property="mem_name" column="NAME" />
-        <result property="mem_address" column="ADDRESS" />
-        <result property="mem_gender" column="GENDER" />
-        <result property="mem_birthDate" column="BIRTH_DATE" />
+        <result property="mem_pw" column="MEM_PW" />
+        <result property="name" column="NAME" />
+        <result property="address" column="ADDRESS" />
+        <result property="gender" column="GENDER" />
+        <result property="birth_date" column="BIRTH_DATE" />
         <result property="joinDate" column="JOIN_DATE" />
+        <result property="point" column="POINT" />
+        <result property="mgr_id" column="MGR_ID" />
 	</resultMap> 
 	<!-- 
 	<resultMap id="memResult" type="java.util.HashMap">
@@ -32,7 +34,7 @@
   <insert id="insertMember"  parameterType="memberVO">
 		<![CDATA[
 		 insert into MEMBER(MEM_ID, MEM_PW, NAME, ADDRESS, GENDER, BIRTH_DATE)
-		 values(#{mem_id}, #{mem_pwd}, #{mem_name}, #{mem_address}, #{mem_gender}, #{mem_birthDate})
+		 values(#{mem_id}, #{mem_pw}, #{name}, #{address}, #{gender}, #{birth_date})
 		]]>      
  </insert>
 	
@@ -53,10 +55,8 @@
 	   id=#{id}
 	]]>      
   </delete>
-  <select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
-	<![CDATA[
+  <select id="loginById"  resultType="memberVO" parameterType="memberVO" >
 		select * from MEMBER	
-		where MEM_ID=#{mem_id} and MEM_PW=#{mem_pwd}		
-	]]>
+		where MEM_ID=#{mem_id} and MEM_PW=#{mem_pw}		
   </select>
 </mapper>

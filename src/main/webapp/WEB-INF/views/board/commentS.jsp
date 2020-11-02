@@ -14,7 +14,7 @@
                      id="comment" name="comment" placeholder="댓글을 입력하세요."></textarea>
                   <br>
                   <div align="right">
-                     <button class="btn" type="button" onClick="fn_comment('#')">등록</a>
+                     <button class="btn" type="button" onClick="fn_comment('#')">등록</button>
                   </div></td>
             </tr>
          </table>
@@ -32,7 +32,7 @@
 /* 댓글 등록하기(Ajax) */
 function fn_comment(code){
     
-   var mem_id = 'YOUNGHO';
+   var mem_id = 'MK0227';
    var board_idx = '${article.board_idx}';
    var comment = $("#comment").val();
    console.log(comment);
