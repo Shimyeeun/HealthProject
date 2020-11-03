@@ -163,7 +163,7 @@
 			<artifactId>OracleDriver</artifactId>
 			<version>12.1.0.2.0</version>
 			<scope>system</scope>
-			<systemPath>C:\Healthcare\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>
+			<systemPath>C:\Users\User\Desktop\healthcare\src\main\webapp\WEB-INF\lib\ojdbc6.jar</systemPath>
 		</dependency>    
 		<!-- tiles Library-->
 		<dependency>
@@ -209,6 +209,13 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>1.4</version>
 		  </dependency>		
+		  
+		  <dependency>
+			  <groupId>net.coobird</groupId>
+			  <artifactId>thumbnailator</artifactId>
+			  <version>0.4.8</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>

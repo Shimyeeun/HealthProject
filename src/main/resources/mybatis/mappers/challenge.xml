@@ -13,6 +13,12 @@
     <result property="end_date" column="END_DATE" />
     <result property="target_point" column="TARGET_POINT"/>
   </resultMap> 
+  
+<resultMap id="statesResult" type="stateVO">
+	<result property="state_idx" column="STATE_IDX"/>
+	<result property="mem_id" column="MEM_ID"/>
+	<result property="chal_idx" column="CHAL_IDX"/>  
+</resultMap>
   <!-- 
   <resultMap id="imgResult" type="imageVO">
 	  <result property="imageFileNO" column="imageFileNO" />
@@ -29,21 +35,6 @@
       ORDER BY target_point	
     ]]>
   </select>
-  
-	<!--단일이미지 추가  -->
-	 
- <!--   <insert id="insertNewArticle"  parameterType="java.util.Map">
-		<![CDATA[
-			INSERT into t_board(articleNO,  title, content, imageFileName, id)
-			VALUES(#{articleNO},#{title},	#{content}, #{imageFileName},	#{id})
-		]]>      
-	</insert>
-	
-  <select id="selectNewArticleNO" resultType="int"  >
-		<![CDATA[
-			SELECT  max(articleNO)+1 from t_board		
-		]]>
-	</select>-->
 	
   <select id="selectChallenge" resultType="challengeVO"   parameterType="int">
     <![CDATA[
@@ -52,6 +43,20 @@
     ]]>
   </select>
   
+  <select id="selectAllStatesList" resultMap="statesResult">
+  	<![CDATA[
+  	 SELECT state_idx,mem_id,chal_idx
+  	 from state
+  	 ]]>
+ </select>
+ 
+ <select id="selectState" resultType="stateVO" parameterType="String">
+ 	<![CDATA[
+ 		SELECT * from state
+ 		where mem_id=#{mem_id}
+ 	]]>
+ </select>
+  
   <update id="updateChallenge"  parameterType="int">
 			update challenge
 			set challenger=challenger+1,	 
@@ -59,6 +64,12 @@
 			where chal_idx= #{chal_idx}
 	</update>
   
+  <insert id="insertChalState" parameterType="stateVO">
+  <![CDATA[
+  	insert into state(state_idx,mem_id,chal_idx);
+  	values(state_seq.nextval,#{member.mem_id},#{chal_idx})
+   ]]>			
+  </insert>			
   <!--  <update id="updateArticle"  parameterType="java.util.Map">
 			update t_board
 			set title=#{title},	 
