@@ -10,7 +10,7 @@ public interface ChallengeService {
 	public List<ChallengeVO> listChallenges() throws Exception;
 	public void updateChallenges(int chal_idx) throws Exception;
 	public List<StateVO> listStates() throws Exception;
-	public StateVO selectState(String mem_id) throws Exception;
+	public void insertChalState(StateVO state) throws Exception;
 	//public int insertChalState(StateVO state) throws Exception;
 	//public int addNewArticle(Map articleMap) throws Exception;
 	//public ChallengeVO viewChallenge(int chal_idx) throws Exception;

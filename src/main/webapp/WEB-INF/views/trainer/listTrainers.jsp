@@ -32,7 +32,7 @@
 										<div class="portfolio-hover-content">
 											<i class="fas fa-plus fa-3x"></i>
 										</div>
-									</div> <img class="img-fluid" src="/resources/img/trainer/${trainer.image_name }" alt="" />
+									</div> <img class="img-fluid" src="${trainer.trainer_img }" alt="" />
 									</a>
 									<div class="portfolio-caption">
 										<div class="portfolio-caption-heading">${trainer.name }</div>
@@ -54,9 +54,10 @@
 														<h2 class="text-uppercase">${trainer.name }</h2>
 														<p class="item-intro text-muted">${trainer.gender }</p>
 														<img class="img-fluid d-block mx-auto"
-														src="../resources/img/trainer/${trainer.image_name }" alt="" />
+														src="${trainer.trainer_img }" alt="" />
 														<p>${trainer.intro }</p>
-														<button class="btn btn-primary" data-dismiss="modal" type="button">
+														
+														<button class="btn btn-primary" data-dismiss="modal" type="button" onclick="javascript:loginCheck(${isLogOn},'${trainer.mgr_id}')">
 									 					트레이너 신청하기
 														</button>
 													</div>
@@ -74,6 +75,45 @@
 		</div>	
 		</div>
 	</section>
+	
+	<script>
+	function loginCheck(isLogOn,mgr_id){
+	
+		
+		console.log(isLogOn);
+		console.log(mgr_id);
+		
+		if(isLogOn==true){
+			applyTrainer(mgr_id);
+		}
+		else{
+			alert("로그인 후 이용가능합니다.");
+		}
+		
+	}
+	
+	function applyTrainer(mgr_id){
+		var mem_id="<c:out value="${member.mem_id}"/>";
+		var mgr_check="<c:out value="${member.mgr_id}"/>";
+		console.log(mem_id);
+		if(confirm("트레이너를 신청하시겠습니까?"))
+		{	
+			console.log(mgr_check);
+			if(mgr_check==""){
+				location.href="updateTrainer.do?mgr_id="+mgr_id+"&mem_id="+mem_id;
+				
+				alert("트레이너 신청이 완료되었습니다.");
+			}
+			else{
+				alert("이미 트레이너가 있습니다.");
+			}
+			return true;
+			
+		} 
+		else
+			return false;
+	}
+	</script>
 	
 	<!-- Bootstrap core JS-->
 	<script
