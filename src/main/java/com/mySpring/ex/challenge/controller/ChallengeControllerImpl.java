@@ -62,11 +62,13 @@ public class ChallengeControllerImpl implements ChallengeController {
 	}
 	
 	@RequestMapping(value= "/challenge/updateChallenge.do", method = {RequestMethod.GET})
-	public ModelAndView updateChallenge (@RequestParam("chal_idx") int chal_idx,
+	public ModelAndView updateChallenge (@RequestParam("chal_idx") int chal_idx, @RequestParam("mem_id") String mem_id,
             HttpServletRequest request, HttpServletResponse response) throws Exception{
-		//	StateVO state=new StateVO();
+			StateVO stateVO=new StateVO();
+			stateVO.setChal_idx(chal_idx);
+			stateVO.setMem_id(mem_id);
 			challengeService.updateChallenges(chal_idx);
-		//	challengeService.insertChalState(state);
+			challengeService.insertChalState(stateVO);
 			String viewName=(String)request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView("redirect:/challenge/listChallenges.do");
 			return mav;

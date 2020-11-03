@@ -13,7 +13,7 @@ public interface ChallengeController {
 	//public ModelAndView updateChallenge(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	//public ResponseEntity applyChallenge(MultipartHttpServletRequest multipartRequest,HttpServletResponse response) throws Exception;
 	
-	public ModelAndView updateChallenge(@RequestParam("chal_idx") int chal_idx,
+	public ModelAndView updateChallenge(@RequestParam("chal_idx") int chal_idx,@RequestParam("mem_id") String mem_id,
 		                        HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 

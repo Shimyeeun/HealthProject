@@ -16,6 +16,7 @@ public interface ChallengeDAO {
 	public ChallengeVO selectChallenge(int challengeNO) throws DataAccessException;
 	public int updateChallenge(int chal_idx) throws DataAccessException;
 	public List selectAllStatesList() throws DataAccessException;
+	public void insertChalState(StateVO state) throws DataAccessException;
 	public StateVO selectState(String mem_id) throws DataAccessException;
 	//public int insertChalState(StateVO state) throws DataAccessException;
 	//public void deleteArticle(int articleNO) throws DataAccessException;

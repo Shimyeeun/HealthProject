@@ -11,6 +11,7 @@
       <typeAlias type="com.mySpring.ex.exercise.vo.MovieVO"  alias="movieVO" />
       <typeAlias type="com.mySpring.ex.trainer.vo.TrainerVO" alias="trainerVO"/>
       <typeAlias type="com.mySpring.ex.challenge.vo.StateVO" alias="stateVO"/>
+      <typeAlias type="com.mySpring.ex.member.vo.InbodyVO" alias="inbodyVO"/>
       <!-- <typeAlias type="com.mySpring.board.vo.ImageVO"  alias="imageVO" />  -->
    </typeAliases>
 </configuration>

@@ -12,10 +12,11 @@ public class TrainerVO {
 	private String mgr_pw;
 	private String name;
 	private String address;
-	private String image_name;
+	private String trainer_img;
 	private String gender;
 	private String intro;
 	private Date join_date;
+	private String trainer_thumbimg;
 	
 	public String getMgr_id() {
 		return mgr_id;
@@ -41,11 +42,11 @@ public class TrainerVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getImage_name() {
-		return image_name;
+	public String gettrainer_img() {
+		return trainer_img;
 	}
-	public void setImage_name(String image_name) {
-		this.image_name = image_name;
+	public void settrainer_img(String trainer_img) {
+		this.trainer_img = trainer_img;
 	}
 	public String getGender() {
 		return gender;
@@ -64,6 +65,12 @@ public class TrainerVO {
 	}
 	public void setJoin_date(Date join_date) {
 		this.join_date = join_date;
+	}
+	public String getTrainer_thumbimg() {
+		return trainer_thumbimg;
+	}
+	public void setTrainer_thumbimg(String trainer_thumbimg) {
+		this.trainer_thumbimg = trainer_thumbimg;
 	}
 	
 	

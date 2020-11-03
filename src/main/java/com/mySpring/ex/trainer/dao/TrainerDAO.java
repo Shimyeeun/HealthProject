@@ -12,4 +12,5 @@ public interface TrainerDAO {
 	public List selectAllTrainersList() throws DataAccessException;
 	 public int insertTrainer(TrainerVO trainerVO) throws DataAccessException ;
 	 public TrainerVO loginById(TrainerVO trainerVO) throws DataAccessException;
+	 public void updateTrainer(MemberVO memberVO) throws DataAccessException;
 }
