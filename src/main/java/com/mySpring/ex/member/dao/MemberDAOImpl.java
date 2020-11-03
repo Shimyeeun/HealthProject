@@ -1,5 +1,6 @@
 package com.mySpring.ex.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.mySpring.ex.member.vo.InbodyVO;
 import com.mySpring.ex.member.vo.MemberVO;
 
 
@@ -38,6 +40,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO loginById(MemberVO memberVO) throws DataAccessException{
 		  MemberVO vo = sqlSession.selectOne("mapper.member.loginById",memberVO);
 		return vo;
+	}
+
+	@Override
+	public List<InbodyVO> selectInbodyList(HashMap hashMap) throws Exception {
+		List<InbodyVO> inbodyList = sqlSession.selectList("mapper.inbody.selectInbodyList", hashMap);
+		return inbodyList;
 	}
 
 }
