@@ -1,24 +1,30 @@
 package com.mySpring.ex.member.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import org.json.JSONArray;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import org.springframework.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mySpring.ex.board.domain.CommentVO;
 import com.mySpring.ex.member.service.MemberService;
 import com.mySpring.ex.member.vo.MemberVO;
-
+import com.mySpring.ex.member.vo.InbodyVO;
 
 
 @Controller("memberController")  //BEAN�쑝濡� �삱�젮以�
@@ -35,9 +41,7 @@ public class MemberControllerImpl  implements MemberController {
 	@RequestMapping(value="/member/mypage.do" ,method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
-		List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("membersList", membersList);
 		return mav;
 	}
 
@@ -140,6 +144,64 @@ public class MemberControllerImpl  implements MemberController {
 		mav.addObject("result",result);
 		mav.setViewName(viewName);
 		return mav;
+	}
+	
+	@RequestMapping(value = "/member/myPage.do", produces = "application/json; charset=utf8")
+	@ResponseBody
+	private ResponseEntity myPage(@RequestParam(value="mem_id") String mem_id, @RequestParam(value="start_date") String start_date, @RequestParam(value="end_date") String end_date, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		String viewName = (String)request.getAttribute("viewName");
+		System.out.println("mem_id: " + mem_id);
+		System.out.println("start_date: " + start_date);
+		System.out.println("end_date: " + end_date);
+		
+		HashMap params = new HashMap();
+		params.put("mem_id", mem_id);
+		params.put("start_date", start_date);
+		params.put("end_date", end_date);
+		
+		ArrayList<HashMap> hmList = new ArrayList<HashMap>();
+			
+		List<InbodyVO> inbodyList = memberService.inbodyList(params);
+		
+		if(inbodyList.size() > 0) {
+			
+			for(int i=0; i<inbodyList.size(); i++) {
+				
+				HashMap hm = new HashMap();
+				
+				hm.put("body_idx", inbodyList.get(i).getBody_idx());
+				hm.put("mem_id", inbodyList.get(i).getMem_id());
+				hm.put("write_date", inbodyList.get(i).getWrite_date());
+				hm.put("weight", inbodyList.get(i).getWeight());
+				hm.put("muscle", inbodyList.get(i).getMuscle());
+				hm.put("body_fat",inbodyList.get(i).getBody_fat());
+				
+				hmList.add(hm);
+				System.out.println("hmList: " + hmList);
+			}
+			
+			JSONArray json = new JSONArray(hmList);
+			
+			return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
+		}
+		
+		else {
+
+			HashMap hm = new HashMap<String, Boolean>();
+
+			hm.put("data", false);
+
+			hmList.add(hm);
+
+			JSONArray json = new JSONArray(hmList);
+
+			return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
+
+		}
+		
+		
 	}
 	
 

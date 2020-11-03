@@ -12,6 +12,8 @@
     <result property="content" column="CONTENT" />
     <result property="update_date" column="UPDATE_DATE" />
     <result property="cnt" column="CNT" />
+    <result property="board_img" column="BOARD_IMG" />
+    <result property="board_thumbImg" column="BOARD_THUMBIMG" />
   </resultMap> 
   <!-- 
   <resultMap id="imgResult" type="imageVO">
@@ -22,7 +24,7 @@
  
   -->
 
-  <select id="selectAllArticlesList" resultMap="articlesResult"   >
+  <select id="selectAllArticlesList" resultMap="articlesResult">
     <![CDATA[
       SELECT *
       from board 
@@ -34,8 +36,8 @@
     
   <insert id="insertNewArticle"  parameterType="articleVO">
       <![CDATA[
-         INSERT into board(board_idx, title, content, mem_id)
-         VALUES(board_seq.nextval, #{title}, #{content}, #{mem_id})
+         INSERT into board(board_idx, title, content, mem_id, board_img, board_thumbImg)
+         VALUES(board_seq.nextval, #{title}, #{content}, #{mem_id}, #{board_img}, #{board_thumbImg})
       ]]>      
    </insert>
    
@@ -64,11 +66,8 @@
    
    <delete id="deleteArticle"  parameterType="int">
     <![CDATA[
-      delete from t_board
-      where articleNO in (
-         SELECT articleNO FROM  t_board
-         START WITH articleNO = #{articleNO}
-         CONNECT BY PRIOR  articleNO = parentNO )
+      delete from board
+      where board_idx = #{board_idx}
     ]]>      
   </delete>
 
@@ -126,7 +125,7 @@
    <select id="updateBoard" parameterType="articleVO">
     <![CDATA[
       UPDATE BOARD
-      SET CONTENT = #{content}
+      SET CONTENT = #{content}, TITLE = #{title}, BOARD_IMG = #{board_img}, BOARD_THUMBIMG = #{board_thumbImg}
       WHERE BOARD_IDX = #{board_idx}      
     ]]>
   </select>
