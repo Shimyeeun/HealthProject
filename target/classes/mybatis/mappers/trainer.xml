@@ -46,7 +46,7 @@
   <update id="updateTrainer" parameterType="memberVO">
   		update member
   		set mgr_id=#{mgr_id}
-  		where mem_id={#mem_id}
+  		where mem_id=#{mem_id}
   </update>
 	<!--단일이미지 추가  -->
 	 
