@@ -57,7 +57,7 @@
 														src="${trainer.trainer_img }" alt="" />
 														<p>${trainer.intro }</p>
 														
-														<button class="btn btn-primary" data-dismiss="modal" type="button" onclick="javascript:loginCheck(${isLogOn},'${trainer.mgr_id}')">
+														<button class="btn btn-primary" data-dismiss="modal" type="button" onclick="javascript:loginCheck('${isLogOn}','${trainer.mgr_id}')">
 									 					트레이너 신청하기
 														</button>
 													</div>
@@ -86,6 +86,7 @@
 		if(isLogOn==true){
 			applyTrainer(mgr_id);
 		}
+		
 		else{
 			alert("로그인 후 이용가능합니다.");
 		}
