@@ -48,11 +48,12 @@ public class ChallengeDAOImpl implements ChallengeDAO {
 		return statesList;
 	}
 	
-//	@Override
-//	public int insertChalState(StateVO state) throws DataAccessException {
-////	   System.out.println(comment.getBoard_idx());
-////	   System.out.println(comment.getComment_idx());
-////	   System.out.println(comment.getContent());
-//	   return sqlSession.insert("mapper.challenge.insertChalState",state);
-//	}
+	@Override
+	public void insertChalState(StateVO state) throws DataAccessException {
+//	   System.out.println(comment.getBoard_idx());
+//	   System.out.println(comment.getComment_idx());
+//	   System.out.println(comment.getContent());
+		
+	   sqlSession.insert("mapper.challenge.insertChalState",state);
+	}
 }
