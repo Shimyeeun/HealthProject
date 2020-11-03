@@ -19,6 +19,7 @@
 	  </script>
 	</c:when>
 </c:choose>
+
 <form name="frmLogin" method="post"
 	action="${contextPath}/member/login.do">
   <div id ="content">
@@ -32,7 +33,10 @@
 		</div>
 		<input type="submit" value="로그인">
 		<label class="checkbox checkbox-inline">
-            <input type="checkbox" name="myBtn" data-toggle="checkbox" value="aa">멤버
+            <input type="checkbox" name="myBtn" data-toggle="checkbox" value="member">멤버
+        </label>
+        <label class="checkbox checkbox-inline">
+            <input type="checkbox" name="myBtn" data-toggle="checkbox" value="trainer">트레이너
         </label>
 
 	</div>
