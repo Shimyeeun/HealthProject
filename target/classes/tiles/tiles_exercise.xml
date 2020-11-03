@@ -8,5 +8,10 @@
     <put-attribute name="title" value="운동영상페이지" />
     <put-attribute name="body" value="/WEB-INF/views/exercise/exerciseMain.jsp" />
   </definition>
+  
+  <definition name="/count/countMachine" extends="baseLayout">
+   	  <put-attribute name="title" value="머신러닝" />
+      <put-attribute name="body" value="/WEB-INF/views/count/countMachine.jsp" />
+   </definition>
 	
 </tiles-definitions>
