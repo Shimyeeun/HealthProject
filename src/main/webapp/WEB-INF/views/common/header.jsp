@@ -33,9 +33,11 @@
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="#contact">Contact</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="/exercise/exerciseMain.do">운동영상</a></li>
+							href="/exercise/exerciseMain.do">EXERCISE</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/member/mypage.do">My Page</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger"
+							href="/count/countMachine.do">COUNT</a></li>
 					</ul>
 				</nav>
 			</td>

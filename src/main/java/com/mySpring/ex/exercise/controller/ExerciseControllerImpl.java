@@ -37,7 +37,15 @@ public class ExerciseControllerImpl implements ExerciseController{
 	private ExerciseService exerciseService;
 	@Autowired
 	private MovieVO movieVO;
-
+	
+	@RequestMapping(value = { "/count/countMachine.do"}, method = RequestMethod.GET)	
+	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
 	@Override
 	@RequestMapping(value= "/exercise/exerciseMain.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listMovies(HttpServletRequest request, HttpServletResponse response) throws Exception {
