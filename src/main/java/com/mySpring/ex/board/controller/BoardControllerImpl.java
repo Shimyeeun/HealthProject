@@ -253,6 +253,7 @@ public class BoardControllerImpl implements BoardController {
 
 		} else {
 			memberVO = null;
+			login_id = "null";
 		}
 
 		articleVO = boardService.viewArticle(board_idx);
@@ -895,7 +896,7 @@ public class BoardControllerImpl implements BoardController {
 
 			ModelAndView mav = new ModelAndView();
 			mav.addObject(articleVO);
-
+			mav.addObject("mem_id", memberVO.getMem_id());
 			mav.setViewName(viewName);
 
 			return mav;
@@ -945,7 +946,6 @@ public class BoardControllerImpl implements BoardController {
 				new File(uploadPath + req.getParameter("board_thumbImg")).delete();
 
 				// 새로 첨부한 파일을 등록
-
 				String imgUploadPath = uploadPath + File.separator + "imgUpload";
 
 				String ymdPath = UploadFileUtils.calcPath(imgUploadPath);

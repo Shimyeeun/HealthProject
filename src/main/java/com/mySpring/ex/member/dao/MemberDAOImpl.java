@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.mySpring.ex.board.vo.ArticleVO;
 import com.mySpring.ex.member.vo.InbodyVO;
 import com.mySpring.ex.member.vo.MemberVO;
+import com.mySpring.ex.challenge.vo.*;
 
 
 @Repository("memberDAO")
@@ -48,4 +50,38 @@ public class MemberDAOImpl implements MemberDAO {
 		return inbodyList;
 	}
 
+	@Override
+	public void insertInbody(InbodyVO inbodyVO) throws DataAccessException {
+		sqlSession.insert("mapper.inbody.insertInbody", inbodyVO);
+	}
+
+	@Override
+	public String getRecentDate(String mem_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.inbody.selectRecentDate",mem_id);
+	}
+
+	@Override
+	public List selectAllChallengeList(String mem_id) throws DataAccessException {
+		   List<ChallengeVO> challengeList ;
+
+		   try {
+
+			
+
+			   challengeList  = sqlSession.selectList("mapper.challenge.selectChallengingList", mem_id);
+
+		} catch (Exception e) {
+
+			System.out.println("없습니다.");
+
+			challengeList = null;
+
+	     
+
+	   }
+
+	      return challengeList;
+
+	   }
 }
+
