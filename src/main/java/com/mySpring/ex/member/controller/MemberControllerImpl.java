@@ -115,6 +115,7 @@ public class MemberControllerImpl  implements MemberController {
 	       //String 타입으로 변환한것을 action 변수에 담아 
 	       String action = (String)session.getAttribute("action");
 	       //sesion 객체의 removeAttribute메서드를 사용해 action의 속성을 삭제 
+	    
 	       session.removeAttribute("action");
 	       if(action!= null) {
 	          mav.setViewName("redirect:"+action);

@@ -36,7 +36,11 @@ public class TrainerServiceImpl implements TrainerService {
 	}
 	@Override
 	   public void updateTrainer(MemberVO memberVO) throws Exception{
-	      System.out.println("트레이너업데이트service");
 	      trainerDAO.updateTrainer(memberVO);
 	   }
+	
+	@Override
+	public MemberVO selectMember(String mem_id) throws Exception{
+		return trainerDAO.selectMember(mem_id);
+	}
 }

@@ -30,7 +30,7 @@
 					
 					</p>	
 				<div style="text-align:right; width:100%; padding:0;">
-				<button id="chalbtn" class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
+				<button id="chalbtn${challenge.chal_idx }" class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
 				<c:choose>
 					<c:when test="${isLogOn==true }">
 						<c:forEach var="state" items="${statesList }"
@@ -38,8 +38,14 @@
 							
 							<c:choose>
 								<c:when test="${state.mem_id==member.mem_id&&state.chal_idx==challenge.chal_idx}">
-								
-							  		<span class="label">이미 도전중인 챌린지 입니다.</span>
+									<script>
+										function hidebutton(chal_idx){
+											var chal_btn="chalbtn"+chal_idx;
+											document.getElementById(chal_btn).style.display="none";											
+										}
+										hidebutton(${challenge.chal_idx});
+										</script> 
+							  		<label for="challenge" class="btn btn-danger btn-sm "> 이미 도전중인 챌린지 입니다.</label>
 								</c:when>
 							</c:choose>		
 						</c:forEach>	
@@ -58,6 +64,7 @@
 
 
 <script>
+
 function loginCheck(isLogOn,chal_idx){
 	
 	
@@ -78,6 +85,7 @@ function showConfirm(chal_idx){
 	console.log(chal_idx);
 	if(confirm("챌린지에 도전하시겠습니까?"))
 	{	
+		
 		location.href="updateChallenge.do?chal_idx="+chal_idx+"&mem_id="+mem_id;
 		alert("챌린지 신청이 완료되었습니다.");
 		return true;

@@ -4,5 +4,6 @@ encoding//src/main/java/com/mySpring/ex/board/service/BoardService.java=UTF-8
 encoding//src/main/java/com/mySpring/ex/challenge/controller/ChallengeControllerImpl.java=UTF-8
 encoding//src/main/java/com/mySpring/ex/main/controller/MainControllerImpl.java=UTF-8
 encoding//src/main/java/com/mySpring/ex/member/controller/MemberControllerImpl.java=UTF-8
+encoding//src/main/java/com/mySpring/ex/trainer/dao/TrainerDAOImpl.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/board/commentS.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/header.jsp=UTF-8

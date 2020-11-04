@@ -17,7 +17,7 @@
 					height="100" />
 			</a></td>
 			<td width="35%"><a href="${contextPath}/main.do"
-				style="text-decoration: none;"><h4>방구석 헬스왕</h4></a></td>
+				style="text-decoration: none;"><h1>방구석 헬스왕</h1></a></td>
 			<td width="35%"">
 				<!-- Navigation-->
 				<nav>
@@ -27,11 +27,7 @@
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/trainer/listTrainers.do">TRAINER</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="#about">About</a></li>
-						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/board/listArticles.do">COMMUNITY</a></li>
-						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="#contact">Contact</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/exercise/exerciseMain.do">EXERCISE</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -41,12 +37,12 @@
 					</ul>
 				</nav>
 			</td>
-			<td width="5%">
+			<td width="10%">
 				<!-- <a href="#"><h3>로그인</h3></a> --> 
 				  <c:choose>
 					<c:when test="${isLogOn == true  && member!= null}">
 						
-						<h3>환영합니다. ${member.name }님!</h3>
+						<h4>환영합니다.<br> ${member.name }님!</h4>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/logout.do'">로그아웃</button>
 					</c:when>
 					<c:otherwise>
