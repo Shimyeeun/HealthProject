@@ -21,6 +21,18 @@
         ORDER BY WRITE_DATE
     ]]>
   </select>
-  
+  <select id="insertInbody" parameterType="inbodyVO">
+    <![CDATA[
+ 		INSERT into MEMBODY(BODY_IDX, MEM_ID, WEIGHT, MUSCLE, BODY_FAT)
+         VALUES(membody_sequence.nextval, #{mem_id}, #{weight}, #{muscle}, #{body_fat} )
+    ]]>
+  </select>
+  <select id="selectRecentDate" parameterType="String" resultType="String">
+    <![CDATA[
+ 		SELECT TO_CHAR(WRITE_DATE, 'yyyymmdd') AS WRITE_DATE
+ 		FROM ( SELECT WRITE_DATE, MEM_ID FROM MEMBODY ORDER BY WRITE_DATE DESC)
+ 		WHERE ROWNUM=1 AND MEM_ID = #{mem_id}
+    ]]>
+  </select>
   
 </mapper>

@@ -1,6 +1,8 @@
 package com.mySpring.ex.member.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONArray;
@@ -22,9 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mySpring.ex.board.domain.CommentVO;
+import com.mySpring.ex.board.vo.ArticleVO;
 import com.mySpring.ex.member.service.MemberService;
 import com.mySpring.ex.member.vo.MemberVO;
 import com.mySpring.ex.member.vo.InbodyVO;
+import com.mySpring.ex.challenge.vo.*;
 
 
 @Controller("memberController")  //BEAN�쑝濡� �삱�젮以�
@@ -40,8 +44,15 @@ public class MemberControllerImpl  implements MemberController {
 	@Override
 	@RequestMapping(value="/member/mypage.do" ,method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		String viewName = (String)request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");		
+		
+		List<ChallengeVO> challList = memberService.listChallenge(memberVO.getMem_id());
 		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("challList", challList);
 		return mav;
 	}
 
@@ -146,7 +157,7 @@ public class MemberControllerImpl  implements MemberController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/member/myPage.do", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/member/selectInbodyValue.do", produces = "application/json; charset=utf8")
 	@ResponseBody
 	private ResponseEntity myPage(@RequestParam(value="mem_id") String mem_id, @RequestParam(value="start_date") String start_date, @RequestParam(value="end_date") String end_date, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -202,6 +213,49 @@ public class MemberControllerImpl  implements MemberController {
 		}
 		
 		
+	}
+	
+	/* 인바드 등록 */
+	@RequestMapping(value = "/member/insertInbody.do")
+	@ResponseBody
+
+	public String insertInbody(@RequestParam(value = "mem_id") String mem_id,
+			@RequestParam(value = "weight") double weight, @RequestParam(value = "muscle") double muscle,
+			@RequestParam(value = "body_fat") double body_fat, @RequestParam(value = "today") String today, HttpServletRequest request) throws Exception {
+		
+		String recentDate = null;
+		
+		try {
+			
+			recentDate = memberService.getRecentDate(mem_id);
+			if(!recentDate.equals(today)) {
+	        	
+	        	InbodyVO inbodyVO = new InbodyVO();
+	        	
+	        	inbodyVO.setBody_fat(body_fat);
+	        	inbodyVO.setMem_id(mem_id);
+	        	inbodyVO.setMuscle(muscle);
+	        	inbodyVO.setWeight(weight);
+	        	
+	        	memberService.insertInbody(inbodyVO);
+	        	return "success";
+	        } else {
+	        	return "fail";
+	        }
+		
+		} catch (Exception e) {
+			
+			System.out.println("에러로 들어왔습니다.");
+			InbodyVO inbodyVO = new InbodyVO();
+        	
+        	inbodyVO.setBody_fat(body_fat);
+        	inbodyVO.setMem_id(mem_id);
+        	inbodyVO.setMuscle(muscle);
+        	inbodyVO.setWeight(weight);
+        	
+        	memberService.insertInbody(inbodyVO);
+        	return "success";
+		} 
 	}
 	
 

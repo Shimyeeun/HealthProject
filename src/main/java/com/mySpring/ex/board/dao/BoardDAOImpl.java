@@ -172,12 +172,6 @@ public class BoardDAOImpl implements BoardDAO {
 
    public int commentInsert(CommentVO comment) throws DataAccessException {
 
-      System.out.println(comment.getBoard_idx());
-
-      System.out.println(comment.getComment_idx());
-
-      System.out.println(comment.getContent());
-
       return sqlSession.insert("mapper.comment.commentInsert",comment);
 
    }

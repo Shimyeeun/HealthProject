@@ -127,4 +127,10 @@
     ]]>
   </select> 
   --> 
+  <select id="selectChallengingList" resultMap="challengesResult" parameterType="String">
+    <![CDATA[
+	select c.start_date, c.end_date, c.title from member m, state s, challenge c
+where s.mem_id = #{mem_id} and m.mem_id = #{mem_id} and s.chal_idx = c.chal_idx
+    ]]>
+  </select>
 </mapper>
