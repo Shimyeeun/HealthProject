@@ -37,6 +37,15 @@ public class TrainerControllerImpl implements TrainerController {
 	@Override
 	@RequestMapping(value= "/trainer/listTrainers.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listTrainers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session=request.getSession();
+		Boolean logincheck=(Boolean)session.getAttribute("isLogOn");
+		session.getAttribute("member");
+		System.out.println();
+		if(logincheck==null) {
+			session.setAttribute("isLogOn",false);
+		}
+		
 		String viewName = (String)request.getAttribute("viewName");
 		List trainersList = trainerService.listTrainers();
 		System.out.println("trainersList(0): " + trainersList.get(0));
@@ -52,8 +61,9 @@ public class TrainerControllerImpl implements TrainerController {
 	  @RequestMapping(value="/trainer/addTrainer.do" ,method = RequestMethod.POST)
 	  public ModelAndView addTrainer(@ModelAttribute("trainer") TrainerVO trainer,
 			  MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		  String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		  String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		  
+		  String imgUploadPath = request.getSession().getServletContext().getRealPath("resources/imgUpload");
+	      String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		  String fileName = null;
 		  if(file != null) {
 			  fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
@@ -71,12 +81,15 @@ public class TrainerControllerImpl implements TrainerController {
 	  @RequestMapping(value="/trainer/updateTrainer.do",method = {RequestMethod.GET})
 	   public ModelAndView updateTrainer (@RequestParam("mgr_id") String mgr_id, @RequestParam("mem_id") String mem_id,
 	            HttpServletRequest request, HttpServletResponse response) throws Exception{
-	         MemberVO memberVO=new MemberVO();
+	         HttpSession session=request.getSession();
+		  	 MemberVO memberVO=new MemberVO();
+		  	 MemberVO memberVO2=new MemberVO();
 	         memberVO.setMem_id(mem_id);
 	         memberVO.setMgr_id(mgr_id);
 	         System.out.println("컨트롤러"+mgr_id);
 	         trainerService.updateTrainer(memberVO);
-	         
+	         memberVO2=trainerService.selectMember(mem_id);
+	         session.setAttribute("member",memberVO2);
 	         String viewName=(String)request.getAttribute("viewName");
 	         ModelAndView mav = new ModelAndView("redirect:/trainer/listTrainers.do");
 	         return mav;

@@ -30,6 +30,11 @@
          select * from MEMBER order by JOIN_DATE desc       
       ]]>
    </select>
+   
+   <select id="selectMemInfo"  resultType="memberVO" parameterType="String" >
+      select * from MEMBER   
+      where MEM_ID=#{mem_id}     
+  </select>
     
   <insert id="insertMember"  parameterType="memberVO">
       <![CDATA[

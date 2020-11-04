@@ -59,186 +59,78 @@
 				<h3 class="section-subheading text-muted">트레이너를 직접 선택하세요</h3>
 			</div>
 			<div class="row">
-				 <div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#trainerModal1">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="/resources/img/trainer/윤민서.png" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">윤민서</div>
-							<div class="portfolio-caption-subheading text-muted">남</div>
+			<c:choose>
+					<c:when test="${maintrainersList == null }">
+						<div class="container">
+							<p align="center">
+								<b><span style="font-size: 9pt;">등록된 트레이너가 없습니다.</span></b>
+							</p>
 						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal2">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
+					</c:when>
+					<c:when test="${maintrainersList !=null }">
+						<c:forEach var="trainer" items="${maintrainersList }" begin="1" end="3">
+							<div class="col-lg-4 col-sm-6 mb-4">
+								<div class="portfolio-item">
+									<a class="portfolio-link" data-toggle="modal"
+										href=  "#trainerModal${trainer.mgr_id}">
+									<div class="portfolio-hover">
+										<div class="portfolio-hover-content">
+											<i class="fas fa-plus fa-3x"></i>
+										</div>
+									</div> <img class="img-fluid" src="${trainer.trainer_img }" alt="" />
+									</a>
+									<div class="portfolio-caption">
+										<div class="portfolio-caption-heading">${trainer.name }</div>
+										<div class="portfolio-caption-subheading text-muted">${trainer.gender }</div>
+									</div>
 								</div>
-							</div> <img class="img-fluid"
-							src="/resources/img/trainer/김건강.png" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">김건강</div>
-							<div class="portfolio-caption-subheading text-muted">남</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal3">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
+							</div>
+							<div class="portfolio-modal modal fade" id="trainerModal${trainer.mgr_id}"
+							tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="close-modal" data-dismiss="modal">
+											<img src="../resources/img/close-icon.svg" alt="Close modal" />
+										</div>
+										<div class="container">
+											<div class="row justify-content-center">
+												<div class="col-lg-8">
+													<div class="modal-body">
+														<h2 class="text-uppercase">${trainer.name }</h2>
+														<p class="item-intro text-muted">${trainer.gender }</p>
+														<img class="img-fluid d-block mx-auto"
+														src="${trainer.trainer_img }" alt="" />
+														<p>${trainer.intro }</p>
+														
+														<button class="btn btn-primary" data-dismiss="modal" type="button" onclick="javascript:loginCheck('${isLogOn}','${trainer.mgr_id}','${member.mgr_id}')">
+									 					트레이너 신청하기
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div> <img class="img-fluid"
-							src="/resources/img/trainer/이요가.png" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">이요가</div>
-							<div class="portfolio-caption-subheading text-muted">여</div>
-						</div>
-					</div>
-				</div>
-				<div style="text-align:right; width:100%; padding:0;">
+							</div>
+							
+							
+						</c:forEach>
+					</c:when>
+			</c:choose>
+			<div style="text-align:right; width:100%; padding:0;">
     				<button class="btn" type="button"  onclick="location.href='/trainer/listTrainers.do'">더보기</button>
-				</div>
 			</div>
-		</div>
-	</section>
-	<!-- About
-	<section class="page-section" id="about">
-		<div class="container">
-			<div class="text-center">
-				<h2 class="section-heading text-uppercase">About</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
-			</div>
-			<ul class="timeline">
-				<li>
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="resources/img/about/1.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>2009-2011</h4>
-							<h4 class="subheading">Our Humble Beginnings</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="resources/img/about/2.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>March 2011</h4>
-							<h4 class="subheading">An Agency is Born</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="resources/img/about/3.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>December 2012</h4>
-							<h4 class="subheading">Transition to Full Service</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<img class="rounded-circle img-fluid"
-							src="resources/img/about/4.jpg" alt="" />
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>July 2014</h4>
-							<h4 class="subheading">Phase Two Expansion</h4>
-						</div>
-						<div class="timeline-body">
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Sunt ut voluptatum eius sapiente, totam
-								reiciendis temporibus qui quibusdam, recusandae sit vero unde,
-								sed, incidunt et ea quo dolore laudantium consectetur!</p>
-						</div>
-					</div>
-				</li>
-				<li class="timeline-inverted">
-					<div class="timeline-image">
-						<h4>
-							Be Part <br /> Of Our <br /> Story!
-						</h4>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</section>-->
+			
+			
+				
+	</section> 
 	
-	<!-- Clients-->
-	<!--  
-	<div class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="resources/img/logos/envato.jpg" alt="" /></a>
-				</div>
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="resources/img/logos/designmodo.jpg" alt="" /></a>
-				</div>
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="resources/img/logos/themeforest.jpg" alt="" /></a>
-				</div>
-				<div class="col-md-3 col-sm-6 my-3">
-					<a href="#!"><img class="img-fluid d-block mx-auto"
-						src="resources/img/logos/creative-market.jpg" alt="" /></a>
-				</div>
-			</div>
-		</div>
-	</div>-->
 	<!-- Contact-->
 	<section class="page-section" id="contact">
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">Contact Us</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
+				<h3 class="section-subheading text-muted">불편하신 사항이 있으면 저희에게 알려주세요</h3>
 			</div>
 			<form id="contactForm" name="sentMessage" novalidate="novalidate">
 				<div class="row align-items-stretch mb-5">
@@ -280,213 +172,49 @@
 		</div>
 	</section>
 
-	<!-- Portfolio Modals-->
-	<!-- Modal 1-->
-	<div class="portfolio-modal modal fade" id="trainerModal1"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<img src="resources/img/close-icon.svg" alt="Close modal" />
-				</div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="modal-body">
-								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">윤민서</h2>
-								<p class="item-intro text-muted">남</p>
-								<img class="img-fluid d-block mx-auto"
-									src="resources/img/trainer/윤민서.png" alt="" />
-								<p>안녕하세요. 제 2회 전국 보디딜더 대회에서 금상을 수상한 윤민서입니다. 저한테 오세요!!!</p>
-								<button class="btn btn-primary" data-dismiss="modal"
-									type="button">
-									 트레이너 신청하기
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal 2-->
-	<div class="portfolio-modal modal fade" id="portfolioModal2"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<img src="resources/img/close-icon.svg" alt="Close modal" />
-				</div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="modal-body">
-								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">김건강</h2>
-								<p class="item-intro text-muted">남</p>
-								<img class="img-fluid d-block mx-auto"
-									src="resources/img/trainer/김건강.png" alt="" />
-								<p>안녕하세요. 건강을 위해 저 김건강과 함께해요:)</p>
-								
-								<button class="btn btn-primary" data-dismiss="modal"
-									type="button">
-									 트레이너 신청하기
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal 3-->
-	<div class="portfolio-modal modal fade" id="portfolioModal3"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<img src="resources/img/close-icon.svg" alt="Close modal" />
-				</div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="modal-body">
-								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">이요가</h2>
-								<p class="item-intro text-muted">여</p>
-								<img class="img-fluid d-block mx-auto"
-									src="resources/img/trainer/이요가.png" alt="" />
-								<p>안녕하세요. 매일매일 같이 요가해요!</p>
-								
-								<button class="btn btn-primary" data-dismiss="modal"
-									type="button">
-									트레이너 신청하기
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal 4-->
-	<div class="portfolio-modal modal fade" id="portfolioModal4"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<img src="resources/img/close-icon.svg" alt="Close modal" />
-				</div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="modal-body">
-								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
-								<img class="img-fluid d-block mx-auto"
-									src="resources/img/portfolio/04-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Lines</li>
-									<li>Category: Branding</li>
-								</ul>
-								<button class="btn btn-primary" data-dismiss="modal"
-									type="button">
-									<i class="fas fa-times mr-1"></i> Close Project
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal 5-->
-	<div class="portfolio-modal modal fade" id="portfolioModal5"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<img src="resources/img/close-icon.svg" alt="Close modal" />
-				</div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="modal-body">
-								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
-								<img class="img-fluid d-block mx-auto"
-									src="resources/img/portfolio/05-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Southwest</li>
-									<li>Category: Website Design</li>
-								</ul>
-								<button class="btn btn-primary" data-dismiss="modal"
-									type="button">
-									<i class="fas fa-times mr-1"></i> Close Project
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal 6-->
-	<div class="portfolio-modal modal fade" id="portfolioModal6"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="close-modal" data-dismiss="modal">
-					<img src="resources/img/close-icon.svg" alt="Close modal" />
-				</div>
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<div class="modal-body">
-								<!-- Project Details Go Here-->
-								<h2 class="text-uppercase">Project Name</h2>
-								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
-									consectetur.</p>
-								<img class="img-fluid d-block mx-auto"
-									src="resources/img/portfolio/06-full.jpg" alt="" />
-								<p>Use this area to describe your project. Lorem ipsum dolor
-									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
-									culpa incidunt minus dignissimos deserunt repellat aperiam
-									quasi sunt officia expedita beatae cupiditate, maiores
-									repudiandae, nostrum, reiciendis facere nemo!</p>
-								<ul class="list-inline">
-									<li>Date: January 2020</li>
-									<li>Client: Window</li>
-									<li>Category: Photography</li>
-								</ul>
-								<button class="btn btn-primary" data-dismiss="modal"
-									type="button">
-									<i class="fas fa-times mr-1"></i> Close Project
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+	
+	
+	<script>
+function loginCheck(isLogOn,mgr_id,mgr_check){
+	
+		console.log(isLogOn);
+		if(isLogOn=="true"){
+			applyTrainer(mgr_id,mgr_check);
+		}
+		
+		else{
+			alert("로그인 후 이용가능합니다.");
+		}
+		
+	}
+	
+	function applyTrainer(mgr_id,mgr_check){
+		var mem_id="<c:out value="${member.mem_id}"/>";
+		
+		console.log(mem_id);
+		console.log(mgr_check);
+		if(mgr_check==""){
+			if(confirm("트레이너를 신청하시겠습니까?")){
+				
+				location.href="main/updateMainTrainer.do?mgr_id="+mgr_id+"&mem_id="+mem_id;
+				alert("트레이너 신청이 완료되었습니다.");
+				return true;
+			} 
+			else
+				return false;
+				
+		}
+		else{
+			alert("이미 트레이너가 있습니다.");
+			
+		}
+	}
+	</script>
+	
+	
+	
+	
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

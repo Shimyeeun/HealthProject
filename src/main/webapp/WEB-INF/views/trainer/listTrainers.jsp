@@ -57,7 +57,7 @@
 														src="${trainer.trainer_img }" alt="" />
 														<p>${trainer.intro }</p>
 														
-														<button class="btn btn-primary" data-dismiss="modal" type="button" onclick="javascript:loginCheck('${isLogOn}','${trainer.mgr_id}')">
+														<button class="btn btn-primary" data-dismiss="modal" type="button" onclick="javascript:loginCheck('${isLogOn}','${trainer.mgr_id}','${member.mgr_id }')">
 									 					트레이너 신청하기
 														</button>
 													</div>
@@ -77,14 +77,10 @@
 	</section>
 	
 	<script>
-	function loginCheck(isLogOn,mgr_id){
-	
+	function loginCheck(isLogOn,mgr_id,mgr_check){
 		
-		console.log(isLogOn);
-		console.log(mgr_id);
-		
-		if(isLogOn==true){
-			applyTrainer(mgr_id);
+		if(isLogOn=="true"){
+			applyTrainer(mgr_id,mgr_check);
 		}
 		
 		else{
@@ -93,26 +89,26 @@
 		
 	}
 	
-	function applyTrainer(mgr_id){
+	function applyTrainer(mgr_id,mgr_check){
 		var mem_id="<c:out value="${member.mem_id}"/>";
-		var mgr_check="<c:out value="${member.mgr_id}"/>";
+	
 		console.log(mem_id);
-		if(confirm("트레이너를 신청하시겠습니까?"))
-		{	
-			console.log(mgr_check);
-			if(mgr_check==""){
-				location.href="updateTrainer.do?mgr_id="+mgr_id+"&mem_id="+mem_id;
+		console.log(mgr_check);
+		if(mgr_check==""){
+			if(confirm("트레이너를 신청하시겠습니까?")){
 				
+				location.href="/trainer/updateTrainer.do?mgr_id="+mgr_id+"&mem_id="+mem_id;
 				alert("트레이너 신청이 완료되었습니다.");
-			}
-			else{
-				alert("이미 트레이너가 있습니다.");
-			}
-			return true;
+				return true;
+			} 
+			else
+				return false;
+				
+		}
+		else{
+			alert("이미 트레이너가 있습니다.");
 			
-		} 
-		else
-			return false;
+		}
 	}
 	</script>
 	
