@@ -94,7 +94,57 @@ public class TrainerControllerImpl implements TrainerController {
 	         ModelAndView mav = new ModelAndView("redirect:/trainer/listTrainers.do");
 	         return mav;
 	   } 
-	
+	  @Override
+	   @RequestMapping(value = "/trainer/login.do", method = RequestMethod.POST)
+	   public ModelAndView login(@ModelAttribute("trainer") TrainerVO trainer,
+	                          RedirectAttributes rAttr,
+	                             HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+	      System.out.println("mgr_id: " + request.getParameter("mgr_id"));
+	      System.out.println("mgr_pw: " + request.getParameter("mgr_pw"));
+	      
+	      TrainerVO trainerVO2 = new TrainerVO();
+	      
+	      trainerVO2.setMgr_id(request.getParameter("mgr_id"));
+	      trainerVO2.setMgr_pw(request.getParameter("mgr_pw"));
+	      
+	      ModelAndView mav = new ModelAndView();
+	      trainerVO = trainerService.login(trainerVO2);
+	   if(trainerVO != null) {  //memberVO 정보를 db와 비교해서 있으면
+	       HttpSession session = request.getSession();
+	       //session 객체의 setAtrribute메서드를 사용해 member에 속성값으로 MemberVO를 할당
+	       session.setAttribute("trainer", trainerVO);
+	       //session 객체의 setAttribute메서드를 사용해 isLogOn은 true를 할당
+	       session.setAttribute("isLogOn", true);  //login  셿猷 
+	       //mav.setViewName("redirect:/member/listMembers.do");
+	       //session 객체의 getAttribute메서드를 사용해 속성명이 action인 속성의 값을 String 타입으로 변환 
+	       //String 타입으로 변환한것을 action 변수에 담아 
+	       String action = (String)session.getAttribute("action");
+	       //sesion 객체의 removeAttribute메서드를 사용해 action의 속성을 삭제 
+	    
+	       session.removeAttribute("action");
+	       if(action!= null) {
+	          mav.setViewName("redirect:"+action);
+	       }else {
+	          mav.setViewName("redirect:/main.do");   
+	       }
+
+	   }else {  //memberVO 정보를 db와 비교해서 없으면
+	      rAttr.addAttribute("result","loginFailed");
+	      mav.setViewName("redirect:/member/loginForm.do");
+	   }
+	   return mav;
+	   }
+	 @Override
+		@RequestMapping(value = "/trainer/logout.do", method =  RequestMethod.GET)
+		public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			HttpSession session = request.getSession();
+			session.removeAttribute("trainer");
+			session.removeAttribute("isLogOn");
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/main.do");
+			return mav;
+		}	
 	@RequestMapping(value = "/trainer/*Form.do", method =  RequestMethod.GET)
 	private ModelAndView form(@RequestParam(value= "result", required=false) String result,
 							  @RequestParam(value= "action", required=false) String action,
@@ -110,11 +160,6 @@ public class TrainerControllerImpl implements TrainerController {
 		mav.setViewName(viewName);
 		return mav;
 	}
-	@Override
-	public ModelAndView login(TrainerVO trainer, RedirectAttributes rAttr, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 }
