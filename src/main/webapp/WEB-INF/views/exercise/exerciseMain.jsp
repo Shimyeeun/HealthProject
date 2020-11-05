@@ -13,7 +13,7 @@
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">운동가이드영상</h2>
-				<h3 class="section-subheading text-muted">집에서 따라해보세요.</h3>
+				<h3 class="section-subheading text-muted">영상을 보면서 따라해보세요.</h3>
 			</div>
 			<div class="row">
 				<div class="col-lg-4 col-sm-6 mb-4">
@@ -70,8 +70,8 @@
 				</div>
 				<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
 					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							onclick="javascript:location.href='leg.do';" href="#portfolioModal4">
+						<a class="portfolio-link" data-toggle="modal" 
+						    href="#portfolioModal4">
 							<div class="portfolio-hover">
 								<div class="portfolio-hover-content">
 									<i class="fas fa-plus fa-3x"></i>
@@ -121,8 +121,7 @@
 				</div>
 			</div>
 			<br />
-		<button class="btn" type="button" style="float: right;" onclick="location.href='${contextPath}/member/logout.do'">삭제</button>
-		<button class="btn" type="button" style="float: right;" onclick="location.href='${contextPath}/exercise/addMovieForm.do'">추가</button>
+		<button class="btn" type="button" style="float: right;" onclick="href='${contextPath}/exercise/addMovieForm.do'">인공지능 운동코치</button>
 		</div>
 	</section>
 
@@ -160,7 +159,7 @@
 												<c:when test="${ moviesList != null }">
 													<c:set var = "cnt" value="0"/>
 													<c:forEach var="movie" items="${moviesList}">
-														<c:if test="${movie.category_exr == 'back'}">
+														<c:if test="${movie.category_exr == 'chest'}">
 															<c:set var="cnt" value="${cnt+1}"/>
 															<div class="responsive">
 							  								<div class="gallery">
@@ -176,6 +175,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										</br>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
@@ -238,6 +238,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										</br>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
@@ -283,7 +284,7 @@
 												<c:when test="${ moviesList != null }">
 													<c:set var = "cnt" value="0"/>
 													<c:forEach var="movie" items="${moviesList}">
-														<c:if test="${movie.category_exr == 'back'}">
+														<c:if test="${movie.category_exr == 'arm'}">
 															<c:set var="cnt" value="${cnt+1}"/>
 															<div class="responsive">
 							  								<div class="gallery">
@@ -299,6 +300,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										</br>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
@@ -344,7 +346,7 @@
 												<c:when test="${ moviesList != null }">
 													<c:set var = "cnt" value="0"/>
 													<c:forEach var="movie" items="${moviesList}">
-														<c:if test="${movie.category_exr == 'back'}">
+														<c:if test="${movie.category_exr == 'shoulder'}">
 															<c:set var="cnt" value="${cnt+1}"/>
 															<div class="responsive">
 							  								<div class="gallery">
@@ -360,6 +362,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										</br>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
@@ -405,7 +408,7 @@
 												<c:when test="${ moviesList != null }">
 													<c:set var = "cnt" value="0"/>
 													<c:forEach var="movie" items="${moviesList}">
-														<c:if test="${movie.category_exr == 'back'}">
+														<c:if test="${movie.category_exr == 'leg'}">
 															<c:set var="cnt" value="${cnt+1}"/>
 															<div class="responsive">
 							  								<div class="gallery">
@@ -421,6 +424,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										</br>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
@@ -466,7 +470,7 @@
 												<c:when test="${ moviesList != null }">
 													<c:set var = "cnt" value="0"/>
 													<c:forEach var="movie" items="${moviesList}">
-														<c:if test="${movie.category_exr == 'back'}">
+														<c:if test="${movie.category_exr == 'cardio'}">
 															<c:set var="cnt" value="${cnt+1}"/>
 															<div class="responsive">
 							  								<div class="gallery">
@@ -482,6 +486,7 @@
 												</c:when>
 											</c:choose>
 										</div>
+										</br>
 									<button class="btn btn-primary" data-dismiss="modal" type="button">
 											<i class="fas fa-times mr-1"></i> Close Project
 									</button>
