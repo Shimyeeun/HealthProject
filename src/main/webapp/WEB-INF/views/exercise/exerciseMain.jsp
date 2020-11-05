@@ -121,7 +121,7 @@
 				</div>
 			</div>
 			<br />
-		<button class="btn" type="button" style="float: right;" onclick="href='${contextPath}/exercise/addMovieForm.do'">인공지능 운동코치</button>
+		<button class="btn" type="button" style="float: right;" onclick="location.href='${contextPath}/count/countMachine.do'">인공지능 운동코치</button>
 		</div>
 	</section>
 
