@@ -29,4 +29,5 @@ public interface TrainerController {
 	public ModelAndView login(@ModelAttribute("trainer") TrainerVO trainer,
             RedirectAttributes rAttr,
             HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

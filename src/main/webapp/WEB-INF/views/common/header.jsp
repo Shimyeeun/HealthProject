@@ -39,15 +39,20 @@
 			</td>
 			<td width="10%">
 				<!-- <a href="#"><h3>로그인</h3></a> --> 
+				  
 				  <c:choose>
 					<c:when test="${isLogOn == true  && member!= null}">
-						
-						<h4>환영합니다.<br> ${member.name }님!</h4>
+						<h4>환영합니다.<br> 멤버 ${member.name }님!</h4>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/logout.do'">로그아웃</button>
+					</c:when>
+					<c:when test="${isLogOn == true  && member==null && trainer!= null}">
+						<h4>환영합니다.<br> 트레이너 ${trainer.name }님!</h4>
+						<button class="btn" type="button" onclick="location.href='${contextPath}/trainer/logout.do'">로그아웃</button>
 					</c:when>
 					<c:otherwise>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/loginForm.do'">로그인</button>
 					</c:otherwise>
+					
 				</c:choose>
 			</td>
 		</tr>

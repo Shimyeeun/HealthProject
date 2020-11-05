@@ -20,33 +20,42 @@
 	</c:when>
 </c:choose>
 
-<form name="frmLogin" method="post"
-	action="${contextPath}/member/login.do">
-  <div id ="content">
-	<div id="login_content">
-		<h1 id= "login_title">LOGIN</h1>
+<div id ="content">
+ 
+ <h1 id= "login_title">LOGIN</h1>
+  
+  <form name="frmLogin" method="post" action="${contextPath}/member/login.do">
+	 <div id="login_member">
+	     <h3>MEMBER</h3>
 		<div id="input">
 			<input aria-invalid="false" class="id_class" placeholder="아이디" type="text" name="mem_id" value="" title="id_title">
 		</div>
 		<div id="input">
 			<input aria-invalid="false" class="pw_class" placeholder="비밀번호" type="password" name="mem_pwd" value="" title="pw_title">
 		</div>
-		<input type="submit" value="로그인">
-		<label class="checkbox checkbox-inline">
-            <input type="checkbox" name="myBtn" data-toggle="checkbox" value="member">멤버
-        </label>
-        <label class="checkbox checkbox-inline">
-            <input type="checkbox" name="myBtn" data-toggle="checkbox" value="trainer">트레이너
-        </label>
-
+		<input id="member_submit" type="submit" value="멤버" style="background-color: black; color: white;">
 	</div>
-	<div id ="find_account">
+   </form>
+  <form name="frmLogin" method="post" action="${contextPath}/trainer/login.do">
+	<div id="login_trainer">
+	     <h3>TRAINER</h3>
+		<div id="input">
+			<input aria-invalid="false" class="id_class" placeholder="아이디" type="text" name="mgr_id" value="" title="id_title">
+		</div>
+		<div id="input">
+			<input aria-invalid="false" class="pw_class" placeholder="비밀번호" type="password" name="mgr_pw" value="" title="pw_title">
+		</div>
+		<input id="trainer_submit" type="submit" value="트레이너" style="background-color: black; color: white;">
+	</div>	    
+  </form>
+ </div>
+ 
+<div id ="find_account" style="">
 		<a id="find_id" href="">아이디찾기 | 비밀번호 초기화</a>
 		<br>홈페이지에 가입하지 않으셨나요?
 		<a id="register" href="${contextPath}/member/memberForm.do">회원가입</a>
-	</div>
-   </div>	
-</form>
 </div>
+ 
+
 </body>
 </html>
