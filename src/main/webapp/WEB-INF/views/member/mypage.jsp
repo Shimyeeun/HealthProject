@@ -1,37 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <%
 	request.setCharacterEncoding("UTF-8");
+	
 %>
-
+<%! int totalDate=0;
+	int percent=0;
+%>
 <body>
-
+<!-- Challenge State -->
 <h1 style="text-align: center; padding-top: 50px; padding-bottom:30px">Challenging List</h1>
 	<div class="progress_area" style="display: flex; width:70%; margin:0 auto">
 		<div>
 		</div>
-		<div class="progress_title" style="width:35%; box-sizing:border-box">
+		<div class="container" style=" box-sizing:border-box">
 			<c:choose>
-				<c:when test="${ challList == null}">
-					<h5 style="text-align:center; padding-top:20px">도전중인 챌린지가 없습니다. 챌린지에 도전하세요!</h5>
+				<c:when test="${fn:length(challList)<=0}">
+					<h4 style="text-align:center; padding-top:20px">도전중인 챌린지가 없습니다. 챌린지에 도전하세요!</h4>
 				</c:when>
-				<c:when test="${ challList != null}">
+				<c:when test="${fn:length(challList)>0}">
 					<c:forEach var="challenge" items="${challList }">
-						<h5>${challenge.title}</h5><br>
+						
+						<div class="container" style="overflow:visible; margin-bottom:20px; padding:10px">
+							<div class="progress_state" style="padding:10px">
+								<h4 style="display:inline"> ${challenge.title } </h4>
+								<p class="text-muted" style="margin-left:auto;display:inline">  신청금액 : ${challenge.target_point }원  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
+							</div>
+							
+							<script>
+						
+							
+								var totalDay;
+								var ingDay;
+								var percent;
+								var idx;
+								dateCal('${challenge.start_date}','${challenge.end_date}','${challenge.chal_idx}');
+								function dateCal(start_date,end_date,chal_idx){
+									var today = new Date(); 					
+									var startdateArray = start_date.split('-');  
+									var enddateArray = end_date.split('-');  
+									var startdateObj = new Date(startdateArray[0], Number(startdateArray[1])-1, startdateArray[2]);  
+									var enddateObj = new Date(enddateArray[0], Number(enddateArray[1])-1, enddateArray[2]);
+									
+									totalDay=(enddateObj.getTime()-startdateObj.getTime())/1000/60/60/24;
+									ingDay = (today.getTime() -startdateObj.getTime())/1000/60/60/24;  
+									percent=Math.ceil(Math.ceil(ingDay)/totalDay*100);  
+									idx=chal_idx;
+								}
+								console.log(totalDay);
+								
+								console.log(ingDay);
+								console.log(percent);
+								console.log(idx);
+								       
+							</script>
+							<script>	    
+								$(function() {
+									$("#progressbar"+idx).css({
+									    width:percent+'%'						           
+									});
+								});
+							
+							</script>
+							
+							
+							
+							
+						
+							<div style="text-align:right; width:100%; padding:0.5rem;">
+					
+								<div class="progress" style="margin-left:auto; text-align:right; width:100%; padding:0; height:2rem" >
+									<div id="progressbar${challenge.chal_idx}" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow=""
+									aria-valuemin="0" aria-valuemax="100" style="color:#000000">
+									도전한지 <script>document.write(Math.ceil(ingDay))</script>일째 
+									</div>
+								</div>
+						
+							</div>
+				
+						</div>
 					</c:forEach>
 				</c:when>
 			</c:choose>
 		</div>
-		<div class="progress_deadline" style="flex:1; margin:0px 2%; width:65%; box-sizing:border-box; text-align:cener">
-			<h3>그래프1</h3>
-			<h3>그래프2</h3>
-			<h3>그래프3</h3>
-		</div>
+		
 	</div>
 
+
+
+
+
+
+<!--Calendar -->
 	<div class="calendar_area">
 		<div style="padding-top: 50px">
 			<h1 style="text-align: center">Monthly Exercise</h1>

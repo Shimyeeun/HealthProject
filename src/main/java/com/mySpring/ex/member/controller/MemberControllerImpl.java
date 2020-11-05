@@ -50,9 +50,12 @@ public class MemberControllerImpl  implements MemberController {
 		
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");		
 		
+		
 		List<ChallengeVO> challList = memberService.listChallenge(memberVO.getMem_id());
+
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("challList", challList);
+		
 		return mav;
 	}
 
