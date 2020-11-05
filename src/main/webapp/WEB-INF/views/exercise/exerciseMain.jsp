@@ -499,6 +499,38 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal7 -->
+	<div class="portfolio-modal modal fade" id="portfolioModal7"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="close-modal" data-dismiss="modal">
+					<img src="/resources/img/close-icon.svg" alt="Close modal" />
+				</div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-12">
+							<div class="modal-body">
+								<!-- Project Details Go Here-->
+								<section class="page-section bg-light" id="portfolio">
+									<div class="container">
+										<div class="text-center">
+											<h2 class="section-heading text-uppercase">가슴운동</h2>
+										</div>
+										</br>
+										</br>
+									<button class="btn btn-primary" data-dismiss="modal" type="button">
+											<i class="fas fa-times mr-1"></i> Close Project
+									</button>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
