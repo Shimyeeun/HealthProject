@@ -32,8 +32,6 @@
 							href="/exercise/exerciseMain.do">EXERCISE</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/member/mypage.do">My Page</a></li>
-						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="/count/countMachine.do">COUNT</a></li>
 					</ul>
 				</nav>
 			</td>
@@ -49,9 +47,9 @@
 						<h4>환영합니다.<br> 트레이너 ${trainer.name }님!</h4>
 						<button class="btn" type="button" onclick="location.href='${contextPath}/trainer/logout.do'">로그아웃</button>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${isLogOn == false}">
 						<button class="btn" type="button" onclick="location.href='${contextPath}/member/loginForm.do'">로그인</button>
-					</c:otherwise>
+					</c:when>
 					
 				</c:choose>
 			</td>
