@@ -29,6 +29,11 @@
     box-sizing: border-box;
     border-spacing: 0;
     border-collapse: collapse;
+    text-align: center;
+   }
+   li{
+    display: inline-block;
+    margin: auto 20px;
    }
    .join_wrap .joinList:before{
    	 content:" ";

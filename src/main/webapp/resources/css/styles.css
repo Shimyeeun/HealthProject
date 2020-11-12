@@ -34,62 +34,13 @@
 
 #login_trainer{
    float: left;
-    width: calc(20% - 100px);
+    width: calc(40% - 100px);
     text-align: center;
     margin: 30px -350px;
     
    
 }
 
-/* 인공지능 카운터 css 부분 */
-.machine{
-  padding-top: 3.5rem;
-  padding-bottom: 2.5rem;
-  height: 800px;
-  line-height: 2.5rem;
-  margin-bottom: 1px;
-  background : url("../img/gym.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  background-size: cover;
-}
-.machine::before{
-  content:"";
-  opacity: 0.4;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-}
-.title{
-	font-size : 50px;
-	font-color : red;
-	text-align : center;
-	font-weight: bold;
-	
-}
-.button{
-	font-size : 30px;
-	text-align : center;
-}
-#canvas{
-	margin-left : 700px;
-}
-#label-container{	
-	margin-left : 850px;
-}
-#counter{
-	margin-left: 900px;
-	color : blue;
-	font-size : 60px;
-}
-#warning123{
-	margin-left : 800px;
-	color : red;
-	font-size : 20px;
-}
 
 /* 운동영상 유튜브 반응형 크기조절부분 */
 .responsive {
