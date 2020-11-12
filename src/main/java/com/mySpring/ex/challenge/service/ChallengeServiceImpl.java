@@ -37,13 +37,9 @@ public class ChallengeServiceImpl implements ChallengeService {
 		return statesList;
 	}
 	
-	@Override
-	public StateVO selectState(String mem_id) throws Exception{
-		return challengeDAO.selectState(mem_id);
-	}
 	
-//	@Override
-//	public int insertChalState(StateVO state) throws Exception{
-//		return challengeDAO.insertChalState(state);
-//	}
+	@Override
+	public void insertChalState(StateVO state) throws Exception{
+		challengeDAO.insertChalState(state);
+	}
 }

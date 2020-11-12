@@ -28,7 +28,7 @@
 				</div>
 
 				<div class="mb-3">
-					<label for="mem_id"></label> <form:input path="mem_id" id="mem_id" style="width:800px" class="form-control"/>
+					<label for="mem_id">아이디</label> <form:input path="mem_id" id="mem_id"  style="width:800px" class="form-control" type="text" value="${mem_id}" readonly="true"/>
 				</div>
 
 				<div class="mb-3">

@@ -14,38 +14,41 @@
 	color : green;
 	text-align : center;
 	font-weight: bold;
-	
+
 }
 .button{
 	font-size : 30px;
 	align : center;
 }
 #canvas{
+	margin-left : 550px;
+}
+#label-container{
 	margin-left : 700px;
 }
-#label-container{	
-	margin-left : 850px;
-}
 #counter{
-	margin-left: 900px;
+	text-align: center;
 	color : blue;
+	font-style : 'Malgun Gothic';
 	font-size : 60px;
 }
 #warning{
-	margin-left : 800px;
+	text-align: center;
 	color : red;
 	font-size : 20px;
+	font-style : 'Malgun Gothic';
 }
 </style>
 <body>
-<container>
-	<div class="title">인공지능 트레이너  <button class="button" type="button" onclick="init()">Start</button></div>
+<section class="machine">
+	<div class="title">인공지능 운동코치</div>
+	</br>
+	<div class="title"><button class="button" type="button" onclick="init()">운동시작</button></div>
   <div><canvas id="canvas"></canvas></div>
   <div id="label-container"></div>
   <div id="counter"></div>
   <div id="warning"></div>
-  </container>
-  <section></section>
+</section>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
   <script type="text/javascript">
@@ -98,21 +101,21 @@
         const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
         // Prediction 2: run input through teachable machine classification model
         const prediction = await model.predict(posenetOutput);
-	    if(prediction[0].probability.toFixed(2) == 1.00){
-	    	if( status=="paper" ){ //묵 -> 빠 로 바뀌면 count+1
+        if(prediction[0].probability.toFixed(2) == 1.00){
+	    	if( status=="squat" ){ //스탠드 -> 스쿼트로 바뀌면 count+1
 	    		count++;
 	    		document.getElementById("warning").innerHTML = "";
 	    		document.getElementById("counter").innerHTML = count;
-	    		if(count>=10){
-	    			document.getElementById("counter").innerHTML = "10번 모두 완료했습니다.";
+	    		if(count>=5){
+	    			document.getElementById("counter").innerHTML = "5번 모두 완료했습니다.";
 	    		}
 	    	}
-	    	status = "rock";
+	    	status = "bent";
 	    } else if (prediction[1].probability.toFixed(2) == 1.00){
 	    	document.getElementById("warning").innerHTML = "올바른 동작으로 해주세요";
 	    	status = "sissor";
 	    } else if (prediction[2].probability.toFixed(2) == 1.00){
-	    	status = "paper";
+	    	status = "squat";
 	    }
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =

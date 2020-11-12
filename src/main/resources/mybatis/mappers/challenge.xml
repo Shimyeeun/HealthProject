@@ -64,11 +64,15 @@
 			where chal_idx= #{chal_idx}
 	</update>
   
-  <insert id="insertChalState" parameterType="stateVO">
-  <![CDATA[
-  	insert into state(state_idx,mem_id,chal_idx);
-  	values(state_seq.nextval,#{member.mem_id},#{chal_idx})
-   ]]>			
+  <insert id="insertChalState" parameterType="StateVO">
+
+  	<selectKey keyProperty="idx" resultType="Integer" order="BEFORE">
+  	select state_seq.nextval FROM dual </selectKey>
+
+  	insert into state(state_idx,mem_id,chal_idx)
+  	
+  	values(state_seq.nextval,#{mem_id},#{chal_idx})
+   		
   </insert>			
   <!--  <update id="updateArticle"  parameterType="java.util.Map">
 			update t_board
@@ -123,4 +127,10 @@
     ]]>
   </select> 
   --> 
+  <select id="selectChallengingList" resultMap="challengesResult" parameterType="String">
+    <![CDATA[
+	select c.chal_idx,c.target_point, c.start_date, c.end_date, c.title from member m, state s, challenge c
+where s.mem_id = #{mem_id} and m.mem_id = #{mem_id} and s.chal_idx = c.chal_idx
+    ]]>
+  </select>
 </mapper>

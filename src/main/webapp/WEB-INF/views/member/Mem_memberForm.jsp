@@ -23,23 +23,23 @@
 	   </tr>
 	   <tr>
 	      <td width="200"><p align="right">비밀번호</td>
-	      <td width="400"><input type="password" name="mem_pwd"></td>
+	      <td width="400"><input type="password" name="mem_pw"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이름</td>
-	       <td width="400"><p><input type="text" name="mem_name"></td>
+	       <td width="400"><p><input type="text" name="name"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">주소</td>
-	       <td width="400"><p><input type="text" name="mem_address"></td>
+	       <td width="400"><p><input type="text" name="address"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">성별</td>
-	       <td width="400"><p><input type="text" name="mem_gender"></td>
+	       <td width="400"><p><input type="text" name="gender"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">생년월일</td>
-	       <td width="400"><p><input type="text" name="mem_birthDate"></td>
+	       <td width="400"><p><input type="text" name="birth_date"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p>&nbsp;</p></td>

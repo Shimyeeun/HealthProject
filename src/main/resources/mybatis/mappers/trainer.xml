@@ -9,7 +9,7 @@
     <result property="mgr_pw" column="MGR_PW" />
     <result property="name" column="NAME" />
     <result property="address" column="ADDRESS" />
-    <result property="image_name" column="IMAGE_NAME" />
+    <result property="trainer_img" column="TRAINER_IMG" />
     <result property="gender" column="GENDER" />
     <result property="intro" column="INTRO" />
     <result property="join_date" column="JOIN_DATE"/>
@@ -24,15 +24,15 @@
   -->
    <select id="selectAllTrainersList" resultMap="trainersResult"   >
     <![CDATA[
-      SELECT mgr_id,name,image_name,gender,intro
+      SELECT mgr_id,name,trainer_img,gender,intro
       from trainer	
     ]]>
   </select>
   
   <insert id="insertTrainer"  parameterType="trainerVO">
 		<![CDATA[
-		 insert into TRAINER(MGR_ID, MGR_PW, NAME, ADDRESS, IMAGE_NAME, GENDER, INTRO)
-		 values(#{mgr_id}, #{mgr_pw}, #{name}, #{address}, #{image_name}, #{gender}, #{intro})
+		 insert into TRAINER(MGR_ID, MGR_PW, NAME, ADDRESS, TRAINER_IMG, GENDER, INTRO)
+		 values(#{mgr_id}, #{mgr_pw}, #{name}, #{address}, #{trainer_img}, #{gender}, #{intro})
 		]]>      
  </insert>
  
@@ -42,6 +42,12 @@
 		where MGR_ID=#{mgr_id} and MGR_PW=#{mgr_pw}		
 	]]>
   </select>
+  
+  <update id="updateTrainer" parameterType="memberVO">
+  		update member
+  		set mgr_id=#{mgr_id}
+  		where mem_id=#{mem_id}
+  </update>
 	<!--단일이미지 추가  -->
 	 
  <!--   <insert id="insertNewArticle"  parameterType="java.util.Map">

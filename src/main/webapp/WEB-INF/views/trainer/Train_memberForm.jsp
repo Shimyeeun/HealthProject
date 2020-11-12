@@ -3,6 +3,8 @@
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri = "http://www.springframework.org/tags/form" %> 
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
    request.setCharacterEncoding("UTF-8");
@@ -14,9 +16,9 @@
 
 </head>
 <body>
-<form name="frmLogin" method="post"
-	action="${contextPath}/trainer/addTrainer.do">
-	<table align="center">
+<form name="frmLogin" method="post" action="${contextPath}/trainer/addTrainer.do" enctype="multipart/form-data" >
+	
+	<table align="center" >
 	   <tr>
 	      <td width="200"><p align="right">아이디</td>
 	      <td width="400"><input type="text" name="mgr_id"></td>
@@ -35,8 +37,9 @@
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이미지</td>
-	       <td width="400"><p><input type="file" name="image_name"></td>
+	       <td width="400"><p><input type="file" id="trainer_img" name="file"></td>
 	    </tr>
+	    	
 	    <tr>
 	       <td width="200"><p align="right">성별</td>
 	       <td width="400"><p><input type="text" name="gender"></td>
@@ -53,5 +56,19 @@
 	
 	
 </form>
+     <script>
+		$("trainer_img").change(function(){
+			if(this.files && this.fiels[0]){
+				var reader = new FileReader;
+				reader.onload = function(data){
+					 $(".select_img img").attr("src",data.target.result).width(500);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		})
+	</script>
+	<!-- 프로젝트의 실제 경로 표시 -->
+	<%= request.getRealPath("/") %>
 </body>
+	
 </html>

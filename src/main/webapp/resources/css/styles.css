@@ -11,6 +11,37 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
  /* ################## header start #############*/
+ 
+ /*  JYH ADD 2020.11.05 */
+#content{
+   width:120%;
+   
+   text-align:center;
+   overflow:hidden;
+}
+#login_title{
+      width: calc(80% - 10px);
+      justify-content: center;
+      align-items: center;
+}
+#login_member{
+   float: left;
+    width: calc(60% - 10px);
+    text-align: center;
+    margin: 40px 0px;
+    margin: 30px -30px;
+}
+
+#login_trainer{
+   float: left;
+    width: calc(40% - 100px);
+    text-align: center;
+    margin: 30px -350px;
+    
+   
+}
+
+
 /* 운동영상 유튜브 반응형 크기조절부분 */
 .responsive {
     padding: 0 6px;
@@ -30,6 +61,7 @@
 	height:100%;
 }
 .desc {
+	font-family : '맑은고딕', 'Malgun Gothic', sans-serif;
     padding: 15px;
     text-align: center;
 }

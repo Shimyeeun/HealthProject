@@ -31,11 +31,12 @@
 
 /* 댓글 등록하기(Ajax) */
 function fn_comment(code){
-    
-   var mem_id = 'MK0227';
+   var mem_id = '${login_id}';
    var board_idx = '${article.board_idx}';
    var comment = $("#comment").val();
-   console.log(comment);
+   
+   if(mem_id != 'null'){
+	   
    var allData = { "mem_id": mem_id, "board_idx" : board_idx, "comment" : comment };
     
    $.ajax({
@@ -55,6 +56,9 @@ function fn_comment(code){
        }
         
     });
+   } else{
+	   alert("로그인 후 이용 가능합니다.");
+   }
 }
  
 /* 초기 페이지 로딩시 댓글 불러오기 */

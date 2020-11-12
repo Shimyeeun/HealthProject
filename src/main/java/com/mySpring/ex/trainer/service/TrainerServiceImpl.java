@@ -34,4 +34,13 @@ public class TrainerServiceImpl implements TrainerService {
 	public TrainerVO login(TrainerVO trainerVO) throws Exception{
 		return trainerDAO.loginById(trainerVO);
 	}
+	@Override
+	   public void updateTrainer(MemberVO memberVO) throws Exception{
+	      trainerDAO.updateTrainer(memberVO);
+	   }
+	
+	@Override
+	public MemberVO selectMember(String mem_id) throws Exception{
+		return trainerDAO.selectMember(mem_id);
+	}
 }

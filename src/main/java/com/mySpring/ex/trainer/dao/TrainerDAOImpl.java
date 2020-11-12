@@ -30,7 +30,15 @@ public class TrainerDAOImpl implements TrainerDAO {
 	}
 	@Override
 	public TrainerVO loginById(TrainerVO trainerVO) throws DataAccessException{
-		  TrainerVO vo = sqlSession.selectOne("mapper.member.loginById",trainerVO);
+		  TrainerVO vo = sqlSession.selectOne("mapper.trainer.loginById",trainerVO);
 		return vo;
+	}
+	@Override
+	   public void updateTrainer(MemberVO memberVO) throws DataAccessException{
+	      sqlSession.update("mapper.trainer.updateTrainer",memberVO);
+	   }
+	@Override
+	public MemberVO selectMember(String mem_id) throws DataAccessException{
+		return sqlSession.selectOne("mapper.member.selectMemInfo",mem_id);
 	}
 }

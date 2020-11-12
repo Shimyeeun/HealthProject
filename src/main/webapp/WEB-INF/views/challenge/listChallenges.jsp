@@ -3,9 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 <%
   request.setCharacterEncoding("UTF-8");
-  
+
 %>
 
 <div class="contaniner" style="margin-top:50px">
@@ -25,45 +26,51 @@
 					
 					<h4> ${challenge.target_point }원 챌린지 > ${challenge.title } </h4>	
 					
-					<p class="text-muted"> 누적금액 : ${challenge.total_point }원 &nbsp; 신청자수 :  ${challenge.challenger }명  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
+					<p class="text-muted">  누적금액 : ${challenge.total_point }원 &nbsp; 신청자수 :  ${challenge.challenger }명  &nbsp; 시작일 : ${challenge.start_date } &nbsp; 마감일 : ${challenge.end_date } 
 					
 					</p>	
 				<div style="text-align:right; width:100%; padding:0;">
+				<button id="chalbtn${challenge.chal_idx }" class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
 				<c:choose>
-					<c:when test="${statesList!=null }">
+					<c:when test="${isLogOn==true }">
 						<c:forEach var="state" items="${statesList }"
 						varStatus="stateNum">
+							
 							<c:choose>
-								<c:when test="${state.mem_id==member.mem_id}">
-							  		<span class="label">${state.mem_id }이미 도전중인 챌린지 입니다.</span>
+								<c:when test="${state.mem_id==member.mem_id&&state.chal_idx==challenge.chal_idx}">
+									<script>
+										function hidebutton(chal_idx){
+											var chal_btn="chalbtn"+chal_idx;
+											document.getElementById(chal_btn).style.display="none";											
+										}
+										hidebutton(${challenge.chal_idx});
+										</script> 
+							  		<label for="challenge" class="btn btn-danger btn-sm "> 이미 도전중인 챌린지 입니다.</label>
 								</c:when>
 							</c:choose>		
-						</c:forEach>
-						<button class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
-											
+						</c:forEach>	
+										
 					</c:when>
-					<c:when test="${statesList==null }">
-						<p>챌린지현황없음</p>
-					</c:when>	
-					<c:otherwise>						
-						<button class="btn" type="button" onclick="javascript:loginCheck(${isLogOn},${challenge.chal_idx })" >도전하기!</button>
-    				</c:otherwise>
+					
+					
     			</c:choose>
 				</div>
 				
 				</div>
-				
-				
 			</c:forEach>
 		</c:when>
 	</c:choose>	
 </div>
 
+
 <script>
+
 function loginCheck(isLogOn,chal_idx){
+	
 	
 	console.log(isLogOn);
 	console.log(chal_idx);
+	
 	if(isLogOn==true){
 		showConfirm(chal_idx);
 	}
@@ -74,11 +81,12 @@ function loginCheck(isLogOn,chal_idx){
 }
 
 function showConfirm(chal_idx){
-
+	var mem_id="<c:out value="${member.mem_id}"/>";
 	console.log(chal_idx);
 	if(confirm("챌린지에 도전하시겠습니까?"))
 	{	
-		location.href="updateChallenge.do?chal_idx="+chal_idx;
+		
+		location.href="updateChallenge.do?chal_idx="+chal_idx+"&mem_id="+mem_id;
 		alert("챌린지 신청이 완료되었습니다.");
 		return true;
 		
@@ -86,5 +94,6 @@ function showConfirm(chal_idx){
 	else
 		return false;
 }
+
 
 </script>

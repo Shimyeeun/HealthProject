@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.inbody">
+<resultMap id="inbodyResult" type="inbodyVO">
+    <result property="body_idx" column="BODY_IDX" />
+    <result property="board_idx" column="MEM_ID" />
+    <result property="write_date" column="WRITE_DATE" />
+    <result property="height" column="HEIGHT" />
+    <result property="muscle" column="MUSCLE" />
+    <result property="body_fat" column="BODY_FAT" />
+  </resultMap> 
+
+  <select id="selectInbodyList" resultType="inbodyVO" parameterType="map">
+    <![CDATA[
+ 		SELECT BODY_IDX, MEM_ID, TO_CHAR(WRITE_DATE, 'yyyy-mm-dd') AS WRITE_DATE, WEIGHT, HEIGHT, MUSCLE, BODY_FAT
+        FROM MEMBODY
+        WHERE WRITE_DATE BETWEEN #{start_date} and #{end_date} and mem_id = '${mem_id}'
+        ORDER BY WRITE_DATE
+    ]]>
+  </select>
+  <select id="insertInbody" parameterType="inbodyVO">
+    <![CDATA[
+ 		INSERT into MEMBODY(BODY_IDX, MEM_ID, WEIGHT, MUSCLE, BODY_FAT)
+         VALUES(membody_sequence.nextval, #{mem_id}, #{weight}, #{muscle}, #{body_fat} )
+    ]]>
+  </select>
+  <select id="selectRecentDate" parameterType="String" resultType="String">
+    <![CDATA[
+ 		SELECT TO_CHAR(WRITE_DATE, 'yyyymmdd') AS WRITE_DATE
+ 		FROM ( SELECT WRITE_DATE, MEM_ID FROM MEMBODY ORDER BY WRITE_DATE DESC)
+ 		WHERE ROWNUM=1 AND MEM_ID = #{mem_id}
+    ]]>
+  </select>
+  
+</mapper>

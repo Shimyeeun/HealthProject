@@ -14,4 +14,6 @@ public interface TrainerService {
 	public List<TrainerVO> listTrainers() throws Exception;
 	public int addTrainer(TrainerVO trainerVO) throws DataAccessException;
 	public TrainerVO login(TrainerVO trainerVO) throws Exception;
+	public void updateTrainer(MemberVO memberVO) throws Exception;
+	public MemberVO selectMember(String mem_id) throws Exception;
 }
